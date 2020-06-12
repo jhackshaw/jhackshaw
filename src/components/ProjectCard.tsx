@@ -1,6 +1,5 @@
 import React from "react";
 import Img from "gatsby-image";
-import { formatDistanceToNow, parseISO } from "date-fns";
 import { NoFussLink } from ".";
 import styled from "styled-components";
 
@@ -61,7 +60,7 @@ export const ProjectCard: React.FC<Props> = ({ title, slug, image, date }) => {
         </ImageWrapper>
         <ContentWrapper>
           <h3>{title}</h3>
-          <span>{`${formatDistanceToNow(parseISO(date))} ago`}</span>
+          <span>{date}</span>
         </ContentWrapper>
       </StyledProjectCard>
     </NoFussLink>

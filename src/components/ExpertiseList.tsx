@@ -6,9 +6,6 @@ const StyledExpertiseList = styled.div`
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: flex-start;
 
   @media screen and (min-width: 768px) {
     gap: 2rem;
@@ -35,7 +32,7 @@ const Expertise = styled.div`
   }
 
   .gatsby-image-wrapper {
-    margin-right: 2rem;
+    margin-right: 1rem;
     z-index: 10;
   }
 `;

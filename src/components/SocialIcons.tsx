@@ -21,16 +21,16 @@ const Wrapper = styled.div`
 export const SocialIcons: React.FC = () => {
   return (
     <Wrapper>
-      <a href="https://twitter.com/jhackshaw/">
+      <a href="https://twitter.com/jhackshaw/" title="Twitter">
         <FaTwitter size={28} color="inherit" />
       </a>
-      <a href="https://linkedin.com/in/jeffrey-hackshaw/">
+      <a href="https://linkedin.com/in/jeffrey-hackshaw/" title="LinkedIn">
         <FaLinkedin size={28} color="inherit" />
       </a>
-      <a href="https://github.com/jhackshaw/">
+      <a href="https://github.com/jhackshaw/" title="Personal GitHub">
         <FaGithub size={28} color="inherit" />
       </a>
-      <a href="https://github.com/jhackshaw-dds/">
+      <a href="https://github.com/jhackshaw-dds/" title="DDS GitHub Account">
         <FaGithub size={28} color="inherit" />
       </a>
     </Wrapper>

@@ -9,7 +9,8 @@ import {
   SectionTitle,
   ProjectCardList,
   ExpertiseList,
-  Timeline
+  Timeline,
+  CredentialList
 } from "../components";
 
 interface IndexQueryProps {
@@ -55,6 +56,22 @@ interface IndexQueryProps {
       body: string;
     }[];
   };
+
+  allCredentialMdx: {
+    nodes: {
+      frontmatter: {
+        title: string;
+        subtitle: string;
+        date: string;
+        image: {
+          childImageSharp: {
+            fluid: any;
+          };
+        };
+      };
+      body: string;
+    }[];
+  };
 }
 
 const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
@@ -79,6 +96,11 @@ const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
         <SectionTitle>Experience</SectionTitle>
         <Timeline steps={data.allExperienceMdx.nodes} />
       </Section>
+
+      <Section>
+        <SectionTitle>Education & Awards</SectionTitle>
+        <CredentialList credentials={data.allCredentialMdx.nodes} />
+      </Section>
     </Layout>
   );
 };
@@ -94,7 +116,7 @@ export const query = graphql`
         frontmatter {
           title
           summary
-          date
+          date(fromNow: true)
           slug
           image {
             childImageSharp {
@@ -134,6 +156,27 @@ export const query = graphql`
             childImageSharp {
               fixed(width: 80, height: 80) {
                 ...GatsbyImageSharpFixed_withWebp
+              }
+            }
+          }
+        }
+        body
+      }
+    }
+
+    allCredentialMdx: allMdx(
+      sort: { fields: frontmatter___date, order: DESC }
+      filter: { fileAbsolutePath: { regex: "/content/credentials//" } }
+    ) {
+      nodes {
+        frontmatter {
+          title
+          subtitle
+          date(fromNow: true)
+          image {
+            childImageSharp {
+              fluid(maxWidth: 120) {
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
           }
