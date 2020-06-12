@@ -1,8 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `jhackshaw`,
-    description: `Jeff Hackshaw - Developer`,
-    author: `@jhackshaw`
+    title: `Jeff Hackshaw`,
+    description: `Personal portfolio / blog for Jeff Hackshaw`,
+    author: `@jhackshaw`,
+    siteUrl: `https://jhackshaw.com`
   },
   plugins: [
     `gatsby-transformer-sharp`,
@@ -37,27 +38,6 @@ module.exports = {
         path: `${__dirname}/content`
       }
     }
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `projects`,
-    //     path: `${__dirname}/content/projects`
-    //   }
-    // },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `experience`,
-    //     path: `${__dirname}/content/experience`
-    //   }
-    // },
-    // {
-    //   resolve: `gatsby-source-filesystem`,
-    //   options: {
-    //     name: `expertise`,
-    //     path: `${__dirname}/content/expertise.yaml`
-    //   }
-    // }
     // {
     //   resolve: `gatsby-plugin-manifest`,
     //   options: {

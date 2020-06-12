@@ -10,7 +10,8 @@ import {
   ProjectCardList,
   ExpertiseList,
   Timeline,
-  CredentialList
+  CredentialList,
+  SEO
 } from "../components";
 
 interface IndexQueryProps {
@@ -78,6 +79,7 @@ interface IndexQueryProps {
 const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
   return (
     <Layout>
+      <SEO />
       <Hero>
         <HeroCard>
           <MainHeroCardInner />
