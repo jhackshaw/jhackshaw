@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   justify-content: center;
   font-weight: 200;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 760px) {
     justify-content: flex-start;
     margin-left: -0.5rem;
   }

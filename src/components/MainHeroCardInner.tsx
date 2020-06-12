@@ -10,7 +10,7 @@ const HeroInner = styled.div`
   align-items: center;
   text-align: center;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 760px) {
     flex-direction: row;
     text-align: left;
   }
@@ -22,7 +22,7 @@ const HeroInner = styled.div`
 `;
 
 const Details = styled.div`
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 760px) {
     margin-left: 1rem;
   }
 

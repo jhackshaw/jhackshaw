@@ -26,7 +26,7 @@ const TimelineHeader = styled.div`
     flex: 0 0 80px;
     margin-right: 1rem;
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 760px) {
       display: none !important;
     }
   }
@@ -56,7 +56,7 @@ const TimelineTitle = styled.div`
   align-items: flex-start;
   justify-content: space-between;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 760px) {
     flex-flow: row nowrap;
   }
 
@@ -65,7 +65,7 @@ const TimelineTitle = styled.div`
     font-weight: 500;
     margin: 0 0 0.5rem;
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 760px) {
       font-size: 1.5rem;
     }
 
@@ -80,7 +80,7 @@ const TimelineTitle = styled.div`
     font-weight: 300;
     margin-top: 0.5rem;
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 760px) {
       font-size: 1rem;
       margin-top: 0;
     }
@@ -91,7 +91,7 @@ const TimelineTitle = styled.div`
     font-weight: 300;
     color: #424242;
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 760px) {
       font-size: 1.3rem;
     }
 
@@ -115,7 +115,7 @@ const TimelineLine = styled.div`
 const TimelineStepper = styled.div`
   display: none;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 760px) {
     display: flex;
     flex-direction: column;
     align-items: center;

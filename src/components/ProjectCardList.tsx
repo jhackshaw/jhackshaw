@@ -12,7 +12,7 @@ const StyledProjectCardList = styled.div`
   justify-items: stretch;
   align-items: stretch;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 760px) {
     gap: 2rem;
   }
 `;

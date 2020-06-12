@@ -12,7 +12,7 @@ const Container = styled.div`
     height: 300px;
     position: relative;
 
-    @media screen and (min-width: 1024px) {
+    @media screen and (min-width: 1280px) {
       height: 100%;
       position: absolute !important;
     }
@@ -25,15 +25,15 @@ const HeroContent = styled.div`
   max-width: 1400px;
   margin: 0 auto;
   padding: 3rem 1rem;
-  margin-top: -250px;
+  margin-top: -300px;
 
-  @media screen and (min-width: 768px) {
-    padding: 5rem 3rem;
+  @media screen and (min-width: 760px) {
+    padding: 3rem 3rem;
     margin-top: -300px;
   }
 
-  @media screen and (min-width: 1024px) {
-    padding: 9rem 5rem;
+  @media screen and (min-width: 1280px) {
+    padding: 5rem 5rem;
     margin: 0;
   }
 `;

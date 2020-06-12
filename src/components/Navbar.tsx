@@ -17,11 +17,11 @@ const StyledNavbar = styled.header`
   margin: 0 auto;
   padding: 2rem 1rem;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 760px) {
     padding: 2rem 3rem;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 760px) {
     padding: 2rem 5rem;
   }
 `;

@@ -8,11 +8,11 @@ export const HeroCardTitle = styled.h1`
   margin-top: 0;
   margin-bottom: 1rem;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 760px) {
     font-size: 2.2rem;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     font-size: 2.4rem;
     font-weight: 500;
   }

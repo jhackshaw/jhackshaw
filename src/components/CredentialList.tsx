@@ -7,7 +7,7 @@ const ImageWrapper = styled.div`
   flex: 0 1 80px;
   margin: auto auto;
 
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 760px) {
     flex: 1 0 80px;
     margin: 0;
   }
@@ -21,7 +21,7 @@ const CredentialListItem = styled.div`
   flex-wrap: wrap;
   align-items: center;
 
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 760px) {
     flex-wrap: nowrap;
   }
 `;
@@ -31,7 +31,7 @@ const CredentialListItemContent = styled.div`
   margin-left: 0;
   margin-top: 2rem;
 
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: 760px) {
     margin-left: 3rem;
     margin-top: 0;
   }
@@ -56,7 +56,7 @@ const CredentialListItemContent = styled.div`
 `;
 
 const StyledCredentialList = styled.div`
-  padding: 0 3rem;
+  padding: 0 1rem;
   background-color: #fff;
   border-radius: 1rem;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
@@ -64,6 +64,11 @@ const StyledCredentialList = styled.div`
 
   ${CredentialListItem} + ${CredentialListItem} {
     border-top: 1px solid lightgray;
+  }
+
+
+  @media screen and (min-width: 760px) {  
+    padding: 0 3rem;
   }
 `;
 

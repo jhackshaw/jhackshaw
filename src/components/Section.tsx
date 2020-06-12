@@ -5,12 +5,12 @@ export const Section = styled.section`
   margin: 3rem auto;
   max-width: 1200px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 760px) {
     padding: 0 3rem;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1280px) {
     padding: 0 5rem;
-    margin: 7rem auto;
+    margin: 5rem auto;
   }
 `;
