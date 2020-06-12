@@ -40,8 +40,9 @@ export const MainHeroCardInner: React.FC = () => {
         <HeroCardTitle>Jeff Hackshaw</HeroCardTitle>
         <p>
           Hi there! I&apos;m a full stack web developer, soon to be Marine Corps
-          veteran, science fiction enthusiast, and husband. Thanks for visiting!
+          veteran, science fiction enthusiast, and husband. He/Him.
         </p>
+        <p>This website is a work in progress.</p>
         <SocialIcons />
       </Details>
     </HeroInner>
