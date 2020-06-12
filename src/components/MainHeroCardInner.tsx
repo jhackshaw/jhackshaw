@@ -39,8 +39,8 @@ export const MainHeroCardInner: React.FC = () => {
       <Details>
         <HeroCardTitle>Jeff Hackshaw</HeroCardTitle>
         <p>
-          Hi there! I&apos;m a full stack web developer, soon to be veteran,
-          avid reader of science fiction, and husband. Thanks for visiting!
+          Hi there! I&apos;m a full stack web developer, soon to be Marine Corps
+          veteran, science fiction enthusiast, and husband. Thanks for visiting!
         </p>
         <SocialIcons />
       </Details>

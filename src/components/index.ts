@@ -11,4 +11,5 @@ export * from "./Navbar";
 export * from "./ProjectCard";
 export * from "./ProjectCardList";
 export * from "./NoFussLink";
-export * from "./SkillList";
+export * from "./ExpertiseList";
+export * from "./Timeline";

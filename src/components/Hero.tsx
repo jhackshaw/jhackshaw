@@ -41,7 +41,7 @@ const HeroContent = styled.div`
 export const Hero: React.FC = ({ children }) => {
   const { file } = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "hero-background.jpg" }) {
+      file(relativePath: { eq: "media/hero-background.jpg" }) {
         childImageSharp {
           fluid(maxWidth: 1400, maxHeight: 600, quality: 100) {
             ...GatsbyImageSharpFluid_withWebp

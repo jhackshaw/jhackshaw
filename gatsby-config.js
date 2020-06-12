@@ -22,6 +22,9 @@ module.exports = {
           {
             family: `Roboto Mono`,
             variants: [`500`]
+          },
+          {
+            family: `Open Sans`
           }
         ]
       }
@@ -30,24 +33,31 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `media`,
-        path: `${__dirname}/content/media`
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `media`,
-        path: `${__dirname}/content/projects`
-      }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `media`,
-        path: `${__dirname}/content/skills.yaml`
+        name: `content`,
+        path: `${__dirname}/content`
       }
     }
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `projects`,
+    //     path: `${__dirname}/content/projects`
+    //   }
+    // },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `experience`,
+    //     path: `${__dirname}/content/experience`
+    //   }
+    // },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `expertise`,
+    //     path: `${__dirname}/content/expertise.yaml`
+    //   }
+    // }
     // {
     //   resolve: `gatsby-plugin-manifest`,
     //   options: {

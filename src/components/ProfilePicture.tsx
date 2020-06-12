@@ -15,9 +15,9 @@ const Wrapper = styled.div`
 export const ProfilePicture: React.FC = () => {
   const { file } = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "profile.jpg" }) {
+      file(relativePath: { eq: "media/profile.jpg" }) {
         childImageSharp {
-          fixed(width: 180, height: 180) {
+          fixed(width: 220, height: 220) {
             ...GatsbyImageSharpFixed_withWebp
           }
         }

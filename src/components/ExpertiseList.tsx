@@ -2,7 +2,7 @@ import React from "react";
 import Img from "gatsby-image";
 import styled from "styled-components";
 
-const StyledSkillList = styled.div`
+const StyledExpertiseList = styled.div`
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
@@ -15,7 +15,7 @@ const StyledSkillList = styled.div`
   }
 `;
 
-const Skill = styled.div`
+const Expertise = styled.div`
   position: relative;
   background-color: #fff;
   border-radius: 1rem;
@@ -41,9 +41,8 @@ const Skill = styled.div`
 `;
 
 interface Props {
-  skills: {
+  items: {
     name: string;
-    confidence: number;
     image: {
       childImageSharp: {
         fixed: any;
@@ -52,15 +51,15 @@ interface Props {
   }[];
 }
 
-export const SkillList: React.FC<Props> = ({ skills }) => {
+export const ExpertiseList: React.FC<Props> = ({ items }) => {
   return (
-    <StyledSkillList>
-      {skills.map(skill => (
-        <Skill key={skill.name}>
-          <Img fixed={skill.image.childImageSharp.fixed} />
-          <span>{skill.name}</span>
-        </Skill>
+    <StyledExpertiseList>
+      {items.map(item => (
+        <Expertise key={item.name}>
+          <Img fixed={item.image.childImageSharp.fixed} />
+          <span>{item.name}</span>
+        </Expertise>
       ))}
-    </StyledSkillList>
+    </StyledExpertiseList>
   );
 };

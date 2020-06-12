@@ -8,11 +8,12 @@ import {
   Section,
   SectionTitle,
   ProjectCardList,
-  SkillList
+  ExpertiseList,
+  Timeline
 } from "../components";
 
 interface IndexQueryProps {
-  allMdx: {
+  allProjectsMdx: {
     nodes: {
       frontmatter: {
         title: string;
@@ -27,15 +28,31 @@ interface IndexQueryProps {
     }[];
   };
 
-  allSkillsYaml: {
+  allExpertiseYaml: {
     nodes: {
       name: string;
-      confidence: number;
       image: {
         childImageSharp: {
           fixed: any;
         };
       };
+    }[];
+  };
+
+  allExperienceMdx: {
+    nodes: {
+      frontmatter: {
+        position: string;
+        company: string;
+        start: string;
+        end: string;
+        image: {
+          childImageSharp: {
+            fixed: any;
+          };
+        };
+      };
+      body: string;
     }[];
   };
 }
@@ -50,16 +67,17 @@ const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
       </Hero>
       <Section>
         <SectionTitle>Projects</SectionTitle>
-        <ProjectCardList projects={data.allMdx.nodes} />
+        <ProjectCardList projects={data.allProjectsMdx.nodes} />
       </Section>
 
       <Section>
-        <SectionTitle>Skills</SectionTitle>
-        <SkillList skills={data.allSkillsYaml.nodes} />
+        <SectionTitle>Expertise</SectionTitle>
+        <ExpertiseList items={data.allExpertiseYaml.nodes} />
       </Section>
 
       <Section>
         <SectionTitle>Experience</SectionTitle>
+        <Timeline steps={data.allExperienceMdx.nodes} />
       </Section>
     </Layout>
   );
@@ -67,7 +85,11 @@ const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
 
 export const query = graphql`
   query IndexPageQuery {
-    allMdx(limit: 6, sort: { fields: frontmatter___date }) {
+    allProjectsMdx: allMdx(
+      limit: 6
+      sort: { fields: frontmatter___date }
+      filter: { fileAbsolutePath: { regex: "/content/projects//" } }
+    ) {
       nodes {
         frontmatter {
           title
@@ -85,7 +107,7 @@ export const query = graphql`
       }
     }
 
-    allSkillsYaml {
+    allExpertiseYaml {
       nodes {
         name
         image {
@@ -95,6 +117,28 @@ export const query = graphql`
             }
           }
         }
+      }
+    }
+
+    allExperienceMdx: allMdx(
+      sort: { fields: frontmatter___start, order: DESC }
+      filter: { fileAbsolutePath: { regex: "/content/experience//" } }
+    ) {
+      nodes {
+        frontmatter {
+          company
+          position
+          start(formatString: "MM/yyyy")
+          end(formatString: "MM/yyyy")
+          image {
+            childImageSharp {
+              fixed(width: 80, height: 80) {
+                ...GatsbyImageSharpFixed_withWebp
+              }
+            }
+          }
+        }
+        body
       }
     }
   }
