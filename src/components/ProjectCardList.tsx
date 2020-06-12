@@ -21,6 +21,7 @@ interface Props {
   projects: {
     frontmatter: {
       title: string;
+      summary: string;
       date: string;
       slug: string;
       image: {

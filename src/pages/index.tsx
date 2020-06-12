@@ -18,6 +18,7 @@ interface IndexQueryProps {
     nodes: {
       frontmatter: {
         title: string;
+        summary: string;
         date: string;
         slug: string;
         image: {

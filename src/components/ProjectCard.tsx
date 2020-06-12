@@ -27,7 +27,6 @@ const ImageWrapper = styled.div`
     height: 200px;
     width: 100%;
   }
-  border-bottom: 1px solid lightgray;
 `;
 
 const ContentWrapper = styled.div`

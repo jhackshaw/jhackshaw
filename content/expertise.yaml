@@ -7,6 +7,9 @@
 - name: python
   image: "./media/python.png"
 
+- name: nodejs
+  image: "./media/node.png"
+
 - name: gatsbyjs
   image: "./media/gatsby.png"
 
