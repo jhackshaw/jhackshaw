@@ -42,7 +42,7 @@ const CredentialListItemContent = styled.div`
 
   span.subtitle {
     display: block;
-    color: gray;
+    color: #424242;
     font-weight: 300;
     margin: 0 0 0.5rem;
   }
@@ -51,11 +51,12 @@ const CredentialListItemContent = styled.div`
     margin: 0.2rem 0;
     color: gray;
     font-weight: 400;
+    color: #212121;
   }
 `;
 
 const StyledCredentialList = styled.div`
-  padding: 1rem 3rem;
+  padding: 0 3rem;
   background-color: #fff;
   border-radius: 1rem;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),

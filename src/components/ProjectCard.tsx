@@ -5,6 +5,9 @@ import styled from "styled-components";
 
 const StyledProjectCard = styled.div`
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   background-color: #fff;
   border-radius: 1rem;
   overflow: hidden;
@@ -24,10 +27,12 @@ const ImageWrapper = styled.div`
     height: 200px;
     width: 100%;
   }
+  border-bottom: 1px solid lightgray;
 `;
 
 const ContentWrapper = styled.div`
-  padding: 1rem;
+  padding: 1.5rem 1rem;
+  flex-grow: 1;
 
   h3 {
     margin-top: 0;
@@ -36,12 +41,22 @@ const ContentWrapper = styled.div`
 
   span {
     font-weight: 300;
-    color: gray;
+    color: #424242;
+  }
+
+  p {
+    font-weight: 400;
+    color: #212121;
+  }
+
+  p:last-of-type {
+    margin-bottom: 0;
   }
 `;
 
 interface Props {
   title: string;
+  summary: string;
   image: {
     childImageSharp: {
       fluid: any;
@@ -51,7 +66,13 @@ interface Props {
   slug: string;
 }
 
-export const ProjectCard: React.FC<Props> = ({ title, slug, image, date }) => {
+export const ProjectCard: React.FC<Props> = ({
+  title,
+  slug,
+  summary,
+  image,
+  date
+}) => {
   return (
     <NoFussLink to={`/project/${slug}`}>
       <StyledProjectCard>
@@ -61,6 +82,7 @@ export const ProjectCard: React.FC<Props> = ({ title, slug, image, date }) => {
         <ContentWrapper>
           <h3>{title}</h3>
           <span>{date}</span>
+          <p>{summary}</p>
         </ContentWrapper>
       </StyledProjectCard>
     </NoFussLink>

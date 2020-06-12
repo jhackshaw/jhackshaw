@@ -109,7 +109,7 @@ export const query = graphql`
   query IndexPageQuery {
     allProjectsMdx: allMdx(
       limit: 6
-      sort: { fields: frontmatter___date }
+      sort: { fields: frontmatter___date, order: DESC }
       filter: { fileAbsolutePath: { regex: "/content/projects//" } }
     ) {
       nodes {

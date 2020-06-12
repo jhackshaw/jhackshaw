@@ -17,7 +17,7 @@ const HeroInner = styled.div`
 
   p {
     font-weight: 300;
-    color: gray;
+    color: #424242;
   }
 `;
 

@@ -9,6 +9,8 @@ const StyledProjectCardList = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   align-content: flex-start;
+  justify-items: stretch;
+  align-items: stretch;
 
   @media screen and (min-width: 768px) {
     gap: 2rem;

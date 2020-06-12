@@ -43,7 +43,7 @@ const TimelineContent = styled.div`
 `;
 
 const TimelineBody = styled.div`
-  color: gray;
+  color: #212121;
   font-size: 1rem;
   line-height: 1.5rem;
   font-family: "Open Sans", "Helvetica Neue", sans-serif;
@@ -76,7 +76,7 @@ const TimelineTitle = styled.div`
 
   small {
     font-size: 0.8rem;
-    color: gray;
+    color: #424242;
     font-weight: 300;
     margin-top: 0.5rem;
 
@@ -89,7 +89,7 @@ const TimelineTitle = styled.div`
   span {
     font-size: 1rem;
     font-weight: 300;
-    color: gray;
+    color: #424242;
 
     @media screen and (min-width: 768px) {
       font-size: 1.3rem;
@@ -103,7 +103,7 @@ const TimelineTitle = styled.div`
 
 const TimelineLine = styled.div`
   flex-grow: 1;
-  background-color: lightgray;
+  background-color: #e0e0e0;
   width: 5px;
   display: none;
 
