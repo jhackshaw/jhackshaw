@@ -50,7 +50,7 @@ export const SocialIcons: React.FC = () => {
         rel="noopener noreferrer"
         title="DDS GitHub Account"
       >
-        <FaGithub size={28} color="211F1F" />
+        <FaGithub size={28} color="#211F1F" />
       </a>
     </Wrapper>
   );
