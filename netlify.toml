@@ -1,0 +1,8 @@
+[[plugins]]
+  package = "netlify-plugin-gatsby-cache"
+
+# [[redirects]]
+#  from = "https://jhackshaw.netlify.com/*"
+#  to = "https://jhackshaw.com/:splat"
+#  status = 301
+#  force = true
