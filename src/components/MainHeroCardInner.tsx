@@ -42,7 +42,9 @@ export const MainHeroCardInner: React.FC = () => {
           Hi there! I&apos;m a full stack web developer, soon to be Marine Corps
           veteran, science fiction enthusiast, and husband. He/Him.
         </p>
-        <p>This website is a work in progress.</p>
+        <p>
+          <em>This website is a work in progress.</em>
+        </p>
         <SocialIcons />
       </Details>
     </HeroInner>

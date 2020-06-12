@@ -29,7 +29,7 @@ export const SEO: React.FC<Props> = ({
           siteDescription: description
         }
       }
-      file(relativePath: { eq: "media/default-og-image.jpeg" }) {
+      file(relativePath: { eq: "media/default-og-image.png" }) {
         childImageSharp {
           original {
             src

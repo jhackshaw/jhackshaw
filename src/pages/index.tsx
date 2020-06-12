@@ -79,7 +79,7 @@ interface IndexQueryProps {
 const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
   return (
     <Layout>
-      <SEO />
+      <SEO title="Home" />
       <Hero>
         <HeroCard>
           <MainHeroCardInner />
