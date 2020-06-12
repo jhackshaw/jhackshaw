@@ -5,7 +5,7 @@ import styled from "styled-components";
 const StyledExpertiseList = styled.div`
   display: grid;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
 
   @media screen and (min-width: 768px) {
     gap: 2rem;
