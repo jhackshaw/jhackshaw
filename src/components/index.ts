@@ -15,3 +15,4 @@ export * from "./ExpertiseList";
 export * from "./Timeline";
 export * from "./CredentialList";
 export * from "./SEO";
+export * from "./Footer";

@@ -1,5 +1,6 @@
 import React from "react";
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+import { Footer } from ".";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -8,14 +9,30 @@ const GlobalStyle = createGlobalStyle`
     background-color: #fafafa;
     font-family: 'Roboto', sans-serif;
   }
+
+  * {
+    box-sizing: border-box !important;
+  }
+`;
+
+const StyledLayout = styled.div`
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  main {
+    flex-grow: 1;
+  }
 `;
 
 export const Layout: React.FC = ({ children }) => {
   return (
-    <>
+    <StyledLayout>
       <GlobalStyle />
       {/* <Navbar /> */}
-      {children}
-    </>
+      <main>{children}</main>
+      <Footer />
+    </StyledLayout>
   );
 };

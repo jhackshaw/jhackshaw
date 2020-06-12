@@ -1,5 +1,5 @@
 import React from "react";
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -42,7 +42,7 @@ export const SocialIcons: React.FC = () => {
         rel="noopener noreferrer"
         title="Personal GitHub"
       >
-        <FaGithub size={28} color="#211F1F" />
+        <FaGithub size={28} color="#424242" />
       </a>
       <a
         href="https://github.com/jhackshaw-dds/"
@@ -50,7 +50,10 @@ export const SocialIcons: React.FC = () => {
         rel="noopener noreferrer"
         title="DDS GitHub Account"
       >
-        <FaGithub size={28} color="#211F1F" />
+        <FaGithub size={28} color="#424242" />
+      </a>
+      <a href="mailto:jeffrey.hackshaw@gmail.com" title="Email">
+        <FaEnvelope size={28} color="#424242" />
       </a>
     </Wrapper>
   );

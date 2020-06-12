@@ -5,7 +5,7 @@ import styled from "styled-components";
 const StyledProjectCardList = styled.div`
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
   flex-direction: row;
   flex-wrap: wrap;
   align-content: flex-start;
