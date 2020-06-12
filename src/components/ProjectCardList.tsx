@@ -4,17 +4,13 @@ import styled from "styled-components";
 
 const StyledProjectCardList = styled.div`
   display: grid;
-  gap: 1rem;
+  gap: 2rem;
   grid-template-columns: repeat(auto-fill, minmax(min(350px, 100%), 1fr));
   flex-direction: row;
   flex-wrap: wrap;
   align-content: flex-start;
   justify-items: stretch;
   align-items: stretch;
-
-  @media screen and (min-width: 760px) {
-    gap: 2rem;
-  }
 `;
 
 interface Props {

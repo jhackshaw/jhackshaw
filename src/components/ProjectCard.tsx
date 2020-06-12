@@ -36,6 +36,8 @@ const ContentWrapper = styled.div`
   h3 {
     margin-top: 0;
     margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
   }
 
   span {
@@ -44,7 +46,9 @@ const ContentWrapper = styled.div`
   }
 
   p {
-    font-weight: 400;
+    font-weight: 300;
+    line-height: 1.8rem;
+    font-size: 1.2rem;
     color: #212121;
   }
 

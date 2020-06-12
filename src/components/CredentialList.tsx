@@ -5,11 +5,10 @@ import styled from "styled-components";
 
 const ImageWrapper = styled.div`
   flex: 0 1 80px;
-  margin: auto auto;
+  /* margin: auto auto; */
 
-  @media screen and (min-width: 760px) {
+  @media screen and (min-width: 480px) {
     flex: 1 0 80px;
-    margin: 0;
   }
 `;
 
@@ -21,7 +20,7 @@ const CredentialListItem = styled.div`
   flex-wrap: wrap;
   align-items: center;
 
-  @media screen and (min-width: 760px) {
+  @media screen and (min-width: 480px) {
     flex-wrap: nowrap;
   }
 `;
@@ -31,7 +30,7 @@ const CredentialListItemContent = styled.div`
   margin-left: 0;
   margin-top: 2rem;
 
-  @media screen and (min-width: 760px) {
+  @media screen and (min-width: 480px) {
     margin-left: 3rem;
     margin-top: 0;
   }
