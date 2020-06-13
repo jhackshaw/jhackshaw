@@ -11,8 +11,8 @@ const StyledFooter = styled.div`
 const FooterContent = styled.div`
   width: 100%;
   display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
+  flex-flow: column nowrap;
+  align-items: flex-start;
   justify-content: space-between;
   color: #fff;
   padding: 3rem 1rem;
@@ -20,6 +20,8 @@ const FooterContent = styled.div`
   max-width: 1200px;
 
   @media screen and (min-width: 760px) {
+    align-items: center;
+    flex-flow: row nowrap;
     padding: 3rem;
   }
 
@@ -42,7 +44,13 @@ const FooterContent = styled.div`
 const IconLinks = styled.div`
   display: flex;
   flex-flow: row nowrap;
-  justify-content: flex-end;
+  justify-content: flex-start;
+  margin-top: 1rem;
+
+  @media screen and (min-width: 760px) {
+    margin-top: 0;
+    justify-content: flex-end;
+  }
 
   a {
     margin: 1rem 1rem 0.5rem 0;
