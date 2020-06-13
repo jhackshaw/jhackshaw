@@ -10,11 +10,14 @@
 - name: nodejs
   image: "./media/node.png"
 
-- name: gatsbyjs
-  image: "./media/gatsby.png"
+- name: SQL
+  image: "./media/postgres.png"
 
 - name: react
   image: "./media/react.png"
+
+- name: gatsbyjs
+  image: "./media/gatsby.png"
 
 - name: git
   image: "./media/git.png"
