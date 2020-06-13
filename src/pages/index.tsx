@@ -20,6 +20,7 @@ interface IndexQueryProps {
       frontmatter: {
         title: string;
         summary: string;
+        stack: string[];
         date: string;
         slug: string;
         image: {
@@ -120,6 +121,7 @@ export const query = graphql`
           title
           summary
           date(fromNow: true)
+          stack
           slug
           image {
             childImageSharp {

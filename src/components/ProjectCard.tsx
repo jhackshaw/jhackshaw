@@ -42,7 +42,9 @@ const ContentWrapper = styled.div`
 
   span {
     font-weight: 300;
-    color: #424242;
+    font-size: 0.9rem;
+    color: #9e9e9e;
+    line-height: 1.3rem;
   }
 
   p {
@@ -60,6 +62,7 @@ const ContentWrapper = styled.div`
 interface Props {
   title: string;
   summary: string;
+  stack: string[];
   image: {
     childImageSharp: {
       fluid: any;
@@ -72,9 +75,9 @@ interface Props {
 export const ProjectCard: React.FC<Props> = ({
   title,
   slug,
+  stack,
   summary,
-  image,
-  date
+  image
 }) => {
   return (
     <NoFussLink to={`/project/${slug}`}>
@@ -84,7 +87,7 @@ export const ProjectCard: React.FC<Props> = ({
         </ImageWrapper>
         <ContentWrapper>
           <h3>{title}</h3>
-          <span>{date}</span>
+          <span>{stack.join(", ")}</span>
           <p>{summary}</p>
         </ContentWrapper>
       </StyledProjectCard>

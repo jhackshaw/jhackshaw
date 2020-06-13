@@ -18,6 +18,7 @@ interface Props {
     frontmatter: {
       title: string;
       summary: string;
+      stack: string[];
       date: string;
       slug: string;
       image: {
