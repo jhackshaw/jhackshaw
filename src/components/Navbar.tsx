@@ -1,5 +1,6 @@
 import React from "react";
 
+import { NoFussLink } from ".";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -12,24 +13,28 @@ const Wrapper = styled.div`
 const StyledNavbar = styled.header`
   display: flex;
   flex-direction: row;
-  /* justify-content: space-between; */
-  max-width: 1400px;
+  color: #fff;
+  max-width: 1600px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 1.5rem 1rem;
 
   @media screen and (min-width: 760px) {
-    padding: 2rem 3rem;
+    padding: 1.5rem 3rem;
   }
 
-  @media screen and (min-width: 760px) {
-    padding: 2rem 5rem;
+  @media screen and (min-width: 1280px) {
+    padding: 1.5rem 5rem;
   }
+`;
+
+const Brand = styled.span`
+  font-family: "Roboto Mono", monospace;
+  color: #fff;
 `;
 
 const StyledNav = styled.nav`
   display: flex;
   align-items: center;
-  color: #fff;
   font-weight: 500;
   cursor: pointer;
 
@@ -42,12 +47,10 @@ export const Navbar: React.FC = () => {
   return (
     <Wrapper>
       <StyledNavbar>
-        <div></div>
-        <StyledNav>
-          <a>Projects</a>
-          <a>Skills</a>
-          <a>Blog Posts</a>
-        </StyledNav>
+        <NoFussLink to="/">
+          <Brand>jhackshaw.com</Brand>
+        </NoFussLink>
+        <StyledNav></StyledNav>
       </StyledNavbar>
     </Wrapper>
   );

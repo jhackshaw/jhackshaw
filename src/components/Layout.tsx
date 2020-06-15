@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
-import { Footer } from ".";
+import { Footer, Navbar } from ".";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -30,7 +30,7 @@ export const Layout: React.FC = ({ children }) => {
   return (
     <StyledLayout>
       <GlobalStyle />
-      {/* <Navbar /> */}
+      <Navbar />
       <main>{children}</main>
       <Footer />
     </StyledLayout>

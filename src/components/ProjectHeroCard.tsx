@@ -8,7 +8,6 @@ const ProjectHeroInner = styled.div`
   position: relative;
   display: flex;
   flex-flow: column-reverse nowrap;
-  /* min-height: 300px; */
 
   @media screen and (min-width: 768px) {
     flex-flow: row nowrap;
@@ -37,15 +36,14 @@ const TitleDetails = styled.div`
 
   p,
   p > a {
-    font-weight: 300;
-    font-size: 0.9rem;
-    color: #9e9e9e;
-    line-height: 1.3rem;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #757575;
+    line-height: 1.5rem;
     margin: 0;
   }
 
   p > a {
-    padding-bottom: 1px;
     border-bottom: 1px dotted lightgray;
   }
 

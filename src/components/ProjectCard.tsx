@@ -41,9 +41,9 @@ const ContentWrapper = styled.div`
   }
 
   span {
-    font-weight: 300;
-    font-size: 0.9rem;
-    color: #9e9e9e;
+    font-weight: 400;
+    font-size: 1rem;
+    color: #616161;
     line-height: 1.3rem;
   }
 

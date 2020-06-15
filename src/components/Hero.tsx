@@ -22,14 +22,14 @@ const Container = styled.div`
 const HeroContent = styled.div`
   position: relative;
   z-index: 10;
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 3rem 1rem 0 1rem;
-  margin-top: -300px;
+  margin-top: -280px;
 
   @media screen and (min-width: 760px) {
     padding: 3rem 3rem 0 3rem;
-    margin-top: -300px;
+    margin-top: -280px;
   }
 
   @media screen and (min-width: 1280px) {

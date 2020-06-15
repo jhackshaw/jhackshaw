@@ -2,6 +2,7 @@ import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
 import styled from "styled-components";
+import { NoFussLink } from ".";
 
 const StyledAuthorInfo = styled.div`
   display: flex;
@@ -19,7 +20,6 @@ const StyledAuthorInfo = styled.div`
 
 const Author = styled.div`
   font-weight: 400;
-  color: #4a4a4a;
   line-height: 1.8rem;
   font-size: 1.2rem;
 `;
@@ -51,12 +51,14 @@ export const AuthorInfo: React.FC<Props> = ({
     }
   `);
   return (
-    <StyledAuthorInfo>
-      <Img fixed={file.childImageSharp.fixed} />
-      <div>
-        <Author>{author}</Author>
-        {secondary && <Secondary>{secondary}</Secondary>}
-      </div>
-    </StyledAuthorInfo>
+    <NoFussLink to="/">
+      <StyledAuthorInfo>
+        <Img fixed={file.childImageSharp.fixed} />
+        <div>
+          <Author>{author}</Author>
+          {secondary && <Secondary>{secondary}</Secondary>}
+        </div>
+      </StyledAuthorInfo>
+    </NoFussLink>
   );
 };
