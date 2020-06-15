@@ -1,6 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import Img from "gatsby-image";
+import Img from "gatsby-image/withIEPolyfill";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -53,7 +53,7 @@ export const Hero: React.FC = ({ children }) => {
 
   return (
     <Container>
-      <Img fluid={file.childImageSharp.fluid} />
+      <Img fluid={file.childImageSharp.fluid} objectPosition="50% 0%" />
       <HeroContent>{children}</HeroContent>
     </Container>
   );
