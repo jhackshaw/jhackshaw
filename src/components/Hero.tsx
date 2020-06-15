@@ -34,7 +34,7 @@ const HeroContent = styled.div`
 
   @media screen and (min-width: 1280px) {
     padding: 5rem;
-    margin: 0;
+    margin: 0 auto;
   }
 `;
 

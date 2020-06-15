@@ -1,10 +1,9 @@
 export * from "./Layout";
 export * from "./Hero";
 export * from "./HeroCard";
-export * from "./HeroCardTitle";
 export * from "./ProfilePicture";
 export * from "./SocialIcons";
-export * from "./MainHeroCardInner";
+export * from "./IndexHeroCard";
 export * from "./Section";
 export * from "./SectionTitle";
 export * from "./Navbar";
@@ -16,3 +15,5 @@ export * from "./Timeline";
 export * from "./CredentialList";
 export * from "./SEO";
 export * from "./Footer";
+export * from "./ProjectHeroCard";
+export * from "./AuthorInfo";

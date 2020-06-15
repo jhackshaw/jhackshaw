@@ -15,12 +15,14 @@ const StyledProjectCardList = styled.div`
 
 interface Props {
   projects: {
+    fields: {
+      slug: string;
+    };
     frontmatter: {
       title: string;
       summary: string;
       stack: string[];
       date: string;
-      slug: string;
       image: {
         childImageSharp: {
           fluid: any;
@@ -33,8 +35,8 @@ interface Props {
 export const ProjectCardList: React.FC<Props> = ({ projects }) => {
   return (
     <StyledProjectCardList>
-      {projects.map(({ frontmatter }) => (
-        <ProjectCard {...frontmatter} key={frontmatter.slug} />
+      {projects.map(({ frontmatter, fields }) => (
+        <ProjectCard {...frontmatter} slug={fields.slug} key={fields.slug} />
       ))}
     </StyledProjectCardList>
   );

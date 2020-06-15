@@ -3,8 +3,7 @@ import { PageProps, graphql } from "gatsby";
 import {
   Hero,
   Layout,
-  HeroCard,
-  MainHeroCardInner,
+  IndexHeroCard,
   Section,
   SectionTitle,
   ProjectCardList,
@@ -17,12 +16,14 @@ import {
 interface IndexQueryProps {
   allProjectsMdx: {
     nodes: {
+      fields: {
+        slug: string;
+      };
       frontmatter: {
         title: string;
         summary: string;
         stack: string[];
         date: string;
-        slug: string;
         image: {
           childImageSharp: {
             fluid: any;
@@ -82,9 +83,7 @@ const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
     <Layout>
       <SEO title="Home" />
       <Hero>
-        <HeroCard>
-          <MainHeroCardInner />
-        </HeroCard>
+        <IndexHeroCard />
       </Hero>
       <Section>
         <SectionTitle>Projects</SectionTitle>
@@ -117,12 +116,14 @@ export const query = graphql`
       filter: { fileAbsolutePath: { regex: "/content/projects//" } }
     ) {
       nodes {
+        fields {
+          slug
+        }
         frontmatter {
           title
           summary
           date(fromNow: true)
           stack
-          slug
           image {
             childImageSharp {
               fluid(maxWidth: 400, maxHeight: 200, quality: 100) {
