@@ -22,6 +22,8 @@ export const NoFussLink: React.FC<Omit<GatsbyLinkProps<{}>, "ref">> = ({
       {children}
     </StyledLink>
   ) : (
-    <StyledAnchor href={to}>{children}</StyledAnchor>
+    <StyledAnchor target="_black" rel="noopener noreferrer" href={to}>
+      {children}
+    </StyledAnchor>
   );
 };

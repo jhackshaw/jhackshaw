@@ -17,7 +17,7 @@ const FooterContent = styled.div`
   color: #fff;
   padding: 3rem 1rem;
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1280px;
 
   @media screen and (min-width: 760px) {
     align-items: center;

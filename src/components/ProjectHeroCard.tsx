@@ -2,6 +2,7 @@ import React from "react";
 import Img from "gatsby-image";
 import styled from "styled-components";
 import { HeroCard, AuthorInfo } from ".";
+import { NoFussLink } from "./NoFussLink";
 
 const ProjectHeroInner = styled.div`
   position: relative;
@@ -28,14 +29,28 @@ const TitleSection = styled.div`
     margin: 0;
     line-height: 2.4rem;
   }
+`;
 
-  p {
-    flex: 1 0 auto;
+const TitleDetails = styled.div`
+  flex: 1 1 auto;
+  margin: 1rem 0 1.5rem;
+
+  p,
+  p > a {
     font-weight: 300;
     font-size: 0.9rem;
     color: #9e9e9e;
     line-height: 1.3rem;
-    margin: 0.5rem 0 2rem;
+    margin: 0;
+  }
+
+  p > a {
+    padding-bottom: 1px;
+    border-bottom: 1px dotted lightgray;
+  }
+
+  p + p {
+    margin-top: 0.5rem;
   }
 `;
 
@@ -61,12 +76,16 @@ interface Props {
     };
   };
   stack?: string[];
+  source?: string;
+  demo?: string;
   date: string;
   timeToRead: number;
 }
 
 export const ProjectHeroCard: React.FC<Props> = ({
   title,
+  source,
+  demo,
   image,
   date,
   stack = [],
@@ -77,8 +96,18 @@ export const ProjectHeroCard: React.FC<Props> = ({
       <ProjectHeroInner>
         <TitleSection>
           <h1>{title}</h1>
-          <p>{stack.join(", ")}</p>
-          <AuthorInfo secondary={`${date} | ${timeToRead} min read`} />
+          <TitleDetails>
+            <p>{`${date} • ${timeToRead} min read`}</p>
+            <p>{stack.join(", ")}</p>
+            {(source || demo) && (
+              <p>
+                {demo && <NoFussLink to={demo}>Demo</NoFussLink>}
+                {demo && source && " • "}
+                {source && <NoFussLink to={source}>Source</NoFussLink>}
+              </p>
+            )}
+          </TitleDetails>
+          <AuthorInfo />
         </TitleSection>
         <ImageSection>
           <Img fluid={image.childImageSharp.fluid} />

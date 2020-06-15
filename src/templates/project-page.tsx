@@ -61,6 +61,8 @@ export const query = graphql`
       frontmatter {
         title
         summary
+        source
+        demo
         stack
         date(fromNow: true)
         image {

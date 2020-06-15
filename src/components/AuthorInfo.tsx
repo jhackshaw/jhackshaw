@@ -10,8 +10,8 @@ const StyledAuthorInfo = styled.div`
   justify-content: flex-start;
 
   .gatsby-image-wrapper {
-    flex: 0 0 60px;
-    margin-right: 1rem;
+    flex: 0 0 45px;
+    margin-right: 0.5rem;
     border-radius: 50%;
     position: relative !important;
   }
@@ -20,8 +20,8 @@ const StyledAuthorInfo = styled.div`
 const Author = styled.div`
   font-weight: 400;
   color: #4a4a4a;
-  line-height: 2.2rem;
-  font-size: 1.4rem;
+  line-height: 1.8rem;
+  font-size: 1.2rem;
 `;
 
 const Secondary = styled.div`
@@ -43,7 +43,7 @@ export const AuthorInfo: React.FC<Props> = ({
     query {
       file(relativePath: { eq: "media/profile.jpg" }) {
         childImageSharp {
-          fixed(width: 60, height: 60) {
+          fixed(width: 45, height: 45) {
             ...GatsbyImageSharpFixed_withWebp
           }
         }
