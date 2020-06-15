@@ -19,7 +19,11 @@ const TitleSection = styled.div`
   flex: 1 1 55%;
   display: flex;
   flex-flow: column nowrap;
-  padding: 3rem 2rem;
+  padding: 1.5rem 1rem;
+
+  @media screen and (min-width: 480px) {
+    padding: 3rem 2rem;
+  }
 
   h1 {
     color: #000;

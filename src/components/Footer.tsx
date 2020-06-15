@@ -14,7 +14,7 @@ const FooterContent = styled.div`
   flex-flow: column nowrap;
   align-items: flex-start;
   justify-content: space-between;
-  color: #fff;
+  color: #eeeeee;
   padding: 3rem 1rem;
   margin: 0 auto;
   max-width: 1280px;
@@ -54,7 +54,7 @@ const IconLinks = styled.div`
 
   a {
     margin: 1rem 1rem 0.5rem 0;
-    color: #fff;
+    color: #eeeeee;
   }
 `;
 
