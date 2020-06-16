@@ -1,4 +1,5 @@
 import React from "react";
+import { FaArrowRight } from "react-icons/fa";
 import { NoFussLink } from "./NoFussLink";
 import styled from "styled-components";
 
@@ -23,8 +24,7 @@ const StyledLinkTitle = styled(NoFussLink)`
   display: flex;
   align-items: center;
 
-  ::after {
-    content: ">";
+  svg {
     margin-left: 0.5rem;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -40,7 +40,7 @@ const StyledLinkTitle = styled(NoFussLink)`
     }
   }
 
-  :hover ::after {
+  :hover svg {
     opacity: 1;
   }
 
@@ -58,6 +58,7 @@ export const SectionTitle: React.FC<Props> = ({ to, children }) => {
     return (
       <StyledLinkTitle to={to}>
         <StyledTitle>{children}</StyledTitle>
+        <FaArrowRight size={16} />
       </StyledLinkTitle>
     );
   }
