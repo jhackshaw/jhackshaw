@@ -20,4 +20,12 @@ export const HeroCard = styled.div<Props>`
     max-width: ${({ maxWidth }) => (maxWidth ? `${maxWidth}px` : "none")};
     height: auto;
   }
+
+  :hover {
+    h1,
+    h2,
+    h3 {
+      color: ${({ theme }) => theme.text.title};
+    }
+  }
 `;

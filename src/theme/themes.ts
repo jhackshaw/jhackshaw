@@ -8,7 +8,7 @@ export const lightTheme: DefaultTheme = {
   },
   text: {
     main: "#000",
-    title: "#000",
+    title: "#303f9f",
     light: "#424242",
     lighter: "#757575",
     lightest: "#e0e0e0"

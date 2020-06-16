@@ -87,7 +87,7 @@ const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
         <IndexHeroCard />
       </Hero>
       <Section>
-        <SectionTitle>Projects</SectionTitle>
+        <SectionTitle to="/t/project">Projects</SectionTitle>
         <MediaCardGrid>
           {data.allProjectsMdx.nodes.map(({ frontmatter, fields }) => (
             <ProjectCard

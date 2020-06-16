@@ -13,6 +13,7 @@ import styled from "styled-components";
 
 interface Data {
   allMdx: {
+    totalCount: number;
     nodes: {
       fields: {
         slug: string;
@@ -35,12 +36,23 @@ interface Data {
   };
 }
 
-const HeroTitle = styled.h1`
+const HeroTitle = styled.div`
   color: #eeeeee;
-  font-size: 2.4rem;
-  line-height: 4rem;
-  font-weight: 500;
-  margin: 0;
+  text-align: center;
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    font-family: "Roboto Mono", monospace;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+    line-height: 4rem;
+    font-weight: 500;
+    margin: 0;
+  }
 `;
 
 const Sidebar = styled.div``;
@@ -53,6 +65,11 @@ const SidebarLayout = styled.div`
   max-width: 1000px;
   margin: 0 auto;
 
+  h3 {
+    color: ${({ theme }) => theme.text.main};
+    margin-top: 0;
+  }
+
   ${Sidebar} {
     flex: 0 0 30%;
     position: sticky;
@@ -62,11 +79,6 @@ const SidebarLayout = styled.div`
 
     @media screen and (min-width: 1280px) {
       margin-left: 3rem;
-    }
-
-    h3 {
-      color: ${({ theme }) => theme.text.main};
-      margin-top: 0;
     }
 
     @media screen and (min-width: 760px) {
@@ -80,19 +92,25 @@ const ProjectPage: React.FC<PageProps<Data>> = ({ data }) => {
     <Layout>
       <SEO url={`project`} title="Projects" />
       <Hero centered>
-        <HeroTitle>Projects!</HeroTitle>
+        <HeroTitle>
+          <h1>/posts</h1>
+          <p>{data.allMdx.totalCount} posts</p>
+        </HeroTitle>
       </Hero>
       <Section>
         <SidebarLayout>
-          <MediaCardList>
-            {data.allMdx.nodes.map(node => (
-              <ProjectCard
-                {...node.frontmatter}
-                key={node.fields.slug}
-                slug={node.fields.slug}
-              />
-            ))}
-          </MediaCardList>
+          <div>
+            <h3>Latest</h3>
+            <MediaCardList>
+              {data.allMdx.nodes.map(node => (
+                <ProjectCard
+                  {...node.frontmatter}
+                  key={node.fields.slug}
+                  slug={node.fields.slug}
+                />
+              ))}
+            </MediaCardList>
+          </div>
           <Sidebar>
             <h3>Top Tags</h3>
             <TopTagList />
@@ -111,6 +129,7 @@ export const query = graphql`
       limit: 6
       filter: { fileAbsolutePath: { regex: "/content/projects//" } }
     ) {
+      totalCount
       nodes {
         timeToRead
         fields {
