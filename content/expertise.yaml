@@ -1,11 +1,11 @@
 - name: typescript
   image: "./media/typescript.png"
 
-- name: javascript
-  image: "./media/es6.png"
-
 - name: python
   image: "./media/python.png"
+
+- name: javascript
+  image: "./media/es6.png"
 
 - name: nodejs
   image: "./media/node.png"

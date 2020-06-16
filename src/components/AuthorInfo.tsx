@@ -19,6 +19,7 @@ const StyledAuthorInfo = styled.div`
 `;
 
 const Author = styled.div`
+  color: ${({ theme }) => theme.text.main};
   font-weight: 400;
   line-height: 1.8rem;
   font-size: 1.2rem;
@@ -26,7 +27,7 @@ const Author = styled.div`
 
 const Secondary = styled.div`
   font-weight: 300;
-  color: #4a4a4a;
+  color: ${({ theme }) => theme.text.lighter};
   font-size: 0.9rem;
 `;
 

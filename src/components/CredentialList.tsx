@@ -5,7 +5,6 @@ import styled from "styled-components";
 
 const ImageWrapper = styled.div`
   flex: 0 1 80px;
-  /* margin: auto auto; */
 
   @media screen and (min-width: 480px) {
     flex: 1 0 80px;
@@ -37,32 +36,32 @@ const CredentialListItemContent = styled.div`
 
   h3 {
     margin: 0 0 0.5rem;
+    color: ${({ theme }) => theme.text.main};
   }
 
   span.subtitle {
     display: block;
-    color: #424242;
+    color: ${({ theme }) => theme.text.lighter};
     font-weight: 300;
     margin: 0 0 0.5rem;
   }
 
   p {
     margin: 0.2rem 0;
-    color: gray;
+    color: ${({ theme }) => theme.text.light};
     font-weight: 400;
-    color: #212121;
   }
 `;
 
 const StyledCredentialList = styled.div`
   padding: 0 1rem;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.background.card};
   border-radius: 1rem;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 
   ${CredentialListItem} + ${CredentialListItem} {
-    border-top: 1px solid lightgray;
+    border-top: ${({ theme }) => `1px solid ${theme.text.lightest}`};
   }
 
 

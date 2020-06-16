@@ -3,15 +3,27 @@ import Img from "gatsby-image";
 import styled from "styled-components";
 import { MDXRenderer } from "gatsby-plugin-mdx";
 
-const StyledTimeLine = styled.div`
-  padding: 1rem 0;
-`;
-
 const TimelineItem = styled.div`
   display: flex;
   flex-direction: row;
   align-items: stretch;
   flex-wrap: nowrap;
+`;
+
+const TimelineContent = styled.div`
+  flex: 1 1 100%;
+
+  ul {
+    padding-inline-start: 20px;
+  }
+`;
+
+const StyledTimeLine = styled.div`
+  ${TimelineItem}:not(:last-child) {
+    ${TimelineContent} {
+      padding-bottom: 3rem;
+    }
+  }
 `;
 
 const TimelineHeader = styled.div`
@@ -32,18 +44,7 @@ const TimelineHeader = styled.div`
   }
 `;
 
-const TimelineContent = styled.div`
-  padding-bottom: 2rem;
-  flex: 1 1 100%;
-  min-height: 150px;
-
-  ul {
-    padding-inline-start: 20px;
-  }
-`;
-
 const TimelineBody = styled.div`
-  color: #212121;
   font-size: 1rem;
   line-height: 1.5rem;
   font-family: "Open Sans", "Helvetica Neue", sans-serif;
@@ -61,6 +62,7 @@ const TimelineTitle = styled.div`
   }
 
   h3 {
+    color: ${({ theme }) => theme.text.main};
     font-size: 1.3rem;
     font-weight: 500;
     margin: 0 0 0.5rem;
@@ -76,7 +78,7 @@ const TimelineTitle = styled.div`
 
   small {
     font-size: 0.8rem;
-    color: #424242;
+    color: ${({ theme }) => theme.text.lighter};
     font-weight: 300;
     margin-top: 0.5rem;
 
@@ -89,7 +91,7 @@ const TimelineTitle = styled.div`
   span {
     font-size: 1rem;
     font-weight: 300;
-    color: #424242;
+    color: ${({ theme }) => theme.text.light};
 
     @media screen and (min-width: 760px) {
       font-size: 1.3rem;
@@ -103,8 +105,8 @@ const TimelineTitle = styled.div`
 
 const TimelineLine = styled.div`
   flex-grow: 1;
-  background-color: #e0e0e0;
-  width: 5px;
+  background-color: ${({ theme }) => theme.text.lightest};
+  width: 3px;
   display: none;
 
   @media screen and (min-width: 375px) {

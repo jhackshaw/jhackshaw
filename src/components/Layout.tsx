@@ -1,13 +1,15 @@
 import React from "react";
 import styled, { createGlobalStyle } from "styled-components";
+import { ProvideTheme } from "../theme";
 import { Footer, Navbar } from ".";
 
 const GlobalStyle = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
-    background-color: #fafafa;
+    background-color: ${({ theme }) => theme.background.main};
     font-family: 'Roboto', sans-serif;
+    transition: background-color 0.5s ease;
   }
 
   * {
@@ -28,11 +30,13 @@ const StyledLayout = styled.div`
 
 export const Layout: React.FC = ({ children }) => {
   return (
-    <StyledLayout>
-      <GlobalStyle />
-      <Navbar />
-      <main>{children}</main>
-      <Footer />
-    </StyledLayout>
+    <ProvideTheme>
+      <StyledLayout>
+        <GlobalStyle />
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+      </StyledLayout>
+    </ProvideTheme>
   );
 };

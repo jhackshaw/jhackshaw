@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const SectionTitle = styled.h3`
+  color: ${({ theme }) => theme.text.main};
   font-size: 1.8rem;
   font-weight: 400;
   word-wrap: break-word;

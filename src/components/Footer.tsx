@@ -4,7 +4,7 @@ import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
 
 const StyledFooter = styled.div`
   position: relative;
-  background-color: #3a424e;
+  background-color: #3a4750;
   margin-top: 5rem;
 `;
 
@@ -14,10 +14,10 @@ const FooterContent = styled.div`
   flex-flow: column nowrap;
   align-items: flex-start;
   justify-content: space-between;
-  color: #eeeeee;
   padding: 3rem 1rem;
   margin: 0 auto;
   max-width: 1280px;
+  color: rgba(255, 255, 255, 0.7);
 
   @media screen and (min-width: 760px) {
     align-items: center;
@@ -54,7 +54,7 @@ const IconLinks = styled.div`
 
   a {
     margin: 1rem 1rem 0.5rem 0;
-    color: #eeeeee;
+    color: #fafafa;
   }
 `;
 

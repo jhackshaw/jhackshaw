@@ -1,7 +1,7 @@
 import React from "react";
 import Img from "gatsby-image";
 import styled from "styled-components";
-import { HeroCard, AuthorInfo } from ".";
+import { AuthorInfo, HeroCard } from ".";
 import { NoFussLink } from "./NoFussLink";
 
 const ProjectHeroInner = styled.div`
@@ -26,7 +26,7 @@ const TitleSection = styled.div`
   }
 
   h1 {
-    color: #000;
+    color: ${({ theme }) => theme.text.main};
     font-weight: 500;
     font-size: 1.8rem;
     margin: 0;
@@ -42,7 +42,7 @@ const TitleDetails = styled.div`
   p > a {
     font-weight: 400;
     font-size: 1rem;
-    color: #757575;
+    color: ${({ theme }) => theme.text.lighter};
     line-height: 1.5rem;
     margin: 0;
   }
@@ -61,12 +61,7 @@ const ImageSection = styled.div`
   flex: 1 1 45%;
 
   .gatsby-image-wrapper {
-    height: 300px;
-
-    @media screen and (min-width: 760px) {
-      height: 100%;
-      min-height: 300px;
-    }
+    height: 100%;
   }
 `;
 
@@ -81,6 +76,7 @@ interface Props {
   source?: string;
   demo?: string;
   date: string;
+  showAuthor?: boolean;
   timeToRead: number;
 }
 
@@ -90,6 +86,7 @@ export const ProjectHeroCard: React.FC<Props> = ({
   demo,
   image,
   date,
+  showAuthor,
   stack = [],
   timeToRead
 }) => {
@@ -109,7 +106,7 @@ export const ProjectHeroCard: React.FC<Props> = ({
               </p>
             )}
           </TitleDetails>
-          <AuthorInfo />
+          {showAuthor && <AuthorInfo />}
         </TitleSection>
         <ImageSection>
           <Img fluid={image.childImageSharp.fluid} />

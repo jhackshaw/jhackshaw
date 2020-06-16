@@ -14,6 +14,7 @@ const Wrapper = styled.div`
 
   a {
     margin: 0 0.5rem;
+    color: ${({ theme }) => theme.text.light};
   }
 `;
 
@@ -42,7 +43,7 @@ export const SocialIcons: React.FC = () => {
         rel="noopener noreferrer"
         title="Personal GitHub"
       >
-        <FaGithub size={28} color="#424242" />
+        <FaGithub size={28} />
       </a>
       <a
         href="https://github.com/jhackshaw-dds/"
@@ -50,10 +51,10 @@ export const SocialIcons: React.FC = () => {
         rel="noopener noreferrer"
         title="DDS GitHub Account"
       >
-        <FaGithub size={28} color="#424242" />
+        <FaGithub size={28} />
       </a>
       <a href="mailto:jeffrey.hackshaw@gmail.com" title="Email">
-        <FaEnvelope size={28} color="#424242" />
+        <FaEnvelope size={28} />
       </a>
     </Wrapper>
   );

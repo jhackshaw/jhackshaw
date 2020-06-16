@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Expertise = styled.div`
   position: relative;
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.background.card};
   overflow: hidden;
   padding: 1rem;
   display: flex;
@@ -22,6 +22,7 @@ const Expertise = styled.div`
     font-weight: 500;
     font-size: 1.4rem;
     z-index: 10;
+    color: ${({ theme }) => theme.text.main};
   }
 
   .gatsby-image-wrapper {

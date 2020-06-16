@@ -20,7 +20,7 @@ const HeroInner = styled.div`
 
   p {
     font-weight: 300;
-    color: #424242;
+    color: ${({ theme }) => theme.text.light};
   }
 
   .gatsby-image-wrapper {
@@ -43,6 +43,7 @@ const Details = styled.div`
 `;
 
 export const Title = styled.h1`
+  color: ${({ theme }) => theme.text.main};
   font-size: 2rem;
   font-weight: 400;
   word-wrap: break-word;

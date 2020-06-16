@@ -38,4 +38,9 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       }
     });
   }
+
+  createPage({
+    path: `/project/`,
+    component: path.resolve("src/templates/project-list.tsx")
+  });
 };

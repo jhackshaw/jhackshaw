@@ -25,10 +25,12 @@ const HeroContent = styled.div`
   max-width: 1600px;
   margin: 0 auto;
   padding: 3rem 1rem 0 1rem;
+  min-height: 275px;
   margin-top: -275px;
 
   @media screen and (min-width: 760px) {
     margin-top: -265px;
+    min-height: 265px;
     padding: 3rem 3rem 0 3rem;
   }
 

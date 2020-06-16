@@ -5,7 +5,8 @@ interface Props {
 }
 
 export const HeroCard = styled.div<Props>`
-  background-color: #fff;
+  background-color: ${({ theme }) => theme.background.main};
+  transition: background-color 0.5s ease;
   border-radius: 1rem;
   overflow: hidden;
   box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2),

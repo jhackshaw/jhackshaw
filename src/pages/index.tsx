@@ -6,11 +6,12 @@ import {
   IndexHeroCard,
   Section,
   SectionTitle,
-  ProjectCardList,
   ExpertiseList,
   Timeline,
   CredentialList,
-  SEO
+  SEO,
+  ProjectCard,
+  MediaCardGrid
 } from "../components";
 
 interface IndexQueryProps {
@@ -87,7 +88,16 @@ const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
       </Hero>
       <Section>
         <SectionTitle>Projects</SectionTitle>
-        <ProjectCardList projects={data.allProjectsMdx.nodes} />
+        <MediaCardGrid>
+          {data.allProjectsMdx.nodes.map(({ frontmatter, fields }) => (
+            <ProjectCard
+              {...frontmatter}
+              stack={frontmatter.stack.filter(t => t !== "Project")}
+              slug={fields.slug}
+              key={fields.slug}
+            />
+          ))}
+        </MediaCardGrid>
       </Section>
 
       <Section>

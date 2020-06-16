@@ -36,7 +36,7 @@ const ProjectPage: React.FC<PageProps<Data>> = ({ data }) => {
         description={frontmatter.summary}
       />
       <Hero>
-        <ProjectHeroCard {...frontmatter} timeToRead={timeToRead} />
+        <ProjectHeroCard {...frontmatter} timeToRead={timeToRead} showAuthor />
       </Hero>
       <Section>
         <MDXRenderer>{body}</MDXRenderer>
