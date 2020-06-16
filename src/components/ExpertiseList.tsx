@@ -4,7 +4,6 @@ import styled from "styled-components";
 
 const Expertise = styled.div`
   position: relative;
-  background-color: ${({ theme }) => theme.background.card};
   overflow: hidden;
   padding: 1rem;
   display: flex;
@@ -12,6 +11,7 @@ const Expertise = styled.div`
   z-index: 1;
 
   @media screen and (min-width: 500px) {
+    background-color: ${({ theme }) => theme.background.card};
     border-radius: 1rem;
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
       0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
@@ -34,12 +34,16 @@ const Expertise = styled.div`
 const StyledExpertiseList = styled.div`
   display: grid;
   gap: 0;
+  
+  background-color: ${({ theme }) => theme.background.card};
+  border-radius: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 
   @media screen and (min-width: 500px) {
     box-shadow: none;
+    background-color: transparent;
     gap: 1rem;
   }
 
@@ -48,7 +52,7 @@ const StyledExpertiseList = styled.div`
   }
 
   ${Expertise} + ${Expertise} {
-    border-top: 1px solid lightgray;
+    border-top: ${({ theme }) => `1px solid ${theme.text.lightest}`};
 
     @media screen and (min-width: 500px) {
       border-top: none;
