@@ -41,14 +41,16 @@ const SidebarLayout = styled.div`
   flex-flow: row nowrap;
   position: relative;
   align-items: flex-start;
+  max-width: 800px;
+  margin: 0 auto;
 
   ${MediaCardList} {
-    flex: 1 1 65%;
+    flex: 1 1 100%;
   }
 
   ${Sidebar} {
-    flex: 1 1 35%;
-    margin-left: 2rem;
+    flex: 0 0 30%;
+    margin-left: 3rem;
     position: sticky;
     top: 1rem;
     display: none;
@@ -69,15 +71,20 @@ const ProjectPage: React.FC<PageProps<Data>> = ({ data }) => {
       <SEO url={`project`} title="Projects" />
       <Hero>Projects!</Hero>
       <Section>
-        <MediaCardList>
-          {data.allMdx.nodes.map(node => (
-            <ProjectCard
-              {...node.frontmatter}
-              key={node.fields.slug}
-              slug={node.fields.slug}
-            />
-          ))}
-        </MediaCardList>
+        <SidebarLayout>
+          <MediaCardList>
+            {data.allMdx.nodes.map(node => (
+              <ProjectCard
+                {...node.frontmatter}
+                key={node.fields.slug}
+                slug={node.fields.slug}
+              />
+            ))}
+          </MediaCardList>
+          <Sidebar>
+            <h3>Top Tags</h3>
+          </Sidebar>
+        </SidebarLayout>
       </Section>
     </Layout>
   );

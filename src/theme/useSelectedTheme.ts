@@ -5,6 +5,9 @@ import { lightTheme, darkTheme } from "./themes";
 const COLOR_MODE_LOCAL_STORAGE_KEY = "current-theme";
 
 const getStartingTheme = (): DefaultTheme => {
+  if (typeof window === "undefined") {
+    return darkTheme;
+  }
   const saved = localStorage.getItem(COLOR_MODE_LOCAL_STORAGE_KEY);
   if (saved) {
     return saved === "dark" ? darkTheme : lightTheme;
@@ -21,7 +24,8 @@ export const useSelectedTheme = (): DefaultTheme => {
   }, [setTheme]);
 
   useEffect(() => {
-    localStorage.setItem(COLOR_MODE_LOCAL_STORAGE_KEY, theme.name);
+    localStorage &&
+      localStorage.setItem(COLOR_MODE_LOCAL_STORAGE_KEY, theme.name);
   }, [theme]);
 
   return {
