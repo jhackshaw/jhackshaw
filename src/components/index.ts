@@ -21,3 +21,5 @@ export * from "./MediaCard";
 export * from "./MediaCardGrid";
 
 export * from "./MediaCardList";
+
+export * from "./TopTagList";

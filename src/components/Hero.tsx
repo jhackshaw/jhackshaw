@@ -3,7 +3,13 @@ import { useStaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image/withIEPolyfill";
 import styled from "styled-components";
 
-const Container = styled.div`
+interface Props {
+  centered?: boolean;
+}
+
+const HeroContent = styled.div``;
+
+const Container = styled.div<Props>`
   position: relative;
 
   .gatsby-image-wrapper {
@@ -17,30 +23,34 @@ const Container = styled.div`
       position: absolute !important;
     }
   }
-`;
 
-const HeroContent = styled.div`
-  position: relative;
-  z-index: 10;
-  max-width: 1600px;
-  margin: 0 auto;
-  padding: 3rem 1rem 0 1rem;
-  min-height: 275px;
-  margin-top: -275px;
-
-  @media screen and (min-width: 760px) {
-    margin-top: -265px;
-    min-height: 265px;
-    padding: 3rem 3rem 0 3rem;
-  }
-
-  @media screen and (min-width: 1280px) {
-    padding: 5rem 5rem 5rem 5rem;
+  ${HeroContent} {
+    position: relative;
+    z-index: 10;
+    max-width: 1600px;
     margin: 0 auto;
+    padding: 70px 1rem 0 1rem;
+    min-height: 300px;
+    margin-top: -300px;
+    align-items: center;
+    justify-content: center;
+
+    display: ${({ centered }) => centered && "flex"};
+    padding-bottom: ${({ centered }) => centered && "80px"};
+
+    @media screen and (min-width: 760px) {
+      padding: 80px 3rem 0 3rem;
+      padding-bottom: ${({ centered }) => centered && "80px"};
+    }
+
+    @media screen and (min-width: 1280px) {
+      padding: 5rem;
+      margin: 0 auto;
+    }
   }
 `;
 
-export const Hero: React.FC = ({ children }) => {
+export const Hero: React.FC<Props> = ({ children, ...rest }) => {
   const { file } = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "media/hero-background.jpg" }) {
@@ -54,7 +64,7 @@ export const Hero: React.FC = ({ children }) => {
   `);
 
   return (
-    <Container>
+    <Container {...rest}>
       <Img fluid={file.childImageSharp.fluid} objectPosition="50% 0%" />
       <HeroContent>{children}</HeroContent>
     </Container>

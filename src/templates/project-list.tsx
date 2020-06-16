@@ -6,7 +6,8 @@ import {
   SEO,
   Section,
   ProjectCard,
-  MediaCardList
+  MediaCardList,
+  TopTagList
 } from "../components";
 import styled from "styled-components";
 
@@ -34,6 +35,14 @@ interface Data {
   };
 }
 
+const HeroTitle = styled.h1`
+  color: #eeeeee;
+  font-size: 2.4rem;
+  line-height: 4rem;
+  font-weight: 500;
+  margin: 0;
+`;
+
 const Sidebar = styled.div``;
 
 const SidebarLayout = styled.div`
@@ -41,21 +50,22 @@ const SidebarLayout = styled.div`
   flex-flow: row nowrap;
   position: relative;
   align-items: flex-start;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
-
-  ${MediaCardList} {
-    flex: 1 1 100%;
-  }
 
   ${Sidebar} {
     flex: 0 0 30%;
-    margin-left: 3rem;
     position: sticky;
     top: 1rem;
     display: none;
+    margin-left: 3rem;
+
+    @media screen and (min-width: 1280px) {
+      margin-left: 3rem;
+    }
 
     h3 {
+      color: ${({ theme }) => theme.text.main};
       margin-top: 0;
     }
 
@@ -69,7 +79,9 @@ const ProjectPage: React.FC<PageProps<Data>> = ({ data }) => {
   return (
     <Layout>
       <SEO url={`project`} title="Projects" />
-      <Hero>Projects!</Hero>
+      <Hero centered>
+        <HeroTitle>Projects!</HeroTitle>
+      </Hero>
       <Section>
         <SidebarLayout>
           <MediaCardList>
@@ -83,6 +95,7 @@ const ProjectPage: React.FC<PageProps<Data>> = ({ data }) => {
           </MediaCardList>
           <Sidebar>
             <h3>Top Tags</h3>
+            <TopTagList />
           </Sidebar>
         </SidebarLayout>
       </Section>

@@ -135,10 +135,7 @@ export const Navbar: React.FC = () => {
             about me
           </NoFussLink>
           <NoFussLink partiallyActive to="/project" activeClassName="active">
-            projects
-          </NoFussLink>
-          <NoFussLink partiallyActive to="/blog" activeClassName="active">
-            blog
+            posts
           </NoFussLink>
           <ThemeToggle onClick={toggleTheme}>
             {name === "dark" ? <FaSun size={16} /> : <FaMoon size={16} />}
