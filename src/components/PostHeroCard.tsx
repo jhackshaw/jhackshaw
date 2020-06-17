@@ -1,13 +1,13 @@
 import React from "react";
 import Img from "gatsby-image";
 import styled from "styled-components";
-import { AuthorInfo } from "./AuthorInfo";
 import { HeroCard } from "./HeroCard";
-import { HeroCardTitle } from "./HeroCardTitle";
+import { PostTitlePrimary } from "./PostTitle";
+import { Tags } from "./Tags";
 import { NoFussLink } from "./NoFussLink";
 import { AllPostQuery } from "../queries";
 
-const StyledPostHeroCard = styled(HeroCard)`
+const StyledPostHeroCard = styled(HeroCard)<{ isLinked?: boolean }>`
   position: relative;
   display: flex;
   flex-flow: column-reverse nowrap;
@@ -17,43 +17,45 @@ const StyledPostHeroCard = styled(HeroCard)`
     align-items: stretch;
   }
 
-  :hover {
-    h1 {
-      color: ${({ theme }) => theme.text.title};
+  @media screen and (min-width: 768px) {
+    ${PostTitlePrimary}:hover {
+      color: ${({ theme, isLinked }) =>
+        isLinked ? theme.text.title : theme.text.main};
     }
   }
 `;
 
 const TitleSection = styled.div`
   flex: 1 1 55%;
-  display: flex;
-  flex-flow: column nowrap;
   padding: 1.5rem 1rem;
 
   @media screen and (min-width: 480px) {
     padding: 3rem 2rem;
   }
+
+  ${PostTitlePrimary} {
+    margin: 0;
+  }
 `;
 
 const Details = styled.div`
-  flex: 1 1 auto;
-  margin: 1rem 0 1.5rem;
+  padding: 0.5rem 0 1rem;
+
+  @media screen and (min-width: 768px) {
+    padding-bottom: 2rem;
+  }
 
   p,
   p > a {
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 0.875rem;
     color: ${({ theme }) => theme.text.lighter};
-    line-height: 1.5rem;
-    margin: 0;
+    line-height: 1.4rem;
+    margin: 0.25rem 0;
   }
 
   p > a {
     border-bottom: 1px dotted lightgray;
-  }
-
-  p + p {
-    margin-top: 0.5rem;
   }
 `;
 
@@ -67,22 +69,27 @@ const ImageSection = styled.div`
 `;
 
 interface Props extends AllPostQuery {
-  showAuthor?: boolean;
+  link?: boolean;
+  maxWidth?: number | string;
 }
 
 export const PostHeroCard: React.FC<Props> = ({
   frontmatter,
+  fields,
   timeToRead,
-  showAuthor
+  link,
+  maxWidth = 800
 }) => {
   const { title, date, source, demo, image, tags } = frontmatter;
+  const linkTo = link ? `/post/${fields.slug}` : "";
   return (
-    <StyledPostHeroCard maxWidth={800}>
+    <StyledPostHeroCard maxWidth={maxWidth} isLinked={link}>
       <TitleSection>
-        <HeroCardTitle>{title}</HeroCardTitle>
+        <NoFussLink to={linkTo}>
+          <PostTitlePrimary>{title}</PostTitlePrimary>
+        </NoFussLink>
         <Details>
           <p>{`${date} • ${timeToRead} min read`}</p>
-          <p>{tags.join(", ")}</p>
           {(source || demo) && (
             <p>
               {demo && <NoFussLink to={demo}>Demo</NoFussLink>}
@@ -91,10 +98,12 @@ export const PostHeroCard: React.FC<Props> = ({
             </p>
           )}
         </Details>
-        {showAuthor && <AuthorInfo />}
+        <Tags tags={tags} />
       </TitleSection>
       <ImageSection>
-        <Img fluid={image.childImageSharp.fluid} />
+        <NoFussLink to={linkTo}>
+          <Img fluid={image.childImageSharp.fluid} />
+        </NoFussLink>
       </ImageSection>
     </StyledPostHeroCard>
   );

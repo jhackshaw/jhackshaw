@@ -23,6 +23,11 @@ const StyledTitle = styled.h3`
 const StyledLinkTitle = styled(NoFussLink)`
   display: flex;
   align-items: center;
+  margin: 2rem 0;
+
+  ${StyledTitle} {
+    margin: 0;
+  }
 
   svg {
     margin-left: 0.5rem;

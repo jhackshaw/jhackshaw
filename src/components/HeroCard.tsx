@@ -1,9 +1,8 @@
 import { Card } from "./Card";
-import { HeroCardTitle } from "./HeroCardTitle";
 import styled from "styled-components";
 
 interface Props {
-  maxWidth?: number;
+  maxWidth?: number | string;
 }
 
 export const HeroCard = styled(Card)<Props>`
@@ -19,13 +18,10 @@ export const HeroCard = styled(Card)<Props>`
 
   @media screen and (min-width: 1024px) {
     width: 100%;
-    max-width: ${({ maxWidth }) => (maxWidth ? `${maxWidth}px` : "none")};
+    max-width: ${({ maxWidth }) =>
+      maxWidth
+        ? `${maxWidth}${typeof maxWidth === "number" ? "px" : ""}`
+        : "none"};
     height: auto;
-  }
-
-  :hover {
-    ${HeroCardTitle} {
-      color: ${({ theme }) => theme.text.title};
-    }
   }
 `;

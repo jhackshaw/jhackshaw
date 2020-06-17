@@ -17,7 +17,9 @@ export const NoFussLink: React.FC<Omit<GatsbyLinkProps<{}>, "ref">> = ({
   children,
   ...rest
 }) => {
-  return to.startsWith("/") ? (
+  return !to ? (
+    <>{children}</>
+  ) : to.startsWith("/") ? (
     <StyledLink to={to} {...rest}>
       {children}
     </StyledLink>

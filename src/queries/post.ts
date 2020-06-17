@@ -2,7 +2,6 @@ import { graphql } from "gatsby";
 
 interface PostSummaryFrontmatter {
   title: string;
-  summary: string;
   date: string;
   tags: string[];
   image: {
@@ -28,20 +27,19 @@ export interface PostSummaryQuery {
     slug: string;
   };
   frontmatter: PostSummaryFrontmatter;
+  timeToRead: number;
 }
 
 export interface AllPostQuery extends PostSummaryQuery {
   frontmatter: AllPostFrontmatter;
   body: string;
-  timeToRead: number;
 }
 
 export const postFragments = graphql`
   fragment PostSummaryFrontmatter on MdxFrontmatter {
     title
-    summary
     tags
-    date(fromNow: true)
+    date(formatString: "MMM, YYYY")
     image {
       childImageSharp {
         fluid(maxWidth: 400, maxHeight: 200, quality: 100) {
@@ -64,6 +62,7 @@ export const postFragments = graphql`
     frontmatter {
       ...PostSummaryFrontmatter
     }
+    timeToRead
   }
 
   fragment AllPost on Mdx {
@@ -72,6 +71,5 @@ export const postFragments = graphql`
       ...AllPostFrontmatter
     }
     body
-    timeToRead
   }
 `;

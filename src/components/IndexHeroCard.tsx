@@ -19,11 +19,6 @@ const StyledIndexHeroCard = styled(HeroCard)`
     text-align: left;
   }
 
-  p {
-    font-weight: 300;
-    color: ${({ theme }) => theme.text.light};
-  }
-
   .gatsby-image-wrapper {
     flex: 0 0 220px;
     margin: 2rem;
@@ -38,8 +33,10 @@ const Details = styled.div`
   }
 
   p {
-    line-height: 1.8rem;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    font-weight: 300;
+    color: ${({ theme }) => theme.text.light};
   }
 `;
 

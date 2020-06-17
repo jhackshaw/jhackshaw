@@ -45,7 +45,7 @@ const SidebarLayout = styled.div`
   flex-flow: row nowrap;
   position: relative;
   align-items: flex-start;
-  max-width: 1000px;
+  max-width: 900px;
   margin: 0 auto;
 
   h3 {
@@ -61,7 +61,7 @@ const SidebarLayout = styled.div`
     margin-left: 3rem;
 
     @media screen and (min-width: 1280px) {
-      margin-left: 3rem;
+      margin-left: 4rem;
     }
 
     @media screen and (min-width: 760px) {

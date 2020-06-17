@@ -30,7 +30,7 @@ module.exports = {
           },
           {
             family: `Roboto Mono`,
-            variants: [`500`]
+            variants: [`500`, `300`]
           },
           {
             family: `Open Sans`

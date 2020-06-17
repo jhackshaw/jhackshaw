@@ -2,6 +2,8 @@ import React from "react";
 import Img from "gatsby-image";
 import { Card } from "./Card";
 import { NoFussLink } from "./NoFussLink";
+import { Tags } from "./Tags";
+import { PostTitle } from "./PostTitle";
 import { PostSummaryQuery } from "../queries";
 import styled from "styled-components";
 
@@ -12,12 +14,15 @@ export const StyledPostCard = styled(Card)`
   border-radius: 1rem;
   cursor: pointer;
 
-  :hover {
-    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
-      0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  @media screen and (min-width: 768px) {
+    :hover {
+      box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+        0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 
-    h3 {
-      color: ${({ theme }) => theme.text.title};
+      ${PostTitle} {
+        color: ${({ theme }) => theme.text.title};
+      }
     }
   }
 `;
@@ -31,40 +36,36 @@ const ImageWrapper = styled.div`
 
 const CardBody = styled.div`
   padding: 1.5rem 1rem;
-  flex-grow: 1;
+  display: flex;
+  flex-flow: column;
+  height: 100%;
 
-  h3 {
-    color: ${({ theme }) => theme.text.main};
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    font-size: 1.4rem;
-    line-height: 1.8rem;
+  ${PostTitle} {
+    margin: 0 0 1rem;
   }
+`;
 
-  span {
-    font-weight: 400;
-    font-size: 1rem;
-    color: #757575;
-    line-height: 1.5rem;
-  }
+const PublishDetails = styled.p`
+  font-weight: 400;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  margin: 0 0 0.5rem;
+  color: ${({ theme }) => theme.text.lightest};
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+`;
 
-  p {
-    font-weight: 300;
-    line-height: 1.8rem;
-    font-size: 1.2rem;
-    color: ${({ theme }) => theme.text.light};
-  }
-
-  p:last-of-type {
-    margin-bottom: 0;
-  }
+const Flex = styled.div`
+  flex: 1;
 `;
 
 export const PostCard: React.FC<PostSummaryQuery> = ({
   frontmatter,
-  fields
+  fields,
+  timeToRead
 }) => {
-  const { image, title, summary, tags } = frontmatter;
+  const { image, title, tags, date } = frontmatter;
 
   return (
     <NoFussLink to={`/post/${fields.slug}`}>
@@ -73,9 +74,13 @@ export const PostCard: React.FC<PostSummaryQuery> = ({
           <Img fluid={image.childImageSharp.fluid} />
         </ImageWrapper>
         <CardBody>
-          <h3>{title}</h3>
-          <span>{tags.join(", ")}</span>
-          <p>{summary}</p>
+          <PublishDetails>
+            <span>{date}</span>
+            <span>{`${timeToRead} min read`}</span>
+          </PublishDetails>
+          <PostTitle>{title}</PostTitle>
+          <Flex />
+          <Tags tags={tags} />
         </CardBody>
       </StyledPostCard>
     </NoFussLink>
