@@ -134,7 +134,7 @@ export const Navbar: React.FC = () => {
           <NoFussLink partiallyActive={false} to="/" activeClassName="active">
             about me
           </NoFussLink>
-          <NoFussLink partiallyActive to="/project" activeClassName="active">
+          <NoFussLink partiallyActive to="/post" activeClassName="active">
             posts
           </NoFussLink>
           <ThemeToggle onClick={toggleTheme}>

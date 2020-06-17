@@ -1,10 +1,12 @@
+import { Card } from "./Card";
+import { HeroCardTitle } from "./HeroCardTitle";
 import styled from "styled-components";
 
 interface Props {
   maxWidth?: number;
 }
 
-export const HeroCard = styled.div<Props>`
+export const HeroCard = styled(Card)<Props>`
   background-color: ${({ theme }) => theme.background.card};
   transition: background-color 0.5s ease;
   border-radius: 1rem;
@@ -22,9 +24,7 @@ export const HeroCard = styled.div<Props>`
   }
 
   :hover {
-    h1,
-    h2,
-    h3 {
+    ${HeroCardTitle} {
       color: ${({ theme }) => theme.text.title};
     }
   }

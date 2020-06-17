@@ -5,34 +5,17 @@ import {
   Layout,
   SEO,
   Section,
-  ProjectCard,
+  PostCard,
   MediaCardList,
   TopTagList
 } from "../components";
+import { PostSummaryQuery } from "../queries";
 import styled from "styled-components";
 
 interface Data {
-  allMdx: {
+  posts: {
+    nodes: PostSummaryQuery[];
     totalCount: number;
-    nodes: {
-      fields: {
-        slug: string;
-      };
-      frontmatter: {
-        title: string;
-        summary: string;
-        stack: string[];
-        date: string;
-        image: {
-          childImageSharp: {
-            original: any;
-            fluid: any;
-          };
-        };
-      };
-      body: string;
-      timeToRead: number;
-    }[];
   };
 }
 
@@ -94,7 +77,7 @@ const ProjectPage: React.FC<PageProps<Data>> = ({ data }) => {
       <Hero centered>
         <HeroTitle>
           <h1>/posts</h1>
-          <p>{data.allMdx.totalCount} posts</p>
+          <p>{data.posts.totalCount} posts</p>
         </HeroTitle>
       </Hero>
       <Section>
@@ -102,12 +85,8 @@ const ProjectPage: React.FC<PageProps<Data>> = ({ data }) => {
           <div>
             <h3>Latest</h3>
             <MediaCardList>
-              {data.allMdx.nodes.map(node => (
-                <ProjectCard
-                  {...node.frontmatter}
-                  key={node.fields.slug}
-                  slug={node.fields.slug}
-                />
+              {data.posts.nodes.map(post => (
+                <PostCard {...post} key={post.frontmatter.title} />
               ))}
             </MediaCardList>
           </div>
@@ -125,36 +104,13 @@ export default ProjectPage;
 
 export const query = graphql`
   query {
-    allMdx(
+    posts: allMdx(
       limit: 6
-      filter: { fileAbsolutePath: { regex: "/content/projects//" } }
+      filter: { fileAbsolutePath: { regex: "/content/posts//" } }
     ) {
       totalCount
       nodes {
-        timeToRead
-        fields {
-          slug
-        }
-        frontmatter {
-          title
-          summary
-          source
-          demo
-          stack
-          date(fromNow: true)
-          image {
-            childImageSharp {
-              fluid(maxWidth: 800) {
-                ...GatsbyImageSharpFluid
-              }
-              original {
-                src
-                width
-                height
-              }
-            }
-          }
-        }
+        ...PostSummary
       }
     }
   }

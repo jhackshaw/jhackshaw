@@ -1,6 +1,7 @@
 import React from "react";
 import Img from "gatsby-image";
 import { MDXRenderer } from "gatsby-plugin-mdx";
+import { CredentialQuery } from "../queries";
 import styled from "styled-components";
 
 const ImageWrapper = styled.div`
@@ -71,38 +72,24 @@ const StyledCredentialList = styled.div`
 `;
 
 interface Props {
-  credentials: {
-    frontmatter: {
-      title: string;
-      subtitle: string;
-      date: string;
-      image: {
-        childImageSharp: {
-          fluid: any;
-        };
-      };
-    };
-    body: string;
-  }[];
+  credentials: CredentialQuery[];
 }
 
 export const CredentialList: React.FC<Props> = ({ credentials }) => {
   return (
     <StyledCredentialList>
-      {credentials.map((cred, idx) => (
+      {credentials.map(({ frontmatter, body }, idx) => (
         <CredentialListItem key={idx}>
           <ImageWrapper>
-            <Img fluid={cred.frontmatter.image.childImageSharp.fluid} />
+            <Img fluid={frontmatter.image.childImageSharp.fluid} />
           </ImageWrapper>
           <CredentialListItemContent>
-            <h3>{cred.frontmatter.title}</h3>
+            <h3>{frontmatter.title}</h3>
             <span className="subtitle">
-              {cred.frontmatter.date}
-              {cred.frontmatter.subtitle
-                ? ` | ${cred.frontmatter.subtitle}`
-                : ""}
+              {frontmatter.date}
+              {frontmatter.subtitle ? ` | ${frontmatter.subtitle}` : ""}
             </span>
-            <MDXRenderer>{cred.body}</MDXRenderer>
+            <MDXRenderer>{body}</MDXRenderer>
           </CredentialListItemContent>
         </CredentialListItem>
       ))}

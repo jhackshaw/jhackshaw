@@ -1,5 +1,6 @@
 import React from "react";
 import Img from "gatsby-image";
+import { ExpertiseQuery } from "../queries";
 import styled from "styled-components";
 
 const Expertise = styled.div`
@@ -61,14 +62,7 @@ const StyledExpertiseList = styled.div`
 `;
 
 interface Props {
-  items: {
-    name: string;
-    image: {
-      childImageSharp: {
-        fixed: any;
-      };
-    };
-  }[];
+  items: ExpertiseQuery[];
 }
 
 export const ExpertiseList: React.FC<Props> = ({ items }) => {

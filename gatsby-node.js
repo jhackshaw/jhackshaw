@@ -14,12 +14,9 @@ exports.onCreateNode = async ({ node, getNode, actions }) => {
 };
 
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
-  //
-  //  PROJECT PAGES
-  //
   const { data: projects } = await graphql(`
     {
-      allMdx(filter: { fileAbsolutePath: { regex: "/content/projects//" } }) {
+      allMdx(filter: { fileAbsolutePath: { regex: "/content/posts//" } }) {
         nodes {
           fields {
             slug
@@ -31,8 +28,8 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
 
   for (const page of projects.allMdx.nodes) {
     createPage({
-      path: `/project/${page.fields.slug}`,
-      component: path.resolve("src/templates/project-page.tsx"),
+      path: `/post/${page.fields.slug}`,
+      component: path.resolve("src/templates/post-page.tsx"),
       context: {
         slug: page.fields.slug
       }
@@ -40,7 +37,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   }
 
   createPage({
-    path: `/project/`,
-    component: path.resolve("src/templates/project-list.tsx")
+    path: `/post/`,
+    component: path.resolve("src/templates/post-list.tsx")
   });
 };

@@ -14,12 +14,11 @@ export * from "./SEO";
 export * from "./Footer";
 export * from "./AuthorInfo";
 
-export * from "./ProjectCard";
-export * from "./ProjectHeroCard";
+export * from "./PostHeroCard";
 
-export * from "./MediaCard";
-export * from "./MediaCardGrid";
-
-export * from "./MediaCardList";
+export * from "./PostCard";
+export * from "./PostCardGrid";
+export * from "./PostCardList";
 
 export * from "./TopTagList";
+export * from "./Card";

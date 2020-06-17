@@ -40,7 +40,7 @@ export const TopTagList: React.FC = () => {
   const { allTags } = useStaticQuery<Query>(graphql`
     query {
       allTags: allMdx {
-        group(field: frontmatter___stack) {
+        group(field: frontmatter___tags) {
           totalCount
           name: fieldValue
         }
