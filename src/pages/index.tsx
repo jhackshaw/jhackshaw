@@ -27,6 +27,10 @@ interface IndexQueryProps {
     nodes: AllPostQuery[];
   };
 
+  projects: {
+    nodes: PostSummaryQuery[];
+  };
+
   posts: {
     nodes: PostSummaryQuery[];
   };
@@ -48,9 +52,17 @@ const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
   const [featuredPost] = data.featured.nodes;
 
   // make sure we have 3 posts not including the featured post
-  const posts = data.posts.nodes
+  // and filter out the "Project" tag since it's implicit here
+  const projects = data.projects.nodes
     .filter(p => p.fields.slug !== featuredPost.fields.slug)
-    .slice(0, 3);
+    .slice(0, 3)
+    .map(p => ({
+      ...p,
+      frontmatter: {
+        ...p.frontmatter,
+        tags: p.frontmatter.tags.filter(t => t !== "Project")
+      }
+    }));
 
   return (
     <Layout>
@@ -68,7 +80,16 @@ const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
       <Section>
         <SectionTitle to="/t/project">Projects</SectionTitle>
         <PostCardGrid>
-          {posts.map(post => (
+          {projects.map(post => (
+            <PostCard {...post} key={post.frontmatter.title} />
+          ))}
+        </PostCardGrid>
+      </Section>
+
+      <Section>
+        <SectionTitle to="/t">Blog Posts</SectionTitle>
+        <PostCardGrid>
+          {data.posts.nodes.map(post => (
             <PostCard {...post} key={post.frontmatter.title} />
           ))}
         </PostCardGrid>
@@ -99,7 +120,7 @@ export const query = graphql`
       sort: { fields: frontmatter___date, order: DESC }
       filter: {
         fileAbsolutePath: { regex: "/content/posts//" }
-        frontmatter: { nofeature: { ne: true } }
+        frontmatter: { nofeature: { ne: true }, tags: { eq: "Project" } }
       }
     ) {
       nodes {
@@ -107,10 +128,26 @@ export const query = graphql`
       }
     }
 
-    posts: allMdx(
+    projects: allMdx(
       limit: 4
       sort: { fields: frontmatter___date, order: DESC }
-      filter: { fileAbsolutePath: { regex: "/content/posts//" } }
+      filter: {
+        fileAbsolutePath: { regex: "/content/posts//" }
+        frontmatter: { tags: { eq: "Project" } }
+      }
+    ) {
+      nodes {
+        ...PostSummary
+      }
+    }
+
+    posts: allMdx(
+      limit: 3
+      sort: { fields: frontmatter___date, order: DESC }
+      filter: {
+        fileAbsolutePath: { regex: "/content/posts//" }
+        frontmatter: { tags: { ne: "Project" } }
+      }
     ) {
       nodes {
         ...PostSummary

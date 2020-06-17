@@ -9,7 +9,6 @@ interface Data {
 }
 
 const ProjectPage: React.FC<PageProps<Data>> = ({ data }) => {
-  console.log(data);
   const { body, frontmatter, fields } = data.post;
   return (
     <Layout>
@@ -17,10 +16,9 @@ const ProjectPage: React.FC<PageProps<Data>> = ({ data }) => {
         url={`project/${fields.slug}`}
         title={frontmatter.title}
         image={frontmatter.image.childImageSharp.original}
-        description={frontmatter.summary}
       />
       <Hero>
-        <PostHeroCard {...data.post} showAuthor />
+        <PostHeroCard {...data.post} />
       </Hero>
       <Section>
         <MDXRenderer>{body}</MDXRenderer>

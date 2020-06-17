@@ -132,7 +132,7 @@ export const Navbar: React.FC = () => {
             <FaTimes size={16} />
           </NavToggle>
           <NoFussLink partiallyActive={false} to="/" activeClassName="active">
-            about me
+            home
           </NoFussLink>
           <NoFussLink partiallyActive to="/post" activeClassName="active">
             posts
