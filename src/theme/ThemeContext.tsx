@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { themes } from "./themes";
 
 type ColorMode = keyof typeof themes;
@@ -29,6 +29,14 @@ export const ThemeProvider: React.FC = ({ children }) => {
   const toggleColorMode = useCallback(() => {
     setColorMode(colorMode === "dark" ? "light" : "dark");
   }, [colorMode]);
+
+  useEffect(() => {
+    const root = window.document.documentElement;
+    const initialColorValue = root.style.getPropertyValue(
+      "--initial-color-mode"
+    );
+    setCurrentColorMode(initialColorValue as ColorMode);
+  }, []);
 
   return (
     <ThemeContext.Provider

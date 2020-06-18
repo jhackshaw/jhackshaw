@@ -5,9 +5,11 @@ import { Footer, Navbar } from ".";
 
 const GlobalStyle = createGlobalStyle`
   body {
-    transition: background-color 350ms ease 0s;
     padding: 0;
     margin: 0;
+  }
+  main {
+    transition: background-color 400ms ease 0s;
     background-color: var(--background-main);
     font-family: 'Roboto', sans-serif;
   }
