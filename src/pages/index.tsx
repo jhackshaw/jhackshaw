@@ -122,6 +122,7 @@ export const query = graphql`
         fileAbsolutePath: { regex: "/content/posts//" }
         frontmatter: {
           nofeature: { ne: true }
+          published: { eq: true }
           tags: { eq: "Project" }
           image: { id: { ne: null } }
         }
@@ -137,7 +138,11 @@ export const query = graphql`
       sort: { fields: frontmatter___date, order: DESC }
       filter: {
         fileAbsolutePath: { regex: "/content/posts//" }
-        frontmatter: { tags: { eq: "Project" }, image: { id: { ne: null } } }
+        frontmatter: {
+          tags: { eq: "Project" }
+          image: { id: { ne: null } }
+          published: { eq: true }
+        }
       }
     ) {
       nodes {
@@ -150,7 +155,11 @@ export const query = graphql`
       sort: { fields: frontmatter___date, order: DESC }
       filter: {
         fileAbsolutePath: { regex: "/content/posts//" }
-        frontmatter: { tags: { ne: "Project" }, image: { id: { ne: null } } }
+        frontmatter: {
+          tags: { ne: "Project" }
+          image: { id: { ne: null } }
+          published: { eq: true }
+        }
       }
     ) {
       nodes {

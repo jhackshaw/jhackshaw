@@ -16,7 +16,12 @@ exports.onCreateNode = async ({ node, getNode, actions }) => {
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
   const { data: projects } = await graphql(`
     {
-      allMdx(filter: { fileAbsolutePath: { regex: "/content/posts//" } }) {
+      allMdx(
+        filter: {
+          fileAbsolutePath: { regex: "/content/posts//" }
+          frontmatter: { published: { eq: true } }
+        }
+      ) {
         nodes {
           fields {
             slug
@@ -43,7 +48,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
 
   const { data: tags } = await graphql(`
     {
-      allTags: allMdx {
+      allTags: allMdx(filter: { frontmatter: { published: { eq: true } } }) {
         group(field: frontmatter___tags) {
           name: fieldValue
         }

@@ -67,7 +67,7 @@ export const query = graphql`
       sort: { fields: frontmatter___date, order: DESC }
       filter: {
         fileAbsolutePath: { regex: "/content/posts//" }
-        frontmatter: { tags: { eq: $tag } }
+        frontmatter: { tags: { eq: $tag }, published: { eq: true } }
       }
     ) {
       totalCount
