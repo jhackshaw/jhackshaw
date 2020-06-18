@@ -18,12 +18,15 @@ const ThemeToggle = styled.button`
 `;
 
 export const NavbarThemeToggle: React.FC = () => {
-  const { toggleColorMode, colorMode } = useContext(ThemeContext);
+  const { setColorMode, colorMode } = useContext(ThemeContext);
+
+  const onClick = () => {
+    setColorMode && setColorMode(colorMode === "dark" ? "light" : "dark");
+  };
 
   return (
-    <ThemeToggle onClick={toggleColorMode}>
-      {colorMode &&
-        (colorMode === "dark" ? <FaSun size={16} /> : <FaMoon size={16} />)}
+    <ThemeToggle onClick={onClick}>
+      {colorMode === "dark" ? <FaSun size={16} /> : <FaMoon size={16} />}
     </ThemeToggle>
   );
 };
