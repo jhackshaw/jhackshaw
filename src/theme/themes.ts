@@ -11,7 +11,7 @@ export const lightTheme: DefaultTheme = {
     title: "#303f9f",
     light: "#424242",
     lighter: "#757575",
-    lightest: "#9e9e9e"
+    lightest: "#e0e0e0"
   },
   weight: {
     main: "400",

@@ -20,8 +20,9 @@ const Expertise = styled.div`
 
   span {
     font-family: "Roboto Mono", monospace;
+    font-size: 1.25rem;
+    line-height: 1.6;
     font-weight: 500;
-    font-size: 1.4rem;
     z-index: 10;
     color: ${({ theme }) => theme.text.main};
   }

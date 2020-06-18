@@ -28,7 +28,7 @@ const CredentialListItem = styled.div`
 const CredentialListItemContent = styled.div`
   flex: 1 1 100%;
   margin-left: 0;
-  margin-top: 2rem;
+  margin-top: 1rem;
 
   @media screen and (min-width: 480px) {
     margin-left: 3rem;
@@ -36,8 +36,11 @@ const CredentialListItemContent = styled.div`
   }
 
   h3 {
-    margin: 0 0 0.5rem;
     color: ${({ theme }) => theme.text.main};
+    font-size: 1.25rem;
+    line-height: 1.6;
+    font-weight: 500;
+    margin: 0 0 0.5rem;
   }
 
   span.subtitle {

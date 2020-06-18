@@ -63,43 +63,27 @@ const TimelineTitle = styled.div`
 
   h3 {
     color: ${({ theme }) => theme.text.main};
-    font-size: 1.3rem;
+    font-size: 1.25rem;
+    line-height: 1.6;
     font-weight: 500;
     margin: 0 0 0.5rem;
-
-    @media screen and (min-width: 760px) {
-      font-size: 1.5rem;
-    }
-
-    @media screen and (min-width: 1024px) {
-      font-size: 1.8rem;
-    }
   }
 
   small {
-    font-size: 0.8rem;
     color: ${({ theme }) => theme.text.lighter};
     font-weight: 300;
-    margin-top: 0.5rem;
+    font-size: 0.8rem;
 
     @media screen and (min-width: 760px) {
-      font-size: 1rem;
       margin-top: 0;
+      font-size: 1rem;
     }
   }
 
   span {
-    font-size: 1rem;
-    font-weight: 300;
+    margin: 0.2rem 0;
     color: ${({ theme }) => theme.text.light};
-
-    @media screen and (min-width: 760px) {
-      font-size: 1.3rem;
-    }
-
-    @media screen and (min-width: 1024px) {
-      font-size: 1.5rem;
-    }
+    font-weight: 400;
   }
 `;
 

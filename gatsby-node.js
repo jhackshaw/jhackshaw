@@ -40,4 +40,24 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
     path: `/post/`,
     component: path.resolve("src/templates/post-list.tsx")
   });
+
+  const { data: tags } = await graphql(`
+    {
+      allTags: allMdx {
+        group(field: frontmatter___tags) {
+          name: fieldValue
+        }
+      }
+    }
+  `);
+
+  for (const tag of tags.allTags.group) {
+    createPage({
+      path: `/t/${tag.name.toLowerCase()}`,
+      component: path.resolve("src/templates/tag-page.tsx"),
+      context: {
+        tag: tag.name
+      }
+    });
+  }
 };

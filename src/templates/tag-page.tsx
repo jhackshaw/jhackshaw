@@ -1,5 +1,6 @@
 import React from "react";
 import { PageProps, graphql } from "gatsby";
+import { FaTag } from "react-icons/fa";
 import {
   Hero,
   TagHeroTitle,
@@ -21,13 +22,20 @@ interface Data {
   };
 }
 
-const PostListPage: React.FC<PageProps<Data>> = ({ data }) => {
+interface Ctx {
+  tag: string;
+}
+
+const TagPage: React.FC<PageProps<Data, Ctx>> = ({ data, pageContext }) => {
   return (
     <Layout>
       <SEO url={`project`} title="Projects" />
       <Hero centered>
         <TagHeroTitle>
-          <h1>all posts</h1>
+          <h1>
+            <FaTag size={24} />
+            {pageContext.tag.toLowerCase()}
+          </h1>
           <p>{data.posts.totalCount} posts</p>
         </TagHeroTitle>
       </Hero>
@@ -51,14 +59,17 @@ const PostListPage: React.FC<PageProps<Data>> = ({ data }) => {
   );
 };
 
-export default PostListPage;
+export default TagPage;
 
 export const query = graphql`
-  query {
+  query($tag: String) {
     posts: allMdx(
       limit: 6
       sort: { fields: frontmatter___date, order: DESC }
-      filter: { fileAbsolutePath: { regex: "/content/posts//" } }
+      filter: {
+        fileAbsolutePath: { regex: "/content/posts//" }
+        frontmatter: { tags: { eq: $tag } }
+      }
     ) {
       totalCount
       nodes {

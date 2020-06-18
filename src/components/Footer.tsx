@@ -30,10 +30,18 @@ const FooterContent = styled.div`
   }
 
   h3 {
-    color: #00bde3;
-    font-size: 1.6rem;
+    color: #f6c90e;
+    font-size: 1.25rem;
+    line-height: 1.6;
+    font-weight: 500;
     margin-top: 0;
     margin-bottom: 0.5rem;
+  }
+
+  span,
+  small {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 400;
   }
 
   p {

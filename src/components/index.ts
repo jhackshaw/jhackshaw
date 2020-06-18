@@ -22,3 +22,6 @@ export * from "./PostCardList";
 
 export * from "./TopTagList";
 export * from "./Card";
+
+export * from "./SidebarLayout";
+export * from "./TagHeroTitle";
