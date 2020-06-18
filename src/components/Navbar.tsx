@@ -1,8 +1,8 @@
-import React, { useState, useContext } from "react";
-import { NoFussLink } from ".";
-import { ThemeContext } from "../theme";
+import React, { useState } from "react";
+import { NoFussLink } from "./NoFussLink";
+import { NavbarThemeToggle } from "./NavbarThemeToggle";
 import styled from "styled-components";
-import { FaBars, FaTimes, FaSun, FaMoon } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -41,20 +41,6 @@ const NavToggle = styled.button`
 
   @media screen and (min-width: 760px) {
     display: none;
-  }
-`;
-
-const ThemeToggle = styled.button`
-  background-color: transparent;
-  border: none;
-  color: #eeeeee;
-  cursor: pointer;
-  padding-bottom: 0.5rem;
-  margin-left: 1rem;
-
-  :active,
-  :focus {
-    outline: none;
   }
 `;
 
@@ -115,7 +101,6 @@ const StyledNav = styled.nav<{ collapsed?: boolean }>`
 `;
 
 export const Navbar: React.FC = () => {
-  const { toggleColorMode, colorMode } = useContext(ThemeContext);
   const [collapsed, setCollapsed] = useState(true);
 
   const toggleNav: React.MouseEventHandler = () => {
@@ -138,9 +123,7 @@ export const Navbar: React.FC = () => {
           <NoFussLink partiallyActive to="/post" activeClassName="active">
             posts
           </NoFussLink>
-          <ThemeToggle onClick={toggleColorMode}>
-            {colorMode === "dark" ? <FaSun size={16} /> : <FaMoon size={16} />}
-          </ThemeToggle>
+          <NavbarThemeToggle />
         </StyledNav>
         <NavToggle onClick={toggleNav}>
           <FaBars size={16} />
