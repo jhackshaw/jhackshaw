@@ -30,3 +30,6 @@
 
 - name: serverless
   image: "./media/serverless.png"
+
+- name: css
+  image: "./media/css.png"
