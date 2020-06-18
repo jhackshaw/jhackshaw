@@ -5,7 +5,7 @@ import { FaTags } from "react-icons/fa";
 const StyledTags = styled.p`
   font-weight: 500;
   font-size: 0.8rem;
-  color: ${({ theme }) => theme.text.lighter};
+  color: var(--text-lighter);
   margin: 0;
   line-height: 1.6;
   font-family: "Roboto Mono", monospace;

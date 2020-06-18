@@ -19,8 +19,8 @@ const StyledPostHeroCard = styled(HeroCard)<{ isLinked?: boolean }>`
 
   @media screen and (min-width: 768px) {
     ${PostTitlePrimary}:hover {
-      color: ${({ theme, isLinked }) =>
-        isLinked ? theme.text.title : theme.text.main};
+      color: ${({ isLinked }) =>
+        isLinked ? "var(--text-title)" : "var(--text-main)"};
     }
   }
 `;
@@ -49,7 +49,7 @@ const Details = styled.div`
   p > a {
     font-weight: 400;
     font-size: 0.875rem;
-    color: ${({ theme }) => theme.text.lighter};
+    color: var(--text-lighter);
     line-height: 1.4rem;
     margin: 0.25rem 0;
   }

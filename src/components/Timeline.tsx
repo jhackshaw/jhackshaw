@@ -62,7 +62,7 @@ const TimelineTitle = styled.div`
   }
 
   h3 {
-    color: ${({ theme }) => theme.text.main};
+    color: var(--text-main);
     font-size: 1.25rem;
     line-height: 1.6;
     font-weight: 500;
@@ -70,7 +70,7 @@ const TimelineTitle = styled.div`
   }
 
   small {
-    color: ${({ theme }) => theme.text.lighter};
+    color: var(--text-lighter);
     font-weight: 300;
     font-size: 0.8rem;
 
@@ -82,14 +82,14 @@ const TimelineTitle = styled.div`
 
   span {
     margin: 0.2rem 0;
-    color: ${({ theme }) => theme.text.light};
+    color: var(--text-light);
     font-weight: 400;
   }
 `;
 
 const TimelineLine = styled.div`
   flex-grow: 1;
-  background-color: ${({ theme }) => theme.text.lightest};
+  background-color: var(--text-lightest);
   width: 3px;
   display: none;
 

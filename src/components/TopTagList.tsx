@@ -12,18 +12,18 @@ const Tag = styled(NoFussLink)`
   font-family: "Roboto Mono", monospace;
 
   :hover {
-    color: ${({ theme }) => theme.text.title};
+    color: var(--text-title);
   }
 
-  color: ${({ theme }) => theme.text.light};
+  color: var(--text-light);
 `;
 
 const StyledTagList = styled.div`
   border-radius: 1rem;
-  border: ${({ theme }) => `1px solid ${theme.text.lightest}`};
+  border: 1px solid var(--text-lightest);
 
   a + a {
-    border-top: ${({ theme }) => `1px solid ${theme.text.lightest}`};
+    border-top: 1px solid var(--text-lightest);
   }
 `;
 

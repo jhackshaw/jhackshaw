@@ -4,7 +4,7 @@ import { NoFussLink } from "./NoFussLink";
 import styled from "styled-components";
 
 const StyledTitle = styled.h3`
-  color: ${({ theme }) => theme.text.main};
+  color: var(--text-main);
   font-size: 2.1rem;
   font-weight: 400;
   line-height: 1.2rem;
@@ -25,7 +25,7 @@ const StyledLinkTitle = styled(NoFussLink)`
     margin-left: 0.5rem;
     opacity: 0;
     transition: opacity 0.3s ease;
-    color: ${({ theme }) => theme.text.title};
+    color: var(--text-title);
     font-size: 1.8rem;
 
     @media screen and (min-width: 760px) {
@@ -42,7 +42,7 @@ const StyledLinkTitle = styled(NoFussLink)`
   }
 
   :hover > ${StyledTitle} {
-    color: ${({ theme }) => theme.text.title};
+    color: var(--text-title);
   }
 `;
 

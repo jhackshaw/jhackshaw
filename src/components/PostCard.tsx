@@ -10,7 +10,7 @@ import styled from "styled-components";
 export const StyledPostCard = styled(Card)`
   display: flex;
   flex-direction: column;
-  transition: ${({ theme }) => `background-color ${theme.transition}`};
+  transition: background-color 350ms ease 0s;
   border-radius: 1rem;
   cursor: pointer;
 
@@ -21,7 +21,7 @@ export const StyledPostCard = styled(Card)`
         0px 3px 14px 2px rgba(0, 0, 0, 0.12);
 
       ${PostTitle} {
-        color: ${({ theme }) => theme.text.title};
+        color: var(--text-title);
       }
     }
   }
@@ -50,7 +50,7 @@ const PublishDetails = styled.p`
   font-size: 0.8rem;
   line-height: 1.6;
   margin: 0 0 0.5rem;
-  color: ${({ theme }) => theme.text.lightest};
+  color: var(--text-lightest);
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;

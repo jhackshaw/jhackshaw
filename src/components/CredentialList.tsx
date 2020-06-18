@@ -36,7 +36,7 @@ const CredentialListItemContent = styled.div`
   }
 
   h3 {
-    color: ${({ theme }) => theme.text.main};
+    color: var(--text-main);
     font-size: 1.25rem;
     line-height: 1.6;
     font-weight: 500;
@@ -45,27 +45,27 @@ const CredentialListItemContent = styled.div`
 
   span.subtitle {
     display: block;
-    color: ${({ theme }) => theme.text.lighter};
+    color: var(--text-lighter);
     font-weight: 300;
     margin: 0 0 0.5rem;
   }
 
   p {
     margin: 0.2rem 0;
-    color: ${({ theme }) => theme.text.light};
+    color: var(--text-light);
     font-weight: 400;
   }
 `;
 
 const StyledCredentialList = styled.div`
   padding: 0 1rem;
-  background-color: ${({ theme }) => theme.background.card};
+  background-color: var(--background-card);
   border-radius: 1rem;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
 
   ${CredentialListItem} + ${CredentialListItem} {
-    border-top: ${({ theme }) => `1px solid ${theme.text.lightest}`};
+    border-top: var(--text-lightest)
   }
 
 

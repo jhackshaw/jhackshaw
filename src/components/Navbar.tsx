@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { NoFussLink } from ".";
-import styled, { ThemeContext } from "styled-components";
+import { ThemeContext } from "../theme";
+import styled from "styled-components";
 import { FaBars, FaTimes, FaSun, FaMoon } from "react-icons/fa";
 
 const Wrapper = styled.div`
@@ -114,7 +115,7 @@ const StyledNav = styled.nav<{ collapsed?: boolean }>`
 `;
 
 export const Navbar: React.FC = () => {
-  const { toggleTheme, name } = useContext(ThemeContext);
+  const { toggleColorMode, colorMode } = useContext(ThemeContext);
   const [collapsed, setCollapsed] = useState(true);
 
   const toggleNav: React.MouseEventHandler = () => {
@@ -137,8 +138,8 @@ export const Navbar: React.FC = () => {
           <NoFussLink partiallyActive to="/post" activeClassName="active">
             posts
           </NoFussLink>
-          <ThemeToggle onClick={toggleTheme}>
-            {name === "dark" ? <FaSun size={16} /> : <FaMoon size={16} />}
+          <ThemeToggle onClick={toggleColorMode}>
+            {colorMode === "dark" ? <FaSun size={16} /> : <FaMoon size={16} />}
           </ThemeToggle>
         </StyledNav>
         <NavToggle onClick={toggleNav}>

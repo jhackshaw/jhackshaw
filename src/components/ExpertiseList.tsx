@@ -12,7 +12,7 @@ const Expertise = styled.div`
   z-index: 1;
 
   @media screen and (min-width: 500px) {
-    background-color: ${({ theme }) => theme.background.card};
+    background-color: var(--background-card);
     border-radius: 1rem;
     box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
       0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
@@ -24,7 +24,7 @@ const Expertise = styled.div`
     line-height: 1.6;
     font-weight: 500;
     z-index: 10;
-    color: ${({ theme }) => theme.text.main};
+    color: var(--text-main);
   }
 
   .gatsby-image-wrapper {
@@ -37,7 +37,7 @@ const StyledExpertiseList = styled.div`
   display: grid;
   gap: 0;
   
-  background-color: ${({ theme }) => theme.background.card};
+  background-color: var(--background-card);
   border-radius: 1rem;
   grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
@@ -54,7 +54,7 @@ const StyledExpertiseList = styled.div`
   }
 
   ${Expertise} + ${Expertise} {
-    border-top: ${({ theme }) => `1px solid ${theme.text.lightest}`};
+    border-top: 1px solid var(--text-lightest);
 
     @media screen and (min-width: 500px) {
       border-top: none;

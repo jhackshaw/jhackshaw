@@ -11,7 +11,7 @@ export const SidebarLayout = styled.div`
   margin: 0 auto;
 
   h3 {
-    color: ${({ theme }) => theme.text.main};
+    color: var(--text-main);
     margin-top: 0;
   }
 

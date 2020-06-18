@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 
   a {
     margin: 0 0.5rem;
-    color: ${({ theme }) => theme.text.light};
+    color: var(--text-light);
   }
 `;
 

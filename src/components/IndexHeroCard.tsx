@@ -36,7 +36,7 @@ const Details = styled.div`
     font-size: 1.25rem;
     line-height: 1.6;
     font-weight: 300;
-    color: ${({ theme }) => theme.text.light};
+    color: var(--text-light);
   }
 `;
 
