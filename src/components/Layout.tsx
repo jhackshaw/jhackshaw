@@ -7,10 +7,6 @@ const GlobalStyle = createGlobalStyle`
   body {
     padding: 0;
     margin: 0;
-  }
-  main {
-    transition: background-color 400ms ease 0s;
-    background-color: var(--background-main);
     font-family: 'Roboto', sans-serif;
   }
 
@@ -24,6 +20,8 @@ const StyledLayout = styled.div`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  transition: background-color 400ms ease 0s;
+  background-color: var(--background-main);
 
   main {
     flex-grow: 1;

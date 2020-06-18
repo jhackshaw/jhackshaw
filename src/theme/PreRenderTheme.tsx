@@ -25,11 +25,9 @@ export const PreRenderTheme: React.FC = () => (
         function getInitialMode() {
           const stored = window.localStorage.getItem('color-mode');
           if (stored) {
-            console.log('returning stored', stored);
             return stored;
           }
           const mql = window.matchMedia('(prefers-color-scheme: dark)');
-          console.log('returning matches', mql.matches);
           return mql.matches ? 'dark' : 'light';
         }
     
