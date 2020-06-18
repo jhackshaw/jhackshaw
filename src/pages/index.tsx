@@ -87,7 +87,7 @@ const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
       </Section>
 
       <Section>
-        <SectionTitle to="/t">Blog Posts</SectionTitle>
+        <SectionTitle to="/post">Blog Posts</SectionTitle>
         <PostCardGrid>
           {data.posts.nodes.map(post => (
             <PostCard {...post} key={post.frontmatter.title} />
