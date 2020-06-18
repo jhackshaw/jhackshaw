@@ -17,7 +17,8 @@ export const lightTheme: DefaultTheme = {
     main: "400",
     light: "300",
     heavy: "500"
-  }
+  },
+  transition: "350ms ease 0s"
 };
 
 export const darkTheme: DefaultTheme = {
@@ -34,4 +35,25 @@ export const darkTheme: DefaultTheme = {
     lighter: "rgba(255, 255, 255, 0.6)",
     lightest: "rgba(255, 255, 255, 0.3)"
   }
+};
+
+export const undefinedTheme: DefaultTheme = {
+  name: "undefined",
+  background: {
+    main: "unset",
+    card: "unset"
+  },
+  text: {
+    main: "unset",
+    title: "unset",
+    light: "#unset",
+    lighter: "#unset",
+    lightest: "#unset"
+  },
+  weight: {
+    main: "unset",
+    light: "unset",
+    heavy: "unset"
+  },
+  transition: "none"
 };

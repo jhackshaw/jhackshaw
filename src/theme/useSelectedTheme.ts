@@ -1,35 +1,34 @@
 import { useState, useCallback, useEffect } from "react";
 import { DefaultTheme } from "styled-components";
-import { lightTheme, darkTheme } from "./themes";
-
-const COLOR_MODE_LOCAL_STORAGE_KEY = "current-theme";
+import { lightTheme, darkTheme, undefinedTheme } from "./themes";
 
 const getStartingTheme = (): DefaultTheme => {
   if (typeof window === "undefined") {
-    return darkTheme;
+    return undefinedTheme;
   }
-  const saved = localStorage.getItem(COLOR_MODE_LOCAL_STORAGE_KEY);
-  if (saved) {
-    return saved === "dark" ? darkTheme : lightTheme;
-  }
-  const mql = window.matchMedia("(prefers-color-scheme: dark)");
-  return mql.matches ? darkTheme : lightTheme;
+  const saved = localStorage.getItem("color-theme");
+  return saved === "dark" ? darkTheme : lightTheme;
 };
 
 export const useSelectedTheme = (): DefaultTheme => {
   const [theme, setTheme] = useState<DefaultTheme>(getStartingTheme);
+  const [hasLoaded, setHasLoaded] = useState(false);
+
+  useEffect(() => {
+    setHasLoaded(true);
+  }, []);
 
   const toggleTheme = useCallback(() => {
-    setTheme(current => (current.name === "light" ? darkTheme : lightTheme));
+    setTheme(current => (current.name === "dark" ? lightTheme : darkTheme));
   }, [setTheme]);
 
   useEffect(() => {
-    localStorage &&
-      localStorage.setItem(COLOR_MODE_LOCAL_STORAGE_KEY, theme.name);
+    localStorage && localStorage.setItem("color-theme", theme.name);
   }, [theme]);
 
   return {
     ...theme,
+    transition: hasLoaded ? theme.transition : "none",
     toggleTheme
   };
 };

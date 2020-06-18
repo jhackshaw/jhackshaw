@@ -10,7 +10,7 @@ import styled from "styled-components";
 export const StyledPostCard = styled(Card)`
   display: flex;
   flex-direction: column;
-  transition: background-color 0.5s ease;
+  transition: ${({ theme }) => `background-color ${theme.transition}`};
   border-radius: 1rem;
   cursor: pointer;
 

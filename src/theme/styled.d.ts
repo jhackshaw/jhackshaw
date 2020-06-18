@@ -2,7 +2,7 @@ import "styled-components";
 
 // and extend them!
 declare module "styled-components" {
-  export type ThemeMode = "light" | "dark";
+  export type ThemeMode = "light" | "dark" | "undefined";
 
   export interface DefaultTheme {
     name: ThemeMode;
@@ -23,5 +23,6 @@ declare module "styled-components" {
       light: string;
       heavy: string;
     };
+    transition: string;
   }
 }

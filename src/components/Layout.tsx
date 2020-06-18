@@ -5,11 +5,11 @@ import { Footer, Navbar } from ".";
 
 const GlobalStyle = createGlobalStyle`
   body {
+    transition: ${({ theme }) => `background-color ${theme.transition}`};
     padding: 0;
     margin: 0;
     background-color: ${({ theme }) => theme.background.main};
     font-family: 'Roboto', sans-serif;
-    transition: background-color 0.5s ease;
   }
 
   * {
