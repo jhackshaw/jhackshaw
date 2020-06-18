@@ -71,7 +71,7 @@ export const PostCard: React.FC<PostSummaryQuery> = ({
     <NoFussLink to={`/post/${fields.slug}`}>
       <StyledPostCard>
         <ImageWrapper>
-          <Img fluid={image.childImageSharp.fluid} />
+          {image && <Img fluid={image.childImageSharp.fluid} />}
         </ImageWrapper>
         <CardBody>
           <PublishDetails>

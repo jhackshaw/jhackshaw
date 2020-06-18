@@ -100,11 +100,13 @@ export const PostHeroCard: React.FC<Props> = ({
         </Details>
         <Tags tags={tags} />
       </TitleSection>
-      <ImageSection>
-        <NoFussLink to={linkTo}>
-          <Img fluid={image.childImageSharp.fluid} />
-        </NoFussLink>
-      </ImageSection>
+      {image && (
+        <ImageSection>
+          <NoFussLink to={linkTo}>
+            <Img fluid={image.childImageSharp.fluid} />
+          </NoFussLink>
+        </ImageSection>
+      )}
     </StyledPostHeroCard>
   );
 };

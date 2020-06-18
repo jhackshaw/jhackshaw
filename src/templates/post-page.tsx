@@ -15,7 +15,7 @@ const ProjectPage: React.FC<PageProps<Data>> = ({ data }) => {
       <SEO
         url={`project/${fields.slug}`}
         title={frontmatter.title}
-        image={frontmatter.image.childImageSharp.original}
+        image={frontmatter.image?.childImageSharp.original}
       />
       <Hero>
         <PostHeroCard {...data.post} />

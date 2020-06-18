@@ -56,7 +56,6 @@ export default PostListPage;
 export const query = graphql`
   query {
     posts: allMdx(
-      limit: 6
       sort: { fields: frontmatter___date, order: DESC }
       filter: { fileAbsolutePath: { regex: "/content/posts//" } }
     ) {
