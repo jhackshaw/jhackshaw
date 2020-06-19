@@ -4,12 +4,12 @@ import styled from "styled-components";
 
 const StyledAnchor = styled.a`
   text-decoration: none;
-  color: #000;
+  color: inherit;
 `;
 
 const StyledLink = styled(Link)<GatsbyLinkProps<{}>>`
   text-decoration: none;
-  color: #000;
+  color: inherit;
 `;
 
 export const NoFussLink: React.FC<Omit<GatsbyLinkProps<{}>, "ref">> = ({
