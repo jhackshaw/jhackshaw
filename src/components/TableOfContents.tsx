@@ -48,7 +48,6 @@ interface Props {
 }
 
 export const TableOfContents: React.FC<Props> = ({ items }) => {
-  console.log(items);
   return (
     <StyledTOC>
       {items.map(item => (
