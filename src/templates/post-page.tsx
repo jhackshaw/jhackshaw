@@ -1,15 +1,26 @@
 import React from "react";
 import { PageProps, graphql } from "gatsby";
-import { MDXRenderer } from "gatsby-plugin-mdx";
 import { AllPostQuery } from "../queries";
-import { Hero, PostHeroCard, Layout, SEO, Section } from "../components";
+import {
+  Hero,
+  PostHeroCard,
+  Layout,
+  SEO,
+  Section,
+  PostContent,
+  SidebarLayout,
+  Sidebar,
+  SidebarContent,
+  SidebarTitle,
+  TableOfContents
+} from "../components";
 
 interface Data {
   post: AllPostQuery;
 }
 
 const ProjectPage: React.FC<PageProps<Data>> = ({ data }) => {
-  const { body, frontmatter, fields } = data.post;
+  const { body, frontmatter, fields, tableOfContents } = data.post;
   return (
     <Layout>
       <SEO
@@ -21,7 +32,15 @@ const ProjectPage: React.FC<PageProps<Data>> = ({ data }) => {
         <PostHeroCard {...data.post} />
       </Hero>
       <Section>
-        <MDXRenderer>{body}</MDXRenderer>
+        <SidebarLayout>
+          <SidebarContent>
+            <PostContent>{body}</PostContent>
+          </SidebarContent>
+          <Sidebar>
+            <SidebarTitle>TABLE OF CONTENTS</SidebarTitle>
+            <TableOfContents items={tableOfContents.items ?? []} />
+          </Sidebar>
+        </SidebarLayout>
       </Section>
     </Layout>
   );

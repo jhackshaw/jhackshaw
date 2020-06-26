@@ -11,7 +11,9 @@ import {
   MediaCardList,
   TopTagList,
   Sidebar,
-  SidebarLayout
+  SidebarLayout,
+  SidebarContent,
+  SidebarTitle
 } from "../components";
 import { PostSummaryQuery } from "../queries";
 
@@ -41,16 +43,16 @@ const TagPage: React.FC<PageProps<Data, Ctx>> = ({ data, pageContext }) => {
       </Hero>
       <Section>
         <SidebarLayout>
-          <div>
-            <h3>Latest</h3>
+          <SidebarContent>
+            <SidebarTitle>Latest</SidebarTitle>
             <MediaCardList>
               {data.posts.nodes.map(post => (
                 <PostCard {...post} key={post.frontmatter.title} />
               ))}
             </MediaCardList>
-          </div>
+          </SidebarContent>
           <Sidebar>
-            <h3>Top Tags</h3>
+            <SidebarTitle>Top Tags</SidebarTitle>
             <TopTagList />
           </Sidebar>
         </SidebarLayout>

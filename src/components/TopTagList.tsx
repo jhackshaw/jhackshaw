@@ -9,7 +9,7 @@ const Tag = styled(NoFussLink)`
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1rem;
-  font-family: "Roboto Mono", monospace;
+  font-family: var(--font-family-mono);
 
   :hover {
     color: var(--text-title);

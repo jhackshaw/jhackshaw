@@ -30,9 +30,16 @@ export interface PostSummaryQuery {
   timeToRead: number;
 }
 
+export interface TOC {
+  url: string;
+  title: string;
+  items?: TOC[];
+}
+
 export interface AllPostQuery extends PostSummaryQuery {
   frontmatter: AllPostFrontmatter;
   body: string;
+  tableOfContents: TOC;
 }
 
 export const postFragments = graphql`
@@ -71,5 +78,6 @@ export const postFragments = graphql`
       ...AllPostFrontmatter
     }
     body
+    tableOfContents(maxDepth: 3)
   }
 `;

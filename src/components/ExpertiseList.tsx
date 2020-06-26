@@ -19,7 +19,7 @@ const Expertise = styled.div`
   }
 
   span {
-    font-family: "Roboto Mono", monospace;
+    font-family: var(--font-familiy-mono);
     font-size: 1.25rem;
     line-height: 1.6;
     font-weight: 500;

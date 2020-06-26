@@ -5,6 +5,7 @@ import { NoFussLink } from "./NoFussLink";
 import { Tags } from "./Tags";
 import { PostTitle } from "./PostTitle";
 import { PostSummaryQuery } from "../queries";
+import { useDefaultImage } from "../hooks";
 import styled from "styled-components";
 
 export const StyledPostCard = styled(Card)`
@@ -65,13 +66,14 @@ export const PostCard: React.FC<PostSummaryQuery> = ({
   fields,
   timeToRead
 }) => {
+  const defaultImage = useDefaultImage();
   const { image, title, tags, date } = frontmatter;
 
   return (
     <NoFussLink to={`/post/${fields.slug}`}>
       <StyledPostCard>
         <ImageWrapper>
-          {image && <Img fluid={image.childImageSharp.fluid} />}
+          <Img fluid={image?.childImageSharp.fluid ?? defaultImage} />
         </ImageWrapper>
         <CardBody>
           <PublishDetails>

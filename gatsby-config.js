@@ -10,10 +10,15 @@ module.exports = {
   plugins: [
     `gatsby-transformer-sharp`,
     `gatsby-transformer-yaml`,
-    `gatsby-plugin-mdx`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: ["gatsby-remark-slug"]
+      }
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
@@ -25,7 +30,7 @@ module.exports = {
       options: {
         fonts: [
           {
-            family: `Roboto`,
+            family: `Ubuntu`,
             variants: [`300`, `400`, `500`]
           },
           {

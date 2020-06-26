@@ -8,4 +8,208 @@ tags:
   - Snippet
 ---
 
-### blah blah, blah-de-blah blah
+## Typescript & Gatsby
+
+Gatsby's recent release added first-class typescript support by including the `gatsby-plugin-typescript` extension by default.
+
+The Gatsby team is also in the process of converting large portions of the core library itself to typescript.
+
+It's safe to say that typescript is here to stay in Gatsby, and understanding how to use it effectively can make developing in Gatsby even more enjoyable.
+
+## Which type is right?
+
+Because of the deeply nested structure of Gatsby graphql queries, typescript can start to seem like it's not worth the trouble.
+
+As an example, I have a component in this site called PostHeaderCard (in action at the top of this page^)
+
+It requires most of the data from the frontmatter of a post (title, tags, date, etc). The first instinct would be to define the props in the component itself, something like this:
+
+```tsx
+interface Props {
+  title: string;
+  tags: string[];
+  date: string;
+}
+
+export const PostHeaderCard: React.FC<Props> = ({ 
+  title, 
+  tags, 
+  date 
+}) => (
+  <div>
+    <h1>{title}</h1>
+    <span>{date}</span>
+    {tags.map(t => (
+      <span key={t}>{t}</span>
+    ))}
+  </div>
+);
+```
+
+This is a perfectly normal way to add types to a react functional component and it works quite well.
+
+The problem with this approach in Gatsby is that types start to get defined all over the place. For example, using the PostHeaderCard from a page component requires redefining essentially the exact same type when defining the query result data.
+
+```tsx
+import { graphql, PageProps } from 'gatsby';
+
+interface QueryResult {
+  markdownRemark: {
+    frontmatter: {
+      title: string;
+      tags: string[];
+      date: string;
+    };
+    body: string;
+  }
+}
+
+const MyPage: React.FC<PageProps<QueryResult>> = ({ 
+  data 
+}) => {
+  const {frontmatter, body} = data.markdownRemark
+
+  return (
+    <div>
+      <PostHeaderCard {...frontmatter} />
+      <div>{body}</div>
+    </div>
+  )
+})
+
+export default MyPage;
+
+export const query = graphql`
+  markdownRemark {
+    frontmatter {
+      title
+      tags
+      date
+    }
+    body
+  }
+`;
+
+```
+
+In the example above, spreading the frontmatter into the PostHeaderCard component is perfectly valid because the 2 types are compatible.
+
+However, the frontmatter type has been defined twice - once in the PageHeaderCard component, and again in the MyPage component.
+
+This eliminates some of the benefit of typescript. Adding another field to my frontmatter would require me to update 3 different places (each of the components above, as well as the query itself).
+
+## Single source of type-truth
+
+The type of frontmatter data for my posts should only need to be defined once, and then shared throughout the app. This improves useability, flexibility, and allows for the full benefits of typescript.
+
+It makes sense for these types to be defined alongside the graphql queries themselves, so they are easy to compare and update.
+
+Lukily graphql query framgments fit this use case perfectly. A better solution is to define common queries as graphql fragments, and export the types from there.
+
+I typically do this in a `src/queries/` folder in my Gatsby projects.
+
+For example, in `src/queries/post.ts` I first define the overall type of a Post:
+
+```ts
+export interface PostFrontmatter {
+  title: string;
+  tags: [];
+  date: string;
+}
+
+export interface Post {
+  frontmatter: PostFrontmatter;
+  fields: {
+    slug: string;
+  };
+  timeToRead: string;
+}
+```
+
+Then, in the same file, I define query fragments that easily map to the Post and PostFrontmatter interfaces defined above.
+
+```ts
+export const postFragments = graphql`
+  fragment PostFrontmatter on MdxFrontmatter {
+    title
+    tags
+    date(formatString: "MMM, YYYY")
+  }
+
+  fragment PostSummary on Mdx {
+    fields {
+      slug
+    }
+    frontmatter {
+      ...PostFrontmatter
+    }
+    timeToRead
+  }
+`;
+```
+
+Gatsby will automatically recognize, parse, and make these query fragments available for use.
+
+Now I can import the Post or PostFrontmatter type any other component and know that they will accurately reflect the data returned by their respective fragment queries.
+
+Page components that query for data become much easier to read and reason about by composing the different types to form the overall query result.
+
+```tsx
+import { graphql, PageProps } from 'gatsby';
+import { Post } from '../queries';
+
+interface QueryResult {
+  markdownRemark: Post
+}
+
+const MyPage: React.FC<PageProps<QueryResult>> = ({ 
+  data 
+}) => {
+  const {frontmatter, body} = data.markdownRemark;
+
+  return (
+    <div>
+      <PostHeaderCard {...frontmatter} />
+      <div>{body}</div>
+    </div>
+  )
+})
+
+export default MyPage;
+
+export const query = graphql`
+  markdownRemark {
+    ...Post
+  }
+`;
+```
+
+Now, the MyPage component doesn't need to be directly aware of the structure of the frontmatter data for a post. It only needs to use the query fragment and data type defined elsewhere.
+
+Adding a field to frontmatter only requires updating a single location.
+
+Finally, the PostHeaderCard component can be simplified to this.
+
+```tsx
+export const PostHeaderCard: React.FC<PostFrontmatter> = ({
+  title,
+  tags,
+  date
+}) => (
+  <>
+    <h1>{title}</h1>
+    <span>{date}</span>
+    {tags.map(t => (
+      <span key={t}>{t}</span>
+    ))}
+  </>
+);
+```
+
+## Benefits
+
+This all may seem straightforward enough, but I've seen Gatsby applications over and over again that aren't using types effectively.
+
+Many of these principles apply to typescript in general. It's just easy to forget when it comes to writing Gatsby sites because of the additional step introduced by graphql.
+
+Consolidating the types with graphql query fragments drastically improves the Gatsby experience using typescript, and leverages the full benefits of a strongly typed language.

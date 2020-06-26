@@ -8,7 +8,7 @@ const StyledTags = styled.p`
   color: var(--text-lighter);
   margin: 0;
   line-height: 1.6;
-  font-family: "Roboto Mono", monospace;
+  font-family: var(--font-family-mono);
 `;
 
 interface Props {

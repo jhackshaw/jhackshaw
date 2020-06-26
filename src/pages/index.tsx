@@ -87,7 +87,7 @@ const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
       </Section>
 
       <Section>
-        <SectionTitle to="/post">Blog Posts</SectionTitle>
+        <SectionTitle to="/post">Posts</SectionTitle>
         <PostCardGrid>
           {data.posts.nodes.map(post => (
             <PostCard {...post} key={post.frontmatter.title} />
@@ -138,11 +138,7 @@ export const query = graphql`
       sort: { fields: frontmatter___date, order: DESC }
       filter: {
         fileAbsolutePath: { regex: "/content/posts//" }
-        frontmatter: {
-          tags: { eq: "Project" }
-          image: { id: { ne: null } }
-          published: { eq: true }
-        }
+        frontmatter: { tags: { eq: "Project" }, published: { eq: true } }
       }
     ) {
       nodes {
@@ -155,11 +151,7 @@ export const query = graphql`
       sort: { fields: frontmatter___date, order: DESC }
       filter: {
         fileAbsolutePath: { regex: "/content/posts//" }
-        frontmatter: {
-          tags: { ne: "Project" }
-          image: { id: { ne: null } }
-          published: { eq: true }
-        }
+        frontmatter: { tags: { ne: "Project" }, published: { eq: true } }
       }
     ) {
       nodes {

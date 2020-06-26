@@ -5,6 +5,7 @@ import { HeroCard } from "./HeroCard";
 import { PostTitlePrimary } from "./PostTitle";
 import { Tags } from "./Tags";
 import { NoFussLink } from "./NoFussLink";
+import { useDefaultImage } from "../hooks";
 import { AllPostQuery } from "../queries";
 
 const StyledPostHeroCard = styled(HeroCard)<{ isLinked?: boolean }>`
@@ -80,6 +81,7 @@ export const PostHeroCard: React.FC<Props> = ({
   link,
   maxWidth = 800
 }) => {
+  const defaultImage = useDefaultImage();
   const { title, date, source, demo, image, tags } = frontmatter;
   const linkTo = link ? `/post/${fields.slug}` : "";
   return (
@@ -100,13 +102,11 @@ export const PostHeroCard: React.FC<Props> = ({
         </Details>
         <Tags tags={tags} />
       </TitleSection>
-      {image && (
-        <ImageSection>
-          <NoFussLink to={linkTo}>
-            <Img fluid={image.childImageSharp.fluid} />
-          </NoFussLink>
-        </ImageSection>
-      )}
+      <ImageSection>
+        <NoFussLink to={linkTo}>
+          <Img fluid={image?.childImageSharp.fluid ?? defaultImage} />
+        </NoFussLink>
+      </ImageSection>
     </StyledPostHeroCard>
   );
 };

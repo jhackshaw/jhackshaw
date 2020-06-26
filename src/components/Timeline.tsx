@@ -47,7 +47,7 @@ const TimelineHeader = styled.div`
 const TimelineBody = styled.div`
   font-size: 1rem;
   line-height: 1.5rem;
-  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: var(--font-family);
 `;
 
 const TimelineTitle = styled.div`

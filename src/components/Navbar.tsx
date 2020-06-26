@@ -16,7 +16,7 @@ const StyledNavbar = styled.header`
   flex-direction: row;
   justify-content: space-between;
   color: #eeeeee;
-  font-family: "Roboto Mono", monospace;
+  font-family: var(--font-familiy-mono);
   max-width: 1600px;
   margin: 0 auto;
   padding: 1.5rem 1rem;

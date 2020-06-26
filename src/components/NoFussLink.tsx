@@ -1,8 +1,9 @@
 import React from "react";
+import { OutboundLink } from "gatsby-plugin-google-analytics";
 import { Link, GatsbyLinkProps } from "gatsby";
 import styled from "styled-components";
 
-const StyledAnchor = styled.a`
+const StyledAnchor = styled(OutboundLink)`
   text-decoration: none;
   color: inherit;
 `;
@@ -23,8 +24,10 @@ export const NoFussLink: React.FC<Omit<GatsbyLinkProps<{}>, "ref">> = ({
     <StyledLink to={to} {...rest}>
       {children}
     </StyledLink>
+  ) : to.startsWith("#") ? (
+    <StyledAnchor href={to}>{children}</StyledAnchor>
   ) : (
-    <StyledAnchor target="_black" rel="noopener noreferrer" href={to}>
+    <StyledAnchor target="_blank" rel="noopener noreferrer" href={to}>
       {children}
     </StyledAnchor>
   );

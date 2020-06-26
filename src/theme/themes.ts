@@ -1,5 +1,7 @@
 const common = {
-  "text-brand": "#f6c90e"
+  "text-brand": "#f6c90e",
+  "font-family": "'Ubuntu', sans-serif",
+  "font-family-mono": "'Roboto Mono', monospace"
 };
 
 export const themes = {
@@ -7,7 +9,7 @@ export const themes = {
     ...common,
     "background-main": "#fafafa",
     "background-card": "#ffffff",
-    "text-main": "#000",
+    "text-main": "#212121",
     "text-title": "#303f9f",
     "text-light": "#424242",
     "text-lighter": "#757575",
