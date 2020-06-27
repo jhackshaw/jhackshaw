@@ -19,7 +19,7 @@ interface Data {
   post: AllPostQuery;
 }
 
-const ProjectPage: React.FC<PageProps<Data>> = ({ data }) => {
+const PostPage: React.FC<PageProps<Data>> = ({ data }) => {
   const { body, frontmatter, fields, tableOfContents } = data.post;
   return (
     <Layout>
@@ -46,12 +46,13 @@ const ProjectPage: React.FC<PageProps<Data>> = ({ data }) => {
   );
 };
 
-export default ProjectPage;
+export default PostPage;
 
 export const query = graphql`
   query($slug: String!) {
     post: mdx(
       fields: { slug: { eq: $slug } }
+      frontmatter: { published: { eq: true } }
       fileAbsolutePath: { regex: "/content/posts//" }
     ) {
       ...AllPost
