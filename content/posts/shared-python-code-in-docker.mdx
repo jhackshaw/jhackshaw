@@ -1,0 +1,54 @@
+---
+title: sharing python code between docker images
+date: 2018-12-13T18:51:00.000Z
+published: false
+tags:
+  - python
+  - docker
+---
+
+## Sharing code
+
+It’s come up several times where I have 2 distinct services that I’m building docker images for that need to share some code without sharing all of their code. This is a strategy to keep each docker image independent, without having to duplicate shared code between them.
+
+It works by setting up a base image as a starting point for each image. The base image installs the shared code as a package using pip for each image to have access to using the normal python import system. I’ve found this to be especially useful with an orchestration system like docker-compose.
+
+The root structure for this example, simplified from [termninja](https://www.term.ninja), looks like this.
+
+[folder structure]
+
+### Base Image
+
+The shared code should be structured like a typical python package, complete with a setup.py and Dockerfile at it’s root.
+
+[folder structure]
+
+The setup.py just needs to install the adjacent package and can be pretty simple.
+
+[setup.py]
+
+Then, the Dockerfile can start from the desired python environment and install the package.
+
+### Dependent images
+
+Services that access this shared code can then start from the base image in their Dockerfile, and perform any service specific installation or setup. The shared package that was installed in the base image will be available using the python import system.
+
+### docker-compose
+
+To make sure that the latest base image is used by the dependent services, use the docker-compose depends_on argument.
+
+[docker-compose]
+
+## Hot reloading
+
+When developing, it’s common to have a shared volume, and any changes to the code are immediately reflected in the running service. To support hot-reloading of dependent services when code for the base image changes, the shared package code needs to be a volume, and the package needs to be installed with pip as _editable_. My preferred way of doing this is using a build argument to the base image.
+
+[dockerfile updated]
+
+In the docker-compose file, specify that the build argument should be pulled from the local environment.
+
+[docker-compose updated]
+
+Now, for hot-reloading you can run `DEVELOP=true docker-compose up --build` and for production just run `docker-compose up --build`.
+
+Hopefully this helps someone else running into the same issue. Let me know how it goes below, thanks!
