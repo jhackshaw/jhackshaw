@@ -1,12 +1,25 @@
 import React from "react";
 import { TOC } from "../queries";
-import { NoFussLink } from "../components";
 import styled from "styled-components";
+import { useActiveHash, getHeadingIds } from "../hooks";
+
+interface LinkProps {
+  active?: boolean;
+}
+
+const ActiveLink = styled.a<LinkProps>`
+  text-decoration: none;
+  color: ${({ active }) =>
+    active ? "var(--text-title);" : "var(--text-light);"};
+  :hover {
+    color: var(--text-title);
+  }
+`;
 
 const SubHeaders = styled.div`
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   padding: 0.5rem 0 0 1rem;
-  line-height: 1.2;
+  line-height: 1.5;
   font-weight: 300;
 
   a {
@@ -20,12 +33,7 @@ const TOCItem = styled.div`
   font-family: var(--font-family);
   line-height: 1.5;
   font-weight: 500;
-
-  a:hover {
-    color: var(--text-title);
-  }
-
-  color: var(--text-light);
+  font-size: 1.1rem;
 `;
 
 const StyledTOC = styled.div`
@@ -48,17 +56,25 @@ interface Props {
 }
 
 export const TableOfContents: React.FC<Props> = ({ items }) => {
+  const activeHash = useActiveHash(getHeadingIds(items));
+  console.log(activeHash);
   return (
     <StyledTOC>
       {items.map(item => (
         <TOCItem key={item.url}>
-          <NoFussLink to={item.url}>{item.title}</NoFussLink>
+          <ActiveLink href={item.url} active={item.url === activeHash}>
+            {item.title}
+          </ActiveLink>
           {item.items && (
             <SubHeaders>
               {item.items.map(subitem => (
-                <NoFussLink to={subitem.url} key={subitem.url}>
+                <ActiveLink
+                  href={subitem.url}
+                  key={subitem.url}
+                  active={subitem.url === activeHash}
+                >
                   {subitem.title}
-                </NoFussLink>
+                </ActiveLink>
               ))}
             </SubHeaders>
           )}
