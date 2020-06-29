@@ -13,6 +13,11 @@ export const StyledPostContent = styled.article`
     margin-top: 0;
   }
 
+  a {
+    color: var(--text-title);
+    text-decoration: none;
+  }
+
   h2,
   h3 {
     color: var(--text-title);
