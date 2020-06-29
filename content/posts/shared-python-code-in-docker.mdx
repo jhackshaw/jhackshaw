@@ -1,0 +1,153 @@
+---
+title: Sharing python code between docker images
+date: 2018-12-13T18:51:00.000Z
+published: true
+image: ../media/python_and_docker.png
+tags:
+  - python
+  - docker
+---
+
+## Sharing code
+
+One of the main benefits of containerization is seperation of concerns. Each component of the larger system is logically isolated and only contains it's respective dependencies.
+
+This works quite well until you need to share some simple layer between several images. For example, you may want to share a database access layer / ORM between a worker image and an api image to keep the access patterns consistent.
+
+The approach I generally take is to build a common base image. This example is for Python using pip, but a similar approach works in other languages. With a little bit of configuration, it can even still support hot-reloading in development.
+
+The code examples are loosely based on what I used in [termninja](https://github.com/jhackshaw/termninja) to share the database access utilities between the game engine and the API. The root file structure looks like this.
+
+```txt
+.
+├── README.md
+├── docker-compose.yml
+|
+├── games/            # Game engine image
+|   └── Dockerfile
+|
+├── api/              # Sanic app for api access to backend
+|   └── Dockerfile
+|
+└── base/             # database access shared by api and games
+    ├── termninja_db/
+    |   └── models.py
+    |
+    ├── setup.py
+    └── Dockerfile
+
+```
+
+### Base Image
+
+The shared code is structured as a typical python package. The base image simply installs the shared code as a python package.
+
+```docker
+FROM python:3.8-alpine
+
+ARG editable
+
+WORKDIR /base
+
+COPY . /base
+
+# install local package
+RUN pip install .
+```
+
+For completeness, the `setup.py` file looks like this. It will locate the `termninja_db` python package and install it to system python within the docker image.
+
+```python
+import setuptools
+
+setuptools.setup(
+    name="termninja_base",
+    version="0.0.1",
+    author="Jeff Hackshaw",
+    author_email="email address",
+    description="base utilities for termninja",
+    url="https://github.com/jhackshaw/termninja",
+    packages=setuptools.find_packages(),
+    classifiers=[],
+)
+```
+
+### Dependent images
+
+Services that access this shared code can then start from that base image in their Dockerfile. The shared package that was installed in the base image will be available using the python import system.
+
+For example, here's a simplified version of the game engine dockerfile:
+
+```docker
+FROM termninja_base:latest
+
+WORKDIR /app
+
+COPY . .
+
+ENTRYPOINT [ "python", "app.py" ]
+```
+
+Both the api and the game engine start from this base image and access the database by importing from `termninja_db` using the standard python import system.
+
+```python
+from termninja_db import save_round
+
+async def on_round_played(round: Round):
+  await save_round(round)
+```
+
+### docker-compose
+
+To make sure that the latest base image is used by the dependent services, use the docker-compose depends_on argument.
+
+```docker
+base:
+  build: ./base
+  depends_on:
+    - postgres
+
+api:
+  build: ./api
+  ports:
+    - 3000:3000
+  depends_on:
+    - base
+```
+
+## Bonus points: Hot reloading
+
+When developing, it’s common to have a shared volume, and any changes to the code are immediately reflected in the running service.
+
+To acheive the same hot-reloading effect when the shared code (which has been installed as a python package) changes, a little more configuration is required.
+
+First, the base package needs to be added as a volume.
+
+```docker
+api:
+  volumes:
+    - ./api/:/api/
+    - ./base/termninja_db/:/base/termninja_db/
+```
+
+Next, the package needs to be installed as "editable". This is done using the -e option of pip install. This is really something you would only want in development, so I added a build argument that determines this.
+
+The updated RUN command in the dockerfile looks like this.
+
+```docker
+RUN if [[ -n "$editable" ]]; then pip install -e .; else pip install .; fi
+```
+
+And the last step is to add this build argument to docker-compose in development.
+
+```docker
+base:
+  build:
+    context: ./base
+    args:
+      editable: ${DEVELOP}
+  depends_on:
+    - postgres
+```
+
+Now, for hot-reloading you can run `DEVELOP=true docker-compose up --build` and for production just run `docker-compose up --build`.
