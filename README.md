@@ -1,3 +1,12 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/614b8c02-e73b-4750-8213-a9e44059d539/deploy-status)](https://app.netlify.com/sites/jhackshaw/deploys)
+### Hi there 👋!
 
-[jhackshaw.com](https://jhackshaw.com)
+I'm a fullstack developer, building things in *typescript*, *python*, *react*, and *javascript*.
+
+Checkout some of my projects below, or find me on:
+
+
+<p align="center">
+  
+  ![](https://visitor-badge.glitch.me/badge?page_id=ari-hacks.ari-hacks)
+
+</p>
