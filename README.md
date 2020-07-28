@@ -11,4 +11,4 @@ Checkout some of my projects below, or find me on:
 - [Twitter](https://twitter.com/jhackshaw)
 - [LinkedIn](https://www.linkedin.com/in/jeffrey-hackshaw/)
 
-<p align="left"> <img src="https://github-readme-stats.vercel.app/api?username=jhackshaw&show_icons=true&hide=issues" alt="jhackshaw" /> </p>
+<p align="left"> <img src="https://github-readme-stats.vercel.app/api?username=jhackshaw&show_icons=true&hide=issues&count_private=true&hide_border=true&hide_rank=true&hide_title=true&bg_color=FFFFFF" alt="jhackshaw" /> </p>
