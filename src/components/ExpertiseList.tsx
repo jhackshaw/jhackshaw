@@ -50,7 +50,7 @@ const StyledExpertiseList = styled.div`
   }
 
   @media screen and (min-width: 760px) {
-    gap: 2rem;
+    /* gap: 2rem; */
   }
 
   ${Expertise} + ${Expertise} {

@@ -29,10 +29,9 @@ export const StyledPostContent = styled.article`
     code {
       font-family: var(--font-family-mono);
       font-weight: 500;
-      padding: 2px 8px;
+      padding: 0 5px;
       background-color: var(--background-card);
       display: inline-block;
-      margin: 0 4px;
     }
   }
 `;

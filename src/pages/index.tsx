@@ -26,23 +26,21 @@ interface IndexQueryProps {
   featured: {
     nodes: AllPostQuery[];
   };
-
   projects: {
     nodes: PostSummaryQuery[];
   };
-
   posts: {
     nodes: PostSummaryQuery[];
   };
-
   expertise: {
     nodes: ExpertiseQuery[];
   };
-
   experience: {
     nodes: ExperienceQuery[];
   };
-
+  certifications: {
+    nodes: CredentialQuery[];
+  };
   credentials: {
     nodes: CredentialQuery[];
   };
@@ -103,6 +101,11 @@ const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
       <Section>
         <SectionTitle>Experience</SectionTitle>
         <Timeline steps={data.experience.nodes} />
+      </Section>
+
+      <Section>
+        <SectionTitle>Certifications</SectionTitle>
+        <CredentialList credentials={data.certifications.nodes} />
       </Section>
 
       <Section>
@@ -171,6 +174,15 @@ export const query = graphql`
     ) {
       nodes {
         ...AllExperience
+      }
+    }
+
+    certifications: allMdx(
+      sort: { fields: frontmatter___date, order: DESC }
+      filter: { fileAbsolutePath: { regex: "/content/certifications//" } }
+    ) {
+      nodes {
+        ...AllCredential
       }
     }
 
