@@ -1,5 +1,5 @@
 
-<h2 align="center">Hi 👋, I'm Jeff!</h2>
+## Hi 👋, I'm Jeff!
 
 I'm a full stack dev, building things primarily in *typescript*, *javascript*, and *python*. I'm constantly learning, and sometimes I write about it on my website [jhackshaw.com](https://jhackshaw.com).
 
