@@ -3,7 +3,7 @@
 
 I'm a full stack dev, building things primarily in *typescript*, *javascript*, and *python*. I'm constantly learning, and sometimes I write about it on my website [jhackshaw.com](https://jhackshaw.com).
 
-Checkout some of my projects below, or find me on:
+Checkout some of my personal projects below, or find me on:
 
 - [My Work GitHub](https://github.com/jhackshaw-dds)
 - [Twitter](https://twitter.com/jhackshaw)
