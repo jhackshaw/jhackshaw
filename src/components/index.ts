@@ -1,6 +1,7 @@
 export * from "./Layout";
 export * from "./Hero";
 export * from "./HeroCard";
+export * from "./HeroCardTitle";
 export * from "./SocialIcons";
 export * from "./IndexHeroCard";
 export * from "./Section";
@@ -28,3 +29,5 @@ export * from "./TagHeroTitle";
 export * from "./TableOfContents";
 
 export * from "./CodeBlock";
+
+export * from "./BookTable";

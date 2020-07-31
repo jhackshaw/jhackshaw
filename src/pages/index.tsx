@@ -19,7 +19,8 @@ import {
   SEO,
   PostCard,
   PostCardGrid,
-  PostHeroCard
+  PostHeroCard,
+  HeroCardTitle
 } from "../components";
 
 interface IndexQueryProps {
@@ -66,7 +67,16 @@ const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
     <Layout>
       <SEO title="Home" />
       <Hero>
-        <IndexHeroCard />
+        <IndexHeroCard>
+          <HeroCardTitle>Jeff Hackshaw</HeroCardTitle>
+          <p>
+            Hi there! I&apos;m a full stack web developer, soon to be 9-year
+            Marine Corps veteran, science fiction enthusiast, and husband.
+          </p>
+          <p>
+            <em>This website is a work in progress.</em>
+          </p>
+        </IndexHeroCard>
       </Hero>
       <Section>
         <SectionTitle to={`/post/${featuredPost.fields.slug}`}>

@@ -9,6 +9,7 @@
     "@mdx-js/react": "^1.6.14",
     "@types/react": "^16.9.43",
     "@types/react-helmet": "^6.0.0",
+    "@types/react-table": "^7.0.19",
     "@types/styled-components": "^5.1.1",
     "babel-plugin-styled-components": "^1.10.7",
     "eslint-config-prettier": "^6.11.0",
@@ -35,6 +36,7 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
     "react-icons": "^3.10.0",
+    "react-table": "^7.3.3",
     "styled-components": "^5.1.1",
     "typescript": "^3.9.7"
   },

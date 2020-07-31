@@ -4,7 +4,6 @@ import Img from "gatsby-image";
 import styled from "styled-components";
 import { HeroCard } from "./HeroCard";
 import { SocialIcons } from "./SocialIcons";
-import { HeroCardTitle } from "./HeroCardTitle";
 
 const StyledIndexHeroCard = styled(HeroCard)`
   display: flex;
@@ -40,7 +39,7 @@ const Details = styled.div`
   }
 `;
 
-export const IndexHeroCard: React.FC = () => {
+export const IndexHeroCard: React.FC = ({ children }) => {
   const { file } = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "media/profile.jpg" }) {
@@ -57,14 +56,7 @@ export const IndexHeroCard: React.FC = () => {
     <StyledIndexHeroCard maxWidth={700}>
       <Img fixed={file.childImageSharp.fixed} />
       <Details>
-        <HeroCardTitle>Jeff Hackshaw</HeroCardTitle>
-        <p>
-          Hi there! I&apos;m a full stack web developer, soon to be 9-year
-          Marine Corps veteran, science fiction enthusiast, and husband.
-        </p>
-        <p>
-          <em>This website is a work in progress.</em>
-        </p>
+        {children}
         <SocialIcons />
       </Details>
     </StyledIndexHeroCard>
