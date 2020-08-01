@@ -28,7 +28,7 @@ const IndexPage: React.FC<PageProps<BookQueryProps>> = ({ data }) => {
             read them, and which ones I liked.
           </p>
           <p>
-            <em>This obviously isn't exhaustive and I wish I started sooner</em>
+            <em>This is not an exhaustive list</em>
           </p>
         </IndexHeroCard>
       </Hero>

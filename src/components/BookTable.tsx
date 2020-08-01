@@ -13,6 +13,7 @@ import {
 import { BookQuery } from "queries";
 import { Input } from "./FormControls";
 import { StarRating } from "./StarRating";
+import { Paginator } from "./Paginator";
 import styled from "styled-components";
 import { FaSort, FaSortDown, FaSortUp } from "react-icons/fa";
 
@@ -82,6 +83,15 @@ const SearchWrapper = styled.div`
   }
 `;
 
+const PaginatorWrapper = styled.div`
+  width: 100%;
+  max-width: 1366px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 2rem;
+`;
+
 const StarRatingCell = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -127,7 +137,9 @@ export const BookTable: React.FC<Props> = ({ books }) => {
       data: books,
       disableMultiSort: true,
       initialState: {
-        pageSize: 20
+        pageSize: 15,
+        pageIndex: 0,
+        sortBy: [{ id: "Finished", desc: true }]
       }
     },
     useGlobalFilter,
@@ -173,7 +185,7 @@ export const BookTable: React.FC<Props> = ({ books }) => {
         </thead>
 
         <tbody {...instance.getTableBodyProps()}>
-          {instance.rows.map(row => {
+          {instance.page.map(row => {
             instance.prepareRow(row);
             return (
               <tr {...row.getRowProps()}>
@@ -185,6 +197,9 @@ export const BookTable: React.FC<Props> = ({ books }) => {
           })}
         </tbody>
       </Table>
+      <PaginatorWrapper>
+        <Paginator instance={instance} />
+      </PaginatorWrapper>
     </>
   );
 };
