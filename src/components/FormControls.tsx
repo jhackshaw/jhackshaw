@@ -7,4 +7,5 @@ export const Input = styled.input`
   background: var(--background-card);
   display: block;
   color: var(--text-main);
+  font-size: 1.2rem;
 `;

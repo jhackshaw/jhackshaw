@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   z-index: 300;
   position: absolute;
   top: 0;
+  left: 0;
 `;
 
 const StyledNavbar = styled.header`

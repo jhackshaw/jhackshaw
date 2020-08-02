@@ -12,7 +12,7 @@ const TopStars = styled.div``;
 const Wrapper = styled.div<Props>`
   position: relative;
   z-index: 1;
-  display: block;
+  display: inline-block;
 
   ${BottomStars}, ${TopStars} {
     display: flex;

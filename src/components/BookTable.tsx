@@ -14,6 +14,9 @@ import { BookQuery } from "queries";
 import { Input } from "./FormControls";
 import { StarRating } from "./StarRating";
 import { Paginator } from "./Paginator";
+import { BookCard } from "./BookCard";
+import { PostCardGrid } from "./PostCardGrid";
+import { Section } from "./Section";
 import styled from "styled-components";
 import { FaSort, FaSortDown, FaSortUp } from "react-icons/fa";
 
@@ -23,12 +26,14 @@ interface Props {
 
 const Table = styled.table`
   width: 100%;
-  padding: 2rem;
-  max-width: 1366px;
-  margin: 0 auto;
   color: var(--text-light);
   font-size: 1.2rem;
   border-radius: 1rem;
+  display: none;
+
+  @media screen and (min-width: 1280px) {
+    display: table;
+  }
 
   thead > tr {
     border-bottom: 2px solid var(--text-lightest);
@@ -70,11 +75,30 @@ const Table = styled.table`
   }
 `;
 
+const CardWrapper = styled(PostCardGrid)`
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media screen and (min-width: 1280px) {
+    display: none;
+  }
+`;
+
+const CardItem = styled(BookCard)`
+  flex: 1 0 100%;
+
+  @media screen and (min-width: 768px) {
+    flex: 1 0 50%;
+  }
+`;
+
 const SearchWrapper = styled.div`
   width: 100%;
   max-width: 1366px;
-  margin: 2rem auto 0 auto;
-  padding: 0 2rem;
+  margin-bottom: 1rem;
 
   ${Input} {
     max-width: 500px;
@@ -85,11 +109,9 @@ const SearchWrapper = styled.div`
 
 const PaginatorWrapper = styled.div`
   width: 100%;
-  max-width: 1366px;
-  margin: 0 auto;
   display: flex;
   justify-content: flex-end;
-  padding: 0 2rem;
+  margin-top: 2rem;
 `;
 
 const StarRatingCell = styled.div`
@@ -151,11 +173,11 @@ export const BookTable: React.FC<Props> = ({ books }) => {
   );
 
   return (
-    <>
+    <Section maxWidth="1366px">
       <SearchWrapper>
         <Input
           onChange={e => instance.setGlobalFilter(e.target.value)}
-          value={instance.state.globalFilter}
+          value={instance.state.globalFilter ?? ""}
           placeholder="Search"
         />
       </SearchWrapper>
@@ -197,9 +219,19 @@ export const BookTable: React.FC<Props> = ({ books }) => {
           })}
         </tbody>
       </Table>
+      <CardWrapper>
+        {instance.page.map(row => {
+          return (
+            <CardItem
+              key={`${row.original.title}${row.original.author}`}
+              {...row.original}
+            />
+          );
+        })}
+      </CardWrapper>
       <PaginatorWrapper>
         <Paginator instance={instance} />
       </PaginatorWrapper>
-    </>
+    </Section>
   );
 };

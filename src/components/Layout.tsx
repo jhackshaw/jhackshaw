@@ -12,11 +12,12 @@ const GlobalStyle = createGlobalStyle`
 
   * {
     box-sizing: border-box !important;
+    /* border: 1px solid #f00 !important; */
   }
 `;
 
 const StyledLayout = styled.div`
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,6 +25,7 @@ const StyledLayout = styled.div`
   background-color: var(--background-main);
 
   main {
+    width: 100%;
     flex-grow: 1;
   }
 `;
@@ -35,7 +37,7 @@ export const Layout: React.FC = ({ children }) => {
         <GlobalStyle />
         <Navbar />
         <main>{children}</main>
-        <Footer />
+        {/* <Footer /> */}
       </StyledLayout>
     </ThemeProvider>
   );

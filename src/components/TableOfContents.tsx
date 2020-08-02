@@ -57,7 +57,6 @@ interface Props {
 
 export const TableOfContents: React.FC<Props> = ({ items }) => {
   const activeHash = useActiveHash(getHeadingIds(items));
-  console.log(activeHash);
   return (
     <StyledTOC>
       {items.map(item => (
