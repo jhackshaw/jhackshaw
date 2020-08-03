@@ -42,7 +42,7 @@ const TagPage: React.FC<PageProps<Data, Ctx>> = ({ data, pageContext }) => {
         </TagHeroTitle>
       </Hero>
       <Section>
-        <SidebarLayout>
+        <SidebarLayout maxWidth="800px">
           <SidebarContent>
             <SidebarTitle>Latest</SidebarTitle>
             <MediaCardList>

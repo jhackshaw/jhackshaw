@@ -15,11 +15,6 @@ import {
   SidebarTitle
 } from "../components";
 import { PostSummaryQuery } from "../queries";
-import styled from "styled-components";
-
-const NarrowerLayout = styled(SidebarLayout)`
-  max-width: 800px;
-`;
 
 interface Data {
   posts: {
@@ -39,7 +34,7 @@ const PostListPage: React.FC<PageProps<Data>> = ({ data }) => {
         </TagHeroTitle>
       </Hero>
       <Section>
-        <NarrowerLayout>
+        <SidebarLayout maxWidth="800px">
           <SidebarContent>
             <SidebarTitle>Latest</SidebarTitle>
             <MediaCardList>
@@ -52,7 +47,7 @@ const PostListPage: React.FC<PageProps<Data>> = ({ data }) => {
             <SidebarTitle>Top Tags</SidebarTitle>
             <TopTagList />
           </Sidebar>
-        </NarrowerLayout>
+        </SidebarLayout>
       </Section>
     </Layout>
   );
