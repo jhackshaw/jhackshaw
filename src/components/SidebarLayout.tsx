@@ -13,7 +13,7 @@ export const SidebarLayout = styled.div<Props>`
   flex-flow: row nowrap;
   position: relative;
   align-items: flex-start;
-  max-width: ${({ maxWidth }) => maxWidth ?? '1000px' };
+  max-width: ${({ maxWidth }) => maxWidth ?? "1000px"};
   margin: 0 auto;
 
   ${SidebarTitle} {
@@ -25,6 +25,7 @@ export const SidebarLayout = styled.div<Props>`
     flex: 1 1 100%;
     position: relative;
     overflow: hidden;
+    padding: 0 1rem 1rem 1rem;
   }
 
   ${Sidebar} {
@@ -32,7 +33,7 @@ export const SidebarLayout = styled.div<Props>`
     position: sticky;
     top: 2rem;
     display: none;
-    margin-left: 5rem;
+    margin-left: 4rem;
 
     @media screen and (min-width: 1280px) {
       margin-left: 6rem;
