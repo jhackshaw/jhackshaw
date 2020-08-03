@@ -30,7 +30,7 @@ export const StyledPostCard = styled(Card)`
 
 const ImageWrapper = styled.div`
   .gatsby-image-wrapper {
-    height: 200px;
+    /* height: 200px; */
     width: 100%;
   }
 `;
