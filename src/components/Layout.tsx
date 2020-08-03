@@ -37,7 +37,7 @@ export const Layout: React.FC = ({ children }) => {
         <GlobalStyle />
         <Navbar />
         <main>{children}</main>
-        {/* <Footer /> */}
+        <Footer />
       </StyledLayout>
     </ThemeProvider>
   );
