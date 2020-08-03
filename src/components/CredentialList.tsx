@@ -31,8 +31,12 @@ const CredentialListItemContent = styled.div`
   margin-top: 1rem;
 
   @media screen and (min-width: 480px) {
-    margin-left: 3rem;
     margin-top: 0;
+    margin-left: 1rem;
+  }
+
+  @media screen and (min-width: 760px) {
+    margin-left: 2rem;
   }
 
   h3 {
