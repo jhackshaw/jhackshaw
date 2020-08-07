@@ -13,21 +13,30 @@ const StyledLink = styled(Link)<GatsbyLinkProps<{}>>`
   color: inherit;
 `;
 
-export const NoFussLink: React.FC<Omit<GatsbyLinkProps<{}>, "ref">> = ({
+interface Props extends Omit<GatsbyLinkProps<{}>, "ref"> {
+  href?: string;
+}
+
+export const NoFussLink: React.FC<Props> = ({
   to,
+  href,
   children,
   ...rest
 }) => {
-  return !to ? (
+  const url = href ?? to;
+
+  return !url ? (
     <>{children}</>
-  ) : to.startsWith("/") ? (
-    <StyledLink to={to} {...rest}>
+  ) : url.startsWith("/") ? (
+    <StyledLink to={url} {...rest}>
       {children}
     </StyledLink>
-  ) : to.startsWith("#") ? (
-    <StyledAnchor href={to}>{children}</StyledAnchor>
+  ) : url.startsWith("#") ? (
+    <StyledAnchor href={url} {...rest}>
+      {children}
+    </StyledAnchor>
   ) : (
-    <StyledAnchor target="_blank" rel="noopener noreferrer" href={to}>
+    <StyledAnchor target="_blank" rel="noopener noreferrer" href={url}>
       {children}
     </StyledAnchor>
   );

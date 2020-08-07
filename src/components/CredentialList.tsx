@@ -94,7 +94,7 @@ export const CredentialList: React.FC<Props> = ({ credentials }) => {
             <h3>{frontmatter.title}</h3>
             <span className="subtitle">
               {frontmatter.date}
-              {frontmatter.subtitle ? ` | ${frontmatter.subtitle}` : ""}
+              {frontmatter.subtitle ? ` • ${frontmatter.subtitle}` : ""}
             </span>
             <MDXRenderer>{body}</MDXRenderer>
           </CredentialListItemContent>
