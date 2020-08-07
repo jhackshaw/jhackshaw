@@ -13,7 +13,6 @@ export * from "./Timeline";
 export * from "./CredentialList";
 export * from "./SEO";
 export * from "./Footer";
-export * from "./AuthorInfo";
 
 export * from "./Card";
 export * from "./PostHeroCard";
