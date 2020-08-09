@@ -1,6 +1,13 @@
 import React from "react";
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaTwitter,
+  FaEnvelope,
+  FaReddit
+} from "react-icons/fa";
 import styled from "styled-components";
+import { NoFussLink } from "./NoFussLink";
 
 const Wrapper = styled.div`
   display: flex;
@@ -21,38 +28,27 @@ const Wrapper = styled.div`
 export const SocialIcons: React.FC = () => {
   return (
     <Wrapper>
-      <a
-        href="https://twitter.com/jhackshaw/"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Twitter"
-      >
+      <NoFussLink to="https://twitter.com/jhackshaw/" title="Twitter">
         <FaTwitter size={28} color="#1DA1F2" />
-      </a>
-      <a
-        href="https://linkedin.com/in/jeffrey-hackshaw/"
-        target="_blank"
-        rel="noopener noreferrer"
+      </NoFussLink>
+      <NoFussLink
+        to="https://linkedin.com/in/jeffrey-hackshaw/"
         title="LinkedIn"
       >
         <FaLinkedin size={28} color="#2867B2" />
-      </a>
-      <a
-        href="https://github.com/jhackshaw/"
-        target="_blank"
-        rel="noopener noreferrer"
-        title="Personal GitHub"
-      >
+      </NoFussLink>
+      <NoFussLink to="https://github.com/jhackshaw/" title="Personal GitHub">
         <FaGithub size={28} />
-      </a>
-      <a
-        href="https://github.com/jhackshaw-dds/"
-        target="_blank"
-        rel="noopener noreferrer"
+      </NoFussLink>
+      <NoFussLink
+        to="https://github.com/jhackshaw-dds/"
         title="DDS GitHub Account"
       >
         <FaGithub size={28} />
-      </a>
+      </NoFussLink>
+      <NoFussLink to="https://reddit.com/u/intrepidev" title="Reddit Account">
+        <FaReddit size={28} />
+      </NoFussLink>
       <a href="mailto:jeffrey.hackshaw@gmail.com" title="Email">
         <FaEnvelope size={28} />
       </a>

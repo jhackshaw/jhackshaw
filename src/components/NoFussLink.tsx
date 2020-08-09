@@ -36,7 +36,12 @@ export const NoFussLink: React.FC<Props> = ({
       {children}
     </StyledAnchor>
   ) : (
-    <StyledAnchor target="_blank" rel="noopener noreferrer" href={url}>
+    <StyledAnchor
+      target="_blank"
+      rel="noopener noreferrer"
+      href={url}
+      {...rest}
+    >
       {children}
     </StyledAnchor>
   );
