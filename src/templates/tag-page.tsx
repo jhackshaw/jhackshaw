@@ -66,7 +66,10 @@ export default TagPage;
 export const query = graphql`
   query($tag: String) {
     posts: allMdx(
-      sort: { fields: frontmatter___date, order: DESC }
+      sort: {
+        fields: [frontmatter___pinned, frontmatter___date]
+        order: [ASC, DESC]
+      }
       filter: {
         fileAbsolutePath: { regex: "/content/posts//" }
         frontmatter: { tags: { eq: $tag }, published: { eq: true } }

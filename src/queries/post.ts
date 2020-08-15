@@ -5,6 +5,7 @@ interface PostSummaryFrontmatter {
   date: string;
   tags: string[];
   link?: string;
+  pinned?: boolean;
   image: {
     childImageSharp: {
       fluid: any;
@@ -49,6 +50,7 @@ export const postFragments = graphql`
     tags
     date(formatString: "MMM, YYYY")
     link
+    pinned
     image {
       childImageSharp {
         fluid(maxWidth: 400, maxHeight: 200, quality: 100) {

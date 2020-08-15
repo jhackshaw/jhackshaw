@@ -52,16 +52,13 @@ const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
 
   // make sure we have 3 posts not including the featured post
   // and filter out the "Project" tag since it's implicit here
-  const projects = data.projects.nodes
-    .filter(p => p.fields.slug !== featuredPost.fields.slug)
-    .slice(0, 3)
-    .map(p => ({
-      ...p,
-      frontmatter: {
-        ...p.frontmatter,
-        tags: p.frontmatter.tags.filter(t => t !== "Project")
-      }
-    }));
+  const projects = data.projects.nodes.map(p => ({
+    ...p,
+    frontmatter: {
+      ...p.frontmatter,
+      tags: p.frontmatter.tags.filter(t => t !== "Project")
+    }
+  }));
 
   return (
     <Layout>
@@ -79,7 +76,11 @@ const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
         </IndexHeroCard>
       </Hero>
       <Section>
-        <SectionTitle to={`/post/${featuredPost.fields.slug}`}>
+        <SectionTitle
+          to={
+            featuredPost.frontmatter.link ?? `/post/${featuredPost.fields.slug}`
+          }
+        >
           Featured
         </SectionTitle>
         <PostHeroCard {...featuredPost} maxWidth="none" link />
@@ -134,9 +135,8 @@ export const query = graphql`
       filter: {
         fileAbsolutePath: { regex: "/content/posts//" }
         frontmatter: {
-          nofeature: { ne: true }
+          featured: { eq: true }
           published: { eq: true }
-          tags: { eq: "Project" }
           image: { id: { ne: null } }
         }
       }
@@ -147,11 +147,18 @@ export const query = graphql`
     }
 
     projects: allMdx(
-      limit: 4
-      sort: { fields: frontmatter___date, order: DESC }
+      limit: 3
+      sort: {
+        fields: [frontmatter___pinned, frontmatter___date]
+        order: [ASC, DESC]
+      }
       filter: {
         fileAbsolutePath: { regex: "/content/posts//" }
-        frontmatter: { tags: { eq: "Project" }, published: { eq: true } }
+        frontmatter: {
+          tags: { eq: "Project" }
+          published: { eq: true }
+          featured: { ne: true }
+        }
       }
     ) {
       nodes {
@@ -161,7 +168,10 @@ export const query = graphql`
 
     posts: allMdx(
       limit: 3
-      sort: { fields: frontmatter___date, order: DESC }
+      sort: {
+        fields: [frontmatter___pinned, frontmatter___date]
+        order: [ASC, DESC]
+      }
       filter: {
         fileAbsolutePath: { regex: "/content/posts//" }
         frontmatter: { tags: { ne: "Project" }, published: { eq: true } }

@@ -6,6 +6,7 @@ import { Tags } from "./Tags";
 import { PostTitle } from "./PostTitle";
 import { PostSummaryQuery } from "../queries";
 import { useDefaultImage } from "../hooks";
+import { FaThumbtack } from "react-icons/fa";
 import styled from "styled-components";
 
 export const StyledPostCard = styled(Card)`
@@ -49,12 +50,23 @@ const CardBody = styled.div`
 const PublishDetails = styled.p`
   font-weight: 400;
   font-size: 0.8rem;
-  line-height: 1.6;
-  margin: 0 0 0.5rem;
+  line-height: 1;
+  margin: 3px 0 12px;
   color: var(--text-lightest);
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+
+  span {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+`;
+
+const Pinned = styled(FaThumbtack)`
+  color: var(--text-title);
+  margin-right: 0.5rem;
 `;
 
 const Flex = styled.div`
@@ -67,7 +79,7 @@ export const PostCard: React.FC<PostSummaryQuery> = ({
   timeToRead
 }) => {
   const defaultImage = useDefaultImage();
-  const { image, title, tags, date, link } = frontmatter;
+  const { image, title, tags, date, link, pinned } = frontmatter;
 
   return (
     <NoFussLink to={link ?? `/post/${fields.slug}`}>
@@ -77,7 +89,10 @@ export const PostCard: React.FC<PostSummaryQuery> = ({
         </ImageWrapper>
         <CardBody>
           <PublishDetails>
-            <span>{date}</span>
+            <span>
+              {pinned && <Pinned />}
+              {date}
+            </span>
             {timeToRead && <span>{`${timeToRead} min read`}</span>}
           </PublishDetails>
           <PostTitle>{title}</PostTitle>

@@ -58,7 +58,10 @@ export default PostListPage;
 export const query = graphql`
   query {
     posts: allMdx(
-      sort: { fields: frontmatter___date, order: DESC }
+      sort: {
+        fields: [frontmatter___pinned, frontmatter___date]
+        order: [ASC, DESC]
+      }
       filter: {
         fileAbsolutePath: { regex: "/content/posts//" }
         frontmatter: { published: { eq: true } }
