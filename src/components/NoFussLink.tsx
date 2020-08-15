@@ -23,6 +23,7 @@ export const NoFussLink: React.FC<Props> = ({
   children,
   ...rest
 }) => {
+  // for supporting links from markdown
   const url = href ?? to;
 
   return !url ? (

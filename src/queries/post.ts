@@ -4,6 +4,7 @@ interface PostSummaryFrontmatter {
   title: string;
   date: string;
   tags: string[];
+  link?: string;
   image: {
     childImageSharp: {
       fluid: any;
@@ -47,6 +48,7 @@ export const postFragments = graphql`
     title
     tags
     date(formatString: "MMM, YYYY")
+    link
     image {
       childImageSharp {
         fluid(maxWidth: 400, maxHeight: 200, quality: 100) {

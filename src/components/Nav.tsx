@@ -84,9 +84,6 @@ export const Nav: React.FC<Props> = ({ collapsed, toggle }) => {
       <NavLink partiallyActive to="/post" activeClassName="active">
         posts
       </NavLink>
-      <NavLink partiallyActive to="/books" activeClassName="active">
-        books
-      </NavLink>
       <NavbarThemeToggle />
     </StyledNav>
   );

@@ -19,7 +19,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
       allMdx(
         filter: {
           fileAbsolutePath: { regex: "/content/posts//" }
-          frontmatter: { published: { eq: true } }
+          frontmatter: { published: { eq: true }, link: { eq: null } }
         }
       ) {
         nodes {

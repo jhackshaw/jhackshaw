@@ -67,10 +67,10 @@ export const PostCard: React.FC<PostSummaryQuery> = ({
   timeToRead
 }) => {
   const defaultImage = useDefaultImage();
-  const { image, title, tags, date } = frontmatter;
+  const { image, title, tags, date, link } = frontmatter;
 
   return (
-    <NoFussLink to={`/post/${fields.slug}`}>
+    <NoFussLink to={link ?? `/post/${fields.slug}`}>
       <StyledPostCard>
         <ImageWrapper>
           <Img fluid={image?.childImageSharp.fluid ?? defaultImage} />
@@ -78,7 +78,7 @@ export const PostCard: React.FC<PostSummaryQuery> = ({
         <CardBody>
           <PublishDetails>
             <span>{date}</span>
-            <span>{`${timeToRead} min read`}</span>
+            {timeToRead && <span>{`${timeToRead} min read`}</span>}
           </PublishDetails>
           <PostTitle>{title}</PostTitle>
           <Flex />
