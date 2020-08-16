@@ -59,6 +59,16 @@ const CredentialListItemContent = styled.div`
     color: var(--text-light);
     font-weight: 400;
   }
+
+  a {
+    color: var(--text-light);
+    font-weight: 400;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    color: var(--text-title);
+  }
 `;
 
 const StyledCredentialList = styled.div`
