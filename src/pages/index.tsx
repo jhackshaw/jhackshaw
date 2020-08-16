@@ -96,17 +96,17 @@ const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
       </Section>
 
       <Section>
+        <SectionTitle>Expertise</SectionTitle>
+        <ExpertiseList items={data.expertise.nodes} />
+      </Section>
+
+      <Section>
         <SectionTitle to="/post">Posts</SectionTitle>
         <PostCardGrid>
           {data.posts.nodes.map(post => (
             <PostCard {...post} key={post.frontmatter.title} />
           ))}
         </PostCardGrid>
-      </Section>
-
-      <Section>
-        <SectionTitle>Expertise</SectionTitle>
-        <ExpertiseList items={data.expertise.nodes} />
       </Section>
 
       <Section>
