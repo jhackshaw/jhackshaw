@@ -59,8 +59,8 @@ export const query = graphql`
   query {
     posts: allMdx(
       sort: {
-        fields: [frontmatter___pinned, frontmatter___date]
-        order: [ASC, DESC]
+        fields: [frontmatter___pinned, frontmatter___lowpri, frontmatter___date]
+        order: [ASC, DESC, DESC]
       }
       filter: {
         fileAbsolutePath: { regex: "/content/posts//" }

@@ -50,8 +50,7 @@ interface IndexQueryProps {
 const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
   const [featuredPost] = data.featured.nodes;
 
-  // make sure we have 3 posts not including the featured post
-  // and filter out the "Project" tag since it's implicit here
+  // filter out the "Project" tag since it's implicit here
   const projects = data.projects.nodes.map(p => ({
     ...p,
     frontmatter: {
@@ -149,8 +148,8 @@ export const query = graphql`
     projects: allMdx(
       limit: 3
       sort: {
-        fields: [frontmatter___pinned, frontmatter___date]
-        order: [ASC, DESC]
+        fields: [frontmatter___pinned, frontmatter___lowpri, frontmatter___date]
+        order: [ASC, DESC, DESC]
       }
       filter: {
         fileAbsolutePath: { regex: "/content/posts//" }
@@ -169,8 +168,8 @@ export const query = graphql`
     posts: allMdx(
       limit: 3
       sort: {
-        fields: [frontmatter___pinned, frontmatter___date]
-        order: [ASC, DESC]
+        fields: [frontmatter___pinned, frontmatter___lowpri, frontmatter___date]
+        order: [ASC, DESC, DESC]
       }
       filter: {
         fileAbsolutePath: { regex: "/content/posts//" }
