@@ -3,7 +3,7 @@ import { FaArrowRight } from "react-icons/fa";
 import { NoFussLink } from "./NoFussLink";
 import styled from "styled-components";
 
-const StyledTitle = styled.h3`
+const StyledTitle = styled.h2`
   color: var(--text-main);
   font-size: 2.1rem;
   font-weight: 400;

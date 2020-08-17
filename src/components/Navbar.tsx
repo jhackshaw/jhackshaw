@@ -57,7 +57,7 @@ export const Navbar: React.FC = () => {
       <StyledNavbar>
         <Brand to="/">&lt;jhackshaw /&gt;</Brand>
         <Nav collapsed={collapsed} toggle={toggleNav} />
-        <NavToggle onClick={toggleNav}>
+        <NavToggle onClick={toggleNav} aria-label="Toggle Sidemenu">
           <FaBars size={16} />
         </NavToggle>
       </StyledNavbar>

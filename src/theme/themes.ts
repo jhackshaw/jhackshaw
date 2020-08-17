@@ -21,8 +21,8 @@ export const themes = {
     "background-card": "#3a4750",
     "text-main": "#fafafa",
     "text-title": "#f6c90e",
-    "text-light": "rgba(255, 255, 255, 0.7)",
-    "text-lighter": "rgba(255, 255, 255, 0.6)",
-    "text-lightest": "rgba(255, 255, 255, 0.4)"
+    "text-light": "rgba(255, 255, 255, 0.9)",
+    "text-lighter": "rgba(255, 255, 255, 0.7)",
+    "text-lightest": "rgba(255, 255, 255, 0.58)"
   }
 };
