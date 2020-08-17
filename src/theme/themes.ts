@@ -23,6 +23,6 @@ export const themes = {
     "text-title": "#f6c90e",
     "text-light": "rgba(255, 255, 255, 0.9)",
     "text-lighter": "rgba(255, 255, 255, 0.7)",
-    "text-lightest": "rgba(255, 255, 255, 0.58)"
+    "text-lightest": "rgba(255, 255, 255, 0.59)"
   }
 };
