@@ -57,21 +57,22 @@ export const Paginator: React.FC<Props> = ({ instance }) => {
       <p>
         Page <b>{pageIndex + 1}</b> of <b>{pageCount}</b>
       </p>
-      <NavButton disabled={!canPreviousPage} onClick={() => gotoPage(0)}>
+      <NavButton disabled={!canPreviousPage} onClick={() => gotoPage(0)} aria-label="first page">
         <FaAngleDoubleLeft size={24} />
       </NavButton>
 
-      <NavButton disabled={!canPreviousPage} onClick={() => previousPage()}>
+      <NavButton disabled={!canPreviousPage} onClick={() => previousPage()}  aria-label="previous page">
         <FaAngleLeft size={24} />
       </NavButton>
 
-      <NavButton disabled={!canNextPage} onClick={() => nextPage()}>
+      <NavButton disabled={!canNextPage} onClick={() => nextPage()}  aria-label="next page">
         <FaAngleRight size={24} />
       </NavButton>
 
       <NavButton
         disabled={!canNextPage}
         onClick={() => gotoPage(pageCount - 1)}
+        aria-label="last page"
       >
         <FaAngleDoubleRight size={24} />
       </NavButton>

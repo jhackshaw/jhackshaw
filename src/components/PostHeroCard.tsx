@@ -103,7 +103,7 @@ export const PostHeroCard: React.FC<Props> = ({
         <Tags tags={tags} />
       </TitleSection>
       <ImageSection>
-        <NoFussLink to={linkTo} aria-label={title}>
+        <NoFussLink to={linkTo}>
           <Img fluid={image?.childImageSharp.fluid ?? defaultImage} />
         </NoFussLink>
       </ImageSection>

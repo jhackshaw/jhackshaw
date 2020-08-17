@@ -179,6 +179,7 @@ export const BookTable: React.FC<Props> = ({ books }) => {
           onChange={e => instance.setGlobalFilter(e.target.value)}
           value={instance.state.globalFilter ?? ""}
           placeholder="Search"
+          aria-label="Search books"
         />
       </SearchWrapper>
       <Table {...instance.getTableProps()}>
