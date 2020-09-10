@@ -57,11 +57,9 @@ module.exports = {
         background_color: `#fafafa`,
         theme_color: `#3f51b5`,
         display: `minimal-ui`,
-        icon: `content/media/favicon.png` // This path is relative to the root of the site.
+        icon: `content/media/favicon.png`
       }
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    `gatsby-plugin-offline`
+    `gatsby-plugin-remove-serviceworker`
   ]
 };

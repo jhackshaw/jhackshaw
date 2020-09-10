@@ -29,4 +29,5 @@ export * from "./TableOfContents";
 
 export * from "./CodeBlock";
 
-export * from "./BookTable";
+export * from "./BookTable/BookTable";
+export * from "./LoadingBar";

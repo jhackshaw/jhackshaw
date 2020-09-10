@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { BookQuery } from "queries";
-import { StarRating } from "./StarRating";
-import { Card } from "./Card";
+import { ApiBook } from "./useColumns";
+import { StarRating } from "../StarRating";
+import { Card } from "../Card";
 
 const Wrapper = styled(Card)`
   padding: 2rem;
@@ -26,18 +26,21 @@ const Date = styled.p`
   font-weight: 300;
 `;
 
-export const BookCard: React.FC<BookQuery> = ({
-  title,
-  author,
-  stars,
-  date
-}) => {
+const Book: React.FC<ApiBook> = ({ title, author, rating, date }) => {
   return (
     <Wrapper>
       <Title>{title}</Title>
       <Author>By {author}</Author>
       <Date>{date}</Date>
-      <StarRating rating={stars} />
+      <StarRating rating={rating} />
     </Wrapper>
   );
 };
+
+export const BookCard = styled(Book)`
+  flex: 1 0 100%;
+
+  @media screen and (min-width: 768px) {
+    flex: 1 0 50%;
+  }
+`;

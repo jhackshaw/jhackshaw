@@ -1,6 +1,4 @@
 import React from "react";
-import { PageProps, graphql } from "gatsby";
-import { BookQuery } from "../queries";
 import {
   Hero,
   Layout,
@@ -10,13 +8,7 @@ import {
   BookTable
 } from "../components";
 
-interface BookQueryProps {
-  books: {
-    nodes: BookQuery[];
-  };
-}
-
-const IndexPage: React.FC<PageProps<BookQueryProps>> = ({ data }) => {
+const IndexPage: React.FC = () => {
   return (
     <Layout>
       <SEO title="Books" />
@@ -24,27 +16,17 @@ const IndexPage: React.FC<PageProps<BookQueryProps>> = ({ data }) => {
         <IndexHeroCard>
           <HeroCardTitle>Jeff Hackshaw</HeroCardTitle>
           <p>
-            I really needed a way to keep track of which books I've read, when I
-            read them, and which ones I liked.
+            An easier way to keep track of which books I read, when I read them,
+            and which ones I liked using the GoodReads API.
           </p>
           <p>
             <em>This is not an exhaustive list</em>
           </p>
         </IndexHeroCard>
       </Hero>
-      <BookTable books={data.books.nodes} />
+      <BookTable />
     </Layout>
   );
 };
-
-export const query = graphql`
-  query BookPageQuery {
-    books: allBooksYaml {
-      nodes {
-        ...AllBook
-      }
-    }
-  }
-`;
 
 export default IndexPage;
