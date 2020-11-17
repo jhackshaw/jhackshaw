@@ -27,9 +27,6 @@ interface IndexQueryProps {
   featured: {
     nodes: AllPostQuery[];
   };
-  projects: {
-    nodes: PostSummaryQuery[];
-  };
   posts: {
     nodes: PostSummaryQuery[];
   };
@@ -50,14 +47,8 @@ interface IndexQueryProps {
 const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
   const [featuredPost] = data.featured.nodes;
 
-  // filter out the "Project" tag since it's implicit here
-  const projects = data.projects.nodes.map(p => ({
-    ...p,
-    frontmatter: {
-      ...p.frontmatter,
-      tags: p.frontmatter.tags.filter(t => t !== "Project")
-    }
-  }));
+
+  const posts = data.posts.nodes.filter(p => p.fields.slug !== featuredPost.fields.slug).slice(0, 3);
 
   return (
     <Layout>
@@ -86,9 +77,9 @@ const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
       </Section>
 
       <Section>
-        <SectionTitle to="/t/project">Projects</SectionTitle>
+        <SectionTitle to="/post">Posts</SectionTitle>
         <PostCardGrid>
-          {projects.map(post => (
+          {posts.map(post => (
             <PostCard {...post} key={post.frontmatter.title} />
           ))}
         </PostCardGrid>
@@ -97,15 +88,6 @@ const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
       <Section>
         <SectionTitle>Expertise</SectionTitle>
         <ExpertiseList items={data.expertise.nodes} />
-      </Section>
-
-      <Section>
-        <SectionTitle to="/post">Posts</SectionTitle>
-        <PostCardGrid>
-          {data.posts.nodes.map(post => (
-            <PostCard {...post} key={post.frontmatter.title} />
-          ))}
-        </PostCardGrid>
       </Section>
 
       <Section>
@@ -145,35 +127,15 @@ export const query = graphql`
       }
     }
 
-    projects: allMdx(
-      limit: 3
-      sort: {
-        fields: [frontmatter___pinned, frontmatter___lowpri, frontmatter___date]
-        order: [ASC, DESC, DESC]
-      }
-      filter: {
-        fileAbsolutePath: { regex: "/content/posts//" }
-        frontmatter: {
-          tags: { eq: "Project" }
-          published: { eq: true }
-          featured: { ne: true }
-        }
-      }
-    ) {
-      nodes {
-        ...PostSummary
-      }
-    }
-
     posts: allMdx(
-      limit: 3
+      limit: 4
       sort: {
         fields: [frontmatter___pinned, frontmatter___lowpri, frontmatter___date]
         order: [ASC, DESC, DESC]
       }
       filter: {
         fileAbsolutePath: { regex: "/content/posts//" }
-        frontmatter: { tags: { ne: "Project" }, published: { eq: true } }
+        frontmatter: { published: { eq: true } }
       }
     ) {
       nodes {

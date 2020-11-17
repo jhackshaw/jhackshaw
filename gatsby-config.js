@@ -16,7 +16,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        gatsbyRemarkPlugins: ["gatsby-remark-slug"]
+        gatsbyRemarkPlugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 600
+            }
+          },
+          "gatsby-remark-slug"
+        ]
       }
     },
     {
@@ -26,18 +34,13 @@ module.exports = {
       }
     },
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          {
-            family: `Ubuntu`,
-            variants: [`300`, `400`, `500`]
-          },
-          {
-            family: `Roboto Mono`,
-            variants: [`300`, `500`, `700`]
-          }
-        ]
+          `Ubuntu\:300,400,500`,
+          `Roboto Mono\:300,500,700`
+        ],
+        display: 'swap'
       }
     },
     `gatsby-plugin-react-helmet`,
