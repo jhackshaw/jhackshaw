@@ -48,7 +48,7 @@ const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
   const [featuredPost] = data.featured.nodes;
 
 
-  const posts = data.posts.nodes.filter(p => p.fields.slug !== featuredPost.fields.slug).slice(0, 3);
+  const posts = data.posts.nodes.filter(p => p.fields.slug !== featuredPost.fields.slug).slice(0, 6);
 
   return (
     <Layout>
@@ -128,7 +128,7 @@ export const query = graphql`
     }
 
     posts: allMdx(
-      limit: 4
+      limit: 7
       sort: {
         fields: [frontmatter___pinned, frontmatter___lowpri, frontmatter___date]
         order: [ASC, DESC, DESC]
