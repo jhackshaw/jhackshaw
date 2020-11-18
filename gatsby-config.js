@@ -13,6 +13,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-styled-components`,
+    `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -60,9 +61,11 @@ module.exports = {
         background_color: `#fafafa`,
         theme_color: `#3f51b5`,
         display: `minimal-ui`,
-        icon: `content/media/favicon.png`
+        icon: `content/media/favicon.png` // This path is relative to the root of the site.
       }
     },
-    `gatsby-plugin-remove-serviceworker`
+    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // To learn more, visit: https://gatsby.dev/offline
+    `gatsby-plugin-offline`
   ]
 };
