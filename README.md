@@ -5,7 +5,6 @@ I'm a full stack dev using primarily *typescript*, *javascript*, and *python*. I
 
 Checkout some of my personal projects below, or find me on:
 
-- [My Work GitHub](https://github.com/jhackshaw-dds)
 - [Twitter](https://twitter.com/jhackshaw)
 - [LinkedIn](https://www.linkedin.com/in/jeffrey-hackshaw/)
 
