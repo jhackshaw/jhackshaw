@@ -40,12 +40,6 @@ export const SocialIcons: React.FC = () => {
       <NoFussLink to="https://github.com/jhackshaw/" title="Personal GitHub">
         <FaGithub size={28} />
       </NoFussLink>
-      <NoFussLink
-        to="https://github.com/jhackshaw-dds/"
-        title="DDS GitHub Account"
-      >
-        <FaGithub size={28} />
-      </NoFussLink>
       <a href="mailto:jeffrey.hackshaw@gmail.com" title="Email">
         <FaEnvelope size={28} />
       </a>
