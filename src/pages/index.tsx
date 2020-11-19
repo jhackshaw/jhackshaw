@@ -47,8 +47,9 @@ interface IndexQueryProps {
 const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
   const [featuredPost] = data.featured.nodes;
 
-
-  const posts = data.posts.nodes.filter(p => p.fields.slug !== featuredPost.fields.slug).slice(0, 6);
+  const posts = data.posts.nodes
+    .filter(p => p.fields.slug !== featuredPost.fields.slug)
+    .slice(0, 6);
 
   return (
     <Layout>
@@ -73,7 +74,7 @@ const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
         >
           Featured
         </SectionTitle>
-        <PostHeroCard {...featuredPost} maxWidth="none" link />
+        <PostHeroCard {...featuredPost} maxWidth="none" />
       </Section>
 
       <Section>
