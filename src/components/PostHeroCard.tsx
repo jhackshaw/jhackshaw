@@ -82,8 +82,8 @@ export const PostHeroCard: React.FC<Props> = ({
 }) => {
   const defaultImage = useDefaultImage();
   const { title, date, source, demo, image, tags, link } = frontmatter;
-  console.log(link);
   const linkTo = link ?? `/post/${fields.slug}`;
+
   return (
     <StyledPostHeroCard maxWidth={maxWidth} isLinked={!!linkTo}>
       <TitleSection>
@@ -91,7 +91,7 @@ export const PostHeroCard: React.FC<Props> = ({
           <PostTitlePrimary>{title}</PostTitlePrimary>
         </NoFussLink>
         <Details>
-          <p>{`${date} • ${timeToRead} min read`}</p>
+          <p>{date}{timeToRead && ` • ${timeToRead} min read`}</p>
           {(source || demo) && (
             <p>
               {demo && <NoFussLink to={demo}>Demo</NoFussLink>}
