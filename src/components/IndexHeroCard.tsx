@@ -42,7 +42,7 @@ const Details = styled.div`
 export const IndexHeroCard: React.FC = ({ children }) => {
   const { file } = useStaticQuery(graphql`
     query {
-      file(relativePath: { eq: "media/profile.jpg" }) {
+      file(relativePath: { eq: "media/profile2.jpeg" }) {
         childImageSharp {
           fixed(width: 220, height: 220) {
             ...GatsbyImageSharpFixed_withWebp

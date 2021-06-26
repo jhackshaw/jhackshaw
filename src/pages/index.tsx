@@ -39,9 +39,12 @@ interface IndexQueryProps {
   certifications: {
     nodes: CredentialQuery[];
   };
-  credentials: {
+  awards: {
     nodes: CredentialQuery[];
   };
+  education: {
+    nodes: CredentialQuery[];
+  }
 }
 
 const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
@@ -58,7 +61,7 @@ const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
         <IndexHeroCard>
           <HeroCardTitle>Jeff Hackshaw</HeroCardTitle>
           <p>
-            Hi there! I&apos;m a full stack web developer, soon to be 9-year
+            Hi there! I&apos;m a full stack web developer, 9-year
             Marine Corps veteran, science fiction enthusiast, and husband.
           </p>
           <p>
@@ -97,13 +100,18 @@ const IndexPage: React.FC<PageProps<IndexQueryProps>> = ({ data }) => {
       </Section>
 
       <Section>
+        <SectionTitle>Education</SectionTitle>
+        <CredentialList credentials={data.education.nodes} />
+      </Section>
+
+      <Section>
         <SectionTitle>Certifications</SectionTitle>
         <CredentialList credentials={data.certifications.nodes} />
       </Section>
 
       <Section>
-        <SectionTitle>Education & Awards</SectionTitle>
-        <CredentialList credentials={data.credentials.nodes} />
+        <SectionTitle>Awards</SectionTitle>
+        <CredentialList credentials={data.awards.nodes} />
       </Section>
     </Layout>
   );
@@ -168,9 +176,18 @@ export const query = graphql`
       }
     }
 
-    credentials: allMdx(
+    awards: allMdx(
       sort: { fields: frontmatter___date, order: DESC }
-      filter: { fileAbsolutePath: { regex: "/content/credentials//" } }
+      filter: { fileAbsolutePath: { regex: "/content/awards//" } }
+    ) {
+      nodes {
+        ...AllCredential
+      }
+    }
+
+    education: allMdx(
+      sort: { fields: frontmatter___date, order: DESC }
+      filter: { fileAbsolutePath: { regex: "/content/education//" } }
     ) {
       nodes {
         ...AllCredential
