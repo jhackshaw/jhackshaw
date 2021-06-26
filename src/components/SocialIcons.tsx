@@ -28,9 +28,6 @@ const Wrapper = styled.div`
 export const SocialIcons: React.FC = () => {
   return (
     <Wrapper>
-      <NoFussLink to="https://twitter.com/jhackshaw/" title="Twitter">
-        <FaTwitter size={28} color="#1DA1F2" />
-      </NoFussLink>
       <NoFussLink
         to="https://linkedin.com/in/jeffrey-hackshaw/"
         title="LinkedIn"
