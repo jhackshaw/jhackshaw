@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import {
   UseExpandedHooks,
   UseExpandedInstanceProps,
-  UseExpandedOptions,
   UseExpandedRowProps,
   UseExpandedState,
   UseGlobalFiltersColumnOptions,
@@ -11,13 +11,11 @@ import {
   UsePaginationInstanceProps,
   UsePaginationOptions,
   UsePaginationState,
-  UseRowStateCellProps,
   UseRowStateInstanceProps,
   UseRowStateOptions,
   UseRowStateRowProps,
   UseRowStateState,
   UseSortByColumnOptions,
-  UseSortByColumnProps,
   UseSortByHooks,
   UseSortByInstanceProps,
   UseSortByOptions,
@@ -54,12 +52,6 @@ declare module "react-table" {
   export interface ColumnInterface<D extends object = {}>
     extends UseGlobalFiltersColumnOptions<D>,
       UseSortByColumnOptions<D> {}
-
-  export interface ColumnInstance<D extends object = {}>
-    extends UseSortByColumnProps<D> {}
-
-  export interface Cell<D extends object = {}, V = any>
-    extends UseRowStateCellProps<D> {}
 
   export interface Row<D extends object = {}>
     extends UseRowStateRowProps<D>,

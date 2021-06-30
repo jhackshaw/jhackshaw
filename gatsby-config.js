@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/camelcase */
-
 module.exports = {
   siteMetadata: {
     title: `Jeff Hackshaw`,
@@ -14,6 +12,7 @@ module.exports = {
     `gatsby-plugin-typescript`,
     `gatsby-plugin-styled-components`,
     `gatsby-remark-images`,
+    `gatsby-plugin-slug`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -23,8 +22,10 @@ module.exports = {
             options: {
               maxWidth: 600
             }
-          },
-          "gatsby-remark-slug"
+          }
+        ],
+        rehypePlugins: [
+          require('rehype-slug')
         ]
       }
     },
@@ -38,8 +39,8 @@ module.exports = {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          `Ubuntu\:300,400,500`,
-          `Roboto Mono\:300,500,700`
+          `Ubuntu:300,400,500`,
+          `Roboto Mono:300,500,700`
         ],
         display: 'swap'
       }
@@ -61,11 +62,9 @@ module.exports = {
         background_color: `#fafafa`,
         theme_color: `#3f51b5`,
         display: `minimal-ui`,
-        icon: `content/media/favicon.png` // This path is relative to the root of the site.
+        icon: `content/media/favicon.png`
       }
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
     `gatsby-plugin-offline`
   ]
 };

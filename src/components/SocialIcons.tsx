@@ -2,9 +2,7 @@ import React from "react";
 import {
   FaGithub,
   FaLinkedin,
-  FaTwitter,
-  FaEnvelope,
-  FaReddit
+  FaEnvelope
 } from "react-icons/fa";
 import styled from "styled-components";
 import { NoFussLink } from "./NoFussLink";

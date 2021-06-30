@@ -48,6 +48,7 @@ export const columns: Column<ApiBook>[] = [
   {
     Header: "Stars",
     accessor: row => row.rating,
+    // eslint-disable-next-line react/display-name
     Cell: ({ row: { original } }: CellProps<ApiBook>) => (
       <StarRatingCell>
         <StarRating rating={original.rating} />

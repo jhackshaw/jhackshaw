@@ -8,12 +8,12 @@ const StyledAnchor = styled(OutboundLink)`
   color: inherit;
 `;
 
-const StyledLink = styled(Link)<GatsbyLinkProps<{}>>`
+const StyledLink = styled(Link)<GatsbyLinkProps<Record<string, unknown>>>`
   text-decoration: none;
   color: inherit;
 `;
 
-interface Props extends Omit<GatsbyLinkProps<{}>, "ref"> {
+interface Props extends Omit<GatsbyLinkProps<Record<string, unknown>>, "ref"> {
   href?: string;
 }
 

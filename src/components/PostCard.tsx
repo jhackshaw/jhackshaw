@@ -82,7 +82,7 @@ export const PostCard: React.FC<PostSummaryQuery> = ({
   const { image, title, tags, date, link, pinned } = frontmatter;
 
   return (
-    <NoFussLink to={link ?? `/post/${fields.slug}`}>
+    <NoFussLink to={link ?? `/post${fields.slug}`}>
       <StyledPostCard>
         <ImageWrapper>
           <Img fluid={image?.childImageSharp.fluid ?? defaultImage} />

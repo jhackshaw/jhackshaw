@@ -1,18 +1,5 @@
 const path = require("path");
 
-exports.onCreateNode = async ({ node, getNode, actions }) => {
-  const { createNodeField } = actions;
-  if (node.internal.type === "Mdx") {
-    const fileNode = getNode(node.parent);
-    const fileName = fileNode.name;
-    createNodeField({
-      node,
-      name: "slug",
-      value: fileName
-    });
-  }
-};
-
 exports.createPages = async ({ graphql, actions: { createPage } }) => {
   const { data: projects } = await graphql(`
     {
@@ -33,7 +20,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
 
   for (const page of projects.allMdx.nodes) {
     createPage({
-      path: `/post/${page.fields.slug}`,
+      path: `/post${page.fields.slug}`,
       component: path.resolve("src/templates/post-page.tsx"),
       context: {
         slug: page.fields.slug

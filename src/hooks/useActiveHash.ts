@@ -16,9 +16,9 @@ export const getHeadingIds = (tocs: TOC[]): string[] => {
   return idList;
 };
 
-export const useActiveHash = (itemIds: string[]) => {
+export const useActiveHash = (itemIds: string[]): string => {
   const [activeHash, setActiveHash] = useState(``);
-
+  console.log(itemIds);
   useEffect(() => {
     const observer = new IntersectionObserver(
       entries => {
@@ -32,14 +32,11 @@ export const useActiveHash = (itemIds: string[]) => {
     );
 
     itemIds.forEach(id => {
-      observer.observe(document.getElementById(id) as Element);
+      const el = document.getElementById(id);
+      el && observer.observe(el);
     });
 
-    return () => {
-      itemIds.forEach(id => {
-        observer.unobserve(document.getElementById(id) as Element);
-      });
-    };
+    return () => observer.disconnect();
   }, []);
 
   return `#${activeHash}`;

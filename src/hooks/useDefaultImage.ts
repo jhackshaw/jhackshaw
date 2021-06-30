@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby";
 
-export const useDefaultImage = () => {
+export const useDefaultImage = (): any => {
   const res = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "media/defaultimage.png" }) {
